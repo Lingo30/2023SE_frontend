@@ -36,5 +36,8 @@
   },
   "[css]": {
     "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
   }
 }

@@ -3,18 +3,5 @@
   "onReachBottomDistance": 10,
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": false,
-  "usingComponents": {
-    "t-row": "tdesign-miniprogram/row/row",
-    "t-col": "tdesign-miniprogram/col/col",
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-tabs": "tdesign-miniprogram/tabs/tabs",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
-    "t-input": "tdesign-miniprogram/input/input",
-    "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
-    "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-button": "tdesign-miniprogram/button/button",
-    "t-radio": "tdesign-miniprogram/radio/radio",
-    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
-  }
+  "usingComponents": {}
 }

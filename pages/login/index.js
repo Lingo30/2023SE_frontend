@@ -1,4 +1,5 @@
 // pages/login/index.js
+import Toast from 'tdesign-miniprogram/toast/index';
 Page({
 
   /**
@@ -43,11 +44,11 @@ Page({
     userTypeText: "",
     userTypes: [{
         label: '学生',
-        value: '0'
+        value: 'student'
       },
       {
         label: '导师',
-        value: '1'
+        value: 'teacher'
       },
     ],
   },
@@ -62,9 +63,11 @@ Page({
     } = e.currentTarget.dataset;
     this.setData({
       [`${key}Visible`]: false,
-      [`${key}Value`]: e.detail.value.join(" "),
-      [`${key}Text`]: e.detail.label.join(" ")
+      [`${key}Text`]: e.detail.label.join(" "),
+      [`${key}Value`]: e.detail.value.join(" ")
     });
+    this[`${key}Text`] = e.detail.label.join(" ");
+    this[`${key}Value`] = e.detail.value.join(" ");
   },
 
   onPickerCancel(e) {
@@ -98,6 +101,123 @@ Page({
     this.setData({
       isRegister: e.detail.value
     });
+  },
+
+  getInputValue(e) {
+    const {
+      key
+    } = e.currentTarget.dataset;
+    this[`${key}`] = e.detail.value;
+  },
+
+  login() {
+    if (!this.userId || !this.emailValue || !this.password) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '请完整输入登录信息！',
+        duration: 2500,
+        theme: 'warning',
+        direction: 'column',
+      });
+    } else {
+      // console.log(this.userId + this.emailValue + this.password);
+      wx.request({
+        url: getApp().globalData.baseUrl + '/login',
+        method: 'post',
+        data: {
+          userId: this.userId + this.emailValue,
+          password: this.password
+        },
+        success: (res) => {
+          if (res.data.result == 1) {
+            wx.setStorage({
+              key: token,
+              data: res.data.token
+            });
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.msg,
+              duration: 2500,
+              theme: 'success',
+              direction: 'column',
+            });
+            wx.redirectTo({
+              url: '/pages/home/home',
+            });
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.msg,
+              duration: 2500,
+              theme: 'error',
+              direction: 'column',
+            });
+          }
+        }
+      });
+    }
+  },
+
+  register() {
+    if (!this.username || !this.userTypeValue || !this.universityValue || !this.userId || !this.password || !this.password2 || !this.checkCode) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '请完整输入注册信息！',
+        duration: 2500,
+        theme: 'warning',
+        direction: 'column',
+      });
+    } else if (this.password != this.password2) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '两次输入密码不一致！',
+        duration: 2500,
+        theme: 'warning',
+        direction: 'column',
+      });
+    } else {
+      wx.request({
+        url: getApp().globalData.baseUrl + '/register',
+        method: 'post',
+        data: {
+          username: this.username,
+          userType: this.userTypeValue,
+          university: this.universityText,
+          userId: this.userId + this.universityValue,
+          password: this.password,
+          checkCode: this.checkCode
+        },
+        success: (res) => {
+          if (result == 1) {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.msg,
+              duration: 2500,
+              theme: 'success',
+              direction: 'column',
+            });
+            wx.redirectTo({
+              url: '/pages/login/index',
+            });
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.msg,
+              duration: 2500,
+              theme: 'error',
+              direction: 'column',
+            });
+          }
+        }
+      })
+    }
   },
 
   /**

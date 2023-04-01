@@ -1,30 +1,33 @@
 <!--pages/login/index.wxml-->
+<t-toast id="t-toast" />
 <view class="column">
   <view class="row">
-    <t-icon name="/assets/logo.png" size="50" />
-    <text style="font-size: large; font-weight: 700;">Lab直聘</text>
+    <t-icon name="/assets/logo.png" size="55" />
+    <text style="font-size: x-large; font-weight: 700;">Lab直聘</text>
   </view>
 
   <t-tabs defaultValue="{{0}}" bind:click="onTabsClick" class="bigger">
     <t-tab-panel label="登录" value="0" />
     <t-tab-panel label="注册" value="1" />
   </t-tabs>
-  <view style="min-width: 80%;" hidden="{{isRegister != 0}}">
-    <t-input label="账号" placeholder="请输入邮箱前缀" value="{{userId}}" clearable> </t-input>
+
+  <view style="width: 80%;" hidden="{{isRegister != 0}}">
+    <t-input label="账号" placeholder="请输入邮箱前缀" data-key="userId" bindchange="getInputValue" clearable> </t-input>
 
     <t-cell title=" 邮箱域名" arrow hover note="{{emailText}}" bind:click="onEmailPicker" />
     <t-picker visible="{{emailVisible}}" data-key="email" title="选择邮箱域名" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
       <t-picker-item options="{{emails}}" />
     </t-picker>
 
-    <t-input label="密码" placeholder="请输入密码" type="password" value="{{password}}" clearable />
+    <t-input label="密码" placeholder="请输入密码" type="password" data-key="password" bindchange="getInputValue" clearable />
     <view class="row">
-      <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px">登录</t-button>
+      <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px" bind:tap="login">登录</t-button>
     </view>
 
   </view>
+
   <view style="width: 80%;" hidden="{{isRegister != 1}}">
-    <t-input label="姓名" placeholder="请输入您的姓名" value="{{username}}" clearable> </t-input>
+    <t-input label="姓名" placeholder="请输入您的姓名" data-key="username" bindchange="getInputValue" clearable> </t-input>
 
     <t-cell title="身份" arrow hover note="{{userTypeText}}" bind:click="onUserTypePicker" />
     <t-picker visible="{{userTypeVisible}}" data-key="userType" title="选择身份" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
@@ -37,22 +40,23 @@
     </t-picker>
 
     <view class="row">
-      <t-input label="邮箱" placeholder="仅限高校邮箱" value="{{userId}}" clearable> </t-input>
+      <t-input label="邮箱" placeholder="仅限高校邮箱" data-key="userId" bindchange="getInputValue" clearable> </t-input>
       <text style="font-size: small;color: grey;">{{universityValue}}</text>
     </view>
 
-    <t-input label="密码" placeholder="请输入密码" type="password" value="{{password}}" clearable />
+    <t-input label="密码" placeholder="请输入密码" type="password" data-key="password" bindchange="getInputValue" clearable />
 
-    <t-input label="确认密码" placeholder="请再输入一遍密码" type="password" value="{{password2}}" clearable />
+    <t-input label="确认密码" placeholder="请再输入一遍密码" type="password" data-key="password2" bindchange="getInputValue" clearable />
 
     <view class="row">
-      <t-input label="验证码" placeholder="请填写验证码" value="{{checkCode}}" clearable> </t-input>
+      <t-input label="验证码" placeholder="请填写验证码" data-key="checkCode" bindchange="getInputValue" clearable> </t-input>
       <t-button size="small" theme="light">发送验证码</t-button>
     </view>
 
     <view class="row">
-      <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px">注册</t-button>
+      <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px" bind:tap="register">注册</t-button>
     </view>
 
   </view>
+
 </view>

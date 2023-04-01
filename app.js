@@ -5,4 +5,8 @@ App({
   onShow: function () {
     updateManager();
   },
+  globalData: {
+    baseUrl: "http://10.192.14.249:8000",
+  },
+
 });
