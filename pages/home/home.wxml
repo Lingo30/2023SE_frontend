@@ -20,7 +20,7 @@
 
   <!-- <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" bind:addcart="goodListAddCartHandle" />
   <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" /> -->
-  <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
+  <block wx:for="{{internlist[current]}}" wx:for-item="item" wx:for-index="index">
     <!-- 两行文字 id="{{index}}"是给按下了那个item记录-->
     <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
       <!-- 包裹四行文字 -->

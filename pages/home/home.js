@@ -31,24 +31,74 @@ Page({
       text: "线下",
       key: 6
     }],
-    internlist: [{
-      id: 1,
-      title: "计算机视觉实习",
-      content: "传统目标检测，无人驾驶",
-      tags: ["3个月", "线下", "CV", "python", "3人"],
-      tname: "刘偲教授",
-      school: "北京航空航天大学"
-    }, {
-      id: 2,
-      title: "计算机视觉实习",
-      content: "对于diffusion model infer阶段算法加速",
-      tags: ["5个月", "线上", "CV", "python", "1人"],
-      tname: "朱军教授",
-      school: "清华大学"
-    }],
+    internlist: [
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }, {
+        id: 2,
+        title: "计算机视觉实习",
+        content: "对于diffusion model infer阶段算法加速",
+        tags: ["5个月", "线上", "CV", "python", "1人"],
+        tname: "朱军教授",
+        school: "清华大学"
+      }],
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }],
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }],
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }],
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }],
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }],
+      [{
+        id: 1,
+        title: "计算机视觉实习",
+        content: "传统目标检测，无人驾驶",
+        tags: ["3个月", "线下", "CV", "python", "3人"],
+        tname: "刘偲教授",
+        school: "北京航空航天大学"
+      }],
+    ],
     goodsListLoadStatus: 0,
     pageLoading: false,
-    current: 1,
+    current: 0,
     autoplay: true,
     duration: '500',
     interval: 5000,
@@ -125,7 +175,10 @@ Page({
   },
 
   tabChangeHandle(e) {
-    this.privateData.tabIndex = e.detail;
+    console.log(e.detail)
+    this.setData({
+      current: e.detail.value
+    })
   },
 
   navToSearchPage() {
