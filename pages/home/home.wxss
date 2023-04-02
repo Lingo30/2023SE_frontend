@@ -60,6 +60,7 @@ page {
 .home-page-container .tab.order-nav .order-nav-item.scroll-width {
   min-width: 165rpx;
 }
+
 .home-page-container .tab .order-nav-item.active {
   color: #fa550f !important;
 }
@@ -104,4 +105,88 @@ page {
   --td-tab-border-color: transparent;
   --td-tab-item-color: #666;
   --td-tab-track-color: red;
+}
+
+/* 我的 */
+.view_tupian_wenzi {
+  height: 220rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: large;
+
+
+  /* 圆角 */
+  border-radius: 20rpx;
+
+  /* 边 */
+  border: 3rpx solid #E0E3DA;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+
+  background-color: #ffffff;
+  margin: 30rpx;
+
+  /* padding使得文字和图片不至于贴着边框 */
+  padding: 30rpx;
+
+}
+
+/* 包裹两行文字 */
+
+.view_wenzi2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* font-weight: bold; */
+}
+
+/* 包裹tag的block  */
+.view_tag {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.view_tag t-tag {
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.margin-16 {
+  margin-right: 20rpx;
+}
+
+/* 小字 */
+
+.text_small {
+  font-size: 30rpx;
+  word-break: break-all;
+  color: #7a7878;
+  margin-top: 10rpx
+}
+
+/* 最后一行 */
+.bottom-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.bottom-bar-left {
+  font-size: 30rpx;
+  font-weight: 200;
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10rpx;
+}
+
+.bottom-bar-right {
+  font-size: 28rpx;
+  color: #b6b2b2;
 }

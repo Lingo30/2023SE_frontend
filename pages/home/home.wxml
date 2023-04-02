@@ -3,56 +3,46 @@
 </view>
 <view class="home-page-header">
   <view class="search" bind:tap="navToSearchPage">
-    <t-search
-      t-class-input="t-search__input"
-      t-class-input-container="t-search__input-container"
-      placeholder="iphone 13 火热发售中"
-      leftIcon=""
-      disabled
-    >
+    <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="北航校内实习" leftIcon="" disabled>
       <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>
-  <view class="swiper-wrap">
-    <t-swiper
-      wx:if="{{imgSrcs.length > 0}}"
-      current="{{current}}"
-      autoplay="{{autoplay}}"
-      duration="{{duration}}"
-      interval="{{interval}}"
-      navigation="{{navigation}}"
-      imageProps="{{swiperImageProps}}"
-      list="{{imgSrcs}}"
-      bind:click="navToActivityDetail"
-    />
-  </view>
+  <!-- <view class="swiper-wrap">
+    <t-swiper wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
+  </view> -->
 </view>
 <view class="home-page-container">
   <view class="home-page-tabs">
-    <t-tabs
-      t-class="t-tabs"
-      t-class-active="tabs-external__active"
-      t-class-item="tabs-external__item"
-      defaultValue="{{0}}"
-      space-evenly="{{false}}"
-      bind:change="tabChangeHandle"
-    >
-      <t-tab-panel
-        wx:for="{{tabList}}"
-        wx:for-index="index"
-        wx:key="index"
-        label="{{item.text}}"
-        value="{{item.key}}"
-      />
+    <t-tabs t-class="t-tabs" t-class-active="tabs-external__active" t-class-item="tabs-external__item" defaultValue="{{0}}" space-evenly="{{false}}" bind:change="tabChangeHandle">
+      <t-tab-panel wx:for="{{tabList}}" wx:for-index="index" wx:key="index" label="{{item.text}}" value="{{item.key}}" />
     </t-tabs>
   </view>
 
-  <goods-list
-    wr-class="goods-list-container"
-    goodsList="{{goodsList}}"
-    bind:click="goodListClickHandle"
-    bind:addcart="goodListAddCartHandle"
-  />
-  <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" />
+  <!-- <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" bind:addcart="goodListAddCartHandle" />
+  <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" /> -->
+  <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
+    <!-- 两行文字 id="{{index}}"是给按下了那个item记录-->
+    <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
+      <!-- 包裹四行文字 -->
+      <view class="view_wenzi2">
+        <text>{{item.title}}</text>
+        <text class="text_small">{{item.content}}</text>
+      </view>
+      <view class="view_tag">
+        <view wx:for="{{item.tags}}" wx:for-item="intm" wx:for-index="idx">
+          <t-tag class="margin-16" variant="light">{{intm}}</t-tag>
+        </view>
+      </view>
+      <view class="bottom-bar">
+        <view class="bottom-bar-left">
+          <t-icon name="user-circle" size="48rpx" data-name="user-circle" />
+          {{item.tname}}
+        </view>
+        <view class="bottom-bar-right">
+          {{item.school}}
+        </view>
+      </view>
+    </view>
+  </block>
   <t-toast id="t-toast" />
 </view>
