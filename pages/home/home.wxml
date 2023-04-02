@@ -21,11 +21,17 @@
   <!-- <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" bind:addcart="goodListAddCartHandle" />
   <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" /> -->
   <block wx:for="{{internlist[current]}}" wx:for-item="item" wx:for-index="index">
-    <!-- 两行文字 id="{{index}}"是给按下了那个item记录-->
     <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
       <!-- 包裹四行文字 -->
       <view class="view_wenzi2">
-        <text>{{item.title}}</text>
+        <view class="view_wenzileft">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="view_wenziright">
+          {{item.alreadynum}}/{{item.num}}人
+        </view>
+      </view>
+      <view class="view_wenzi2">
         <text class="text_small">{{item.content}}</text>
       </view>
       <view class="view_tag">
@@ -35,7 +41,7 @@
       </view>
       <view class="bottom-bar">
         <view class="bottom-bar-left">
-          <t-icon name="user-circle" size="48rpx" data-name="user-circle" />
+          <t-icon name="user-avatar" size="48rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
           {{item.tname}}
         </view>
         <view class="bottom-bar-right">
