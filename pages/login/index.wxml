@@ -50,7 +50,7 @@
 
     <view class="row">
       <t-input label="验证码" placeholder="请填写验证码" data-key="checkCode" bindchange="getInputValue" clearable> </t-input>
-      <t-button size="small" theme="light">发送验证码</t-button>
+      <t-button size="small" theme="light" bind:tap="sendCheckCode">发送验证码</t-button>
     </view>
 
     <view class="row">

@@ -130,9 +130,10 @@ Page({
           password: this.password
         },
         success: (res) => {
+          console.log(res.data);
           if (res.data.result == 1) {
             wx.setStorage({
-              key: token,
+              key: "token",
               data: res.data.token
             });
             Toast({
@@ -193,7 +194,7 @@ Page({
           checkCode: this.checkCode
         },
         success: (res) => {
-          if (result == 1) {
+          if (res.data.result == 1) {
             Toast({
               context: this,
               selector: '#t-toast',
@@ -218,6 +219,50 @@ Page({
         }
       })
     }
+  },
+
+  sendCheckCode() {
+    let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+    let email = this.userId + this.universityValue;
+    if (!reg.test(email)) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '邮箱格式不符合要求！',
+        duration: 2500,
+        theme: 'warning',
+        direction: 'column',
+      });
+      return;
+    }
+    wx.request({
+      url: getApp().globalData.baseUrl + '/sendCheckCode',
+      method: 'post',
+      data: {
+        email: email,
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'success',
+            direction: 'column',
+          });
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      }
+    });
   },
 
   /**
