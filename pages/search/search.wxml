@@ -1,0 +1,62 @@
+<!--pages/search/search.wxml-->
+<view class="search-page">
+  <t-search t-class-input-container="t-class__input-container" t-class-input="t-search__input" value="{{searchValue}}" leftIcon="" placeholder="北航校内实习" bind:submit="handleSubmit" focus>
+    <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
+  </t-search>
+
+  <!-- <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="block">
+      <view class="header">
+        <view class="btn btn--cancel" aria-role="button">取消</view>
+        <view class="title">标题文字</view>
+        <view class="btn btn--confirm" aria-role="button">确定</view>
+      </view>
+    </view>
+  </t-popup>
+  <t-button block size="large" variant="outline" theme="primary" bind:tap="handlePopup">筛选</t-button> -->
+
+
+  <view class="search-wrap">
+    <view class="history-wrap">
+      <view class="search-header">
+        <text class="search-title">学校</text>
+      </view>
+      <view class="search-content">
+        <view class="search-item" hover-class="hover-history-item" wx:for="{{schoollist}}" bind:tap="addOp" wx:for-index="idx" wx:for-item="item">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view class="history-wrap">
+      <view class="search-header">
+        <text class="search-title">专业</text>
+      </view>
+      <view class="search-content">
+        <view class="search-item" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{majorlist}}" data-index="{{index}}" wx:key="*this">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view class="history-wrap">
+      <view class="search-header">
+        <text class="search-title">持续时间</text>
+      </view>
+      <view class="search-content">
+        <view class="search-item" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{timelist}}" data-index="{{index}}" wx:key="*this">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view class="popular-wrap">
+      <view class="search-header">
+        <text class="search-title">项目类别</text>
+      </view>
+      <view class="search-content">
+        <view class="search-item" hover-class="hover-history-item" data-index="item.index" bind:tap="addOp" wx:for="{{typelist}}" data-index="{{index}}" wx:key="*this">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <t-dialog visible="{{dialogShow}}" content="{{dialog.message}}" bindconfirm="confirm" bind:close="close" confirm-btn="确定" cancel-btn="{{dialog.showCancelButton ? '取消' : null}}" t-class-confirm="dialog__button-confirm" t-class-cancel="dialog__button-cancel" /> -->
+</view>

@@ -36,8 +36,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -45,8 +45,8 @@ Page({
         id: 2,
         title: "计算机视觉实习",
         content: "对于diffusion model infer阶段算法加速",
-        num:1,
-        alreadynum:0,
+        num: 1,
+        alreadynum: 0,
         tags: ["5个月", "线上", "CV", "python"],
         tname: "朱军教授",
         school: "清华大学"
@@ -55,8 +55,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -65,8 +65,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -75,8 +75,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -85,8 +85,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -95,8 +95,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -105,8 +105,8 @@ Page({
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num:3,
-        alreadynum:1,
+        num: 3,
+        alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
         school: "北京航空航天大学"
@@ -199,7 +199,8 @@ Page({
 
   navToSearchPage() {
     wx.navigateTo({
-      url: '/pages/goods/search/index'
+      url: '/pages/search/search'
+      // url: '/pages/goods/search/index'
     });
   },
 
