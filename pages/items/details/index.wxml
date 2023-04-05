@@ -1,2 +1,63 @@
 <!--pages/items/details/index.wxml-->
-<text>pages/items/details/index.wxml</text>
+<!-- 1. header -->
+<view class="container">
+  <view class="left">
+    <view class="title">{{title}}</view>
+    <view class="sub">{{sub}}</view>
+  </view>
+  <view class="right">
+    <view class="item">
+      <view class="label">招收人数：</view>
+      <view class="value"> {{alreadynumber}} / {{number}} </view>
+    </view>
+    <view class="item">
+      <view class="label">实习主题：</view>
+      <view class="value">{{topic}}</view>
+    </view>
+    <view class="item">
+      <view class="label">实习地点：</view>
+      <view class="value">{{location}}</view>
+    </view>
+  </view>
+</view>
+<!-- 2. 导师介绍 -->
+<Subtitle title="导师介绍" icon="user-avatar" />
+<TeacherInfo />
+
+<!-- 3. 项目详情 -->
+<Subtitle title="项目详情" icon="laptop" />
+<Text />
+<!-- 4. 其他岗位推荐 -->
+<Subtitle title="其他项目" icon="search" />
+<block wx:for="{{internlist[current]}}" wx:for-item="item" wx:for-index="index">
+  <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
+    <!-- 包裹四行文字 -->
+    <view class="view_wenzi2">
+      <view class="view_wenzileft">
+        <text>{{item.title}}</text>
+      </view>
+      <view class="view_wenziright">
+        {{item.alreadynum}}/{{item.num}}人
+      </view>
+    </view>
+    <view class="view_wenzi2">
+      <text class="text_small">{{item.content}}</text>
+    </view>
+    <view class="bottom-bar">
+      <view class="bottom-bar-left">
+        <t-icon name="user-avatar" size="40rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
+        {{item.tname}}
+      </view>
+      <view class="bottom-bar-right">
+        {{item.school}}
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 5. 底边栏：Home | 收藏 | 立即沟通 -->
+<t-tab-bar value="{{value}}" bindchange="onChange" theme="tag" split="{{false}}">
+  <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{item.value}}" icon="{{item.icon}}">
+    {{item.label}}
+  </t-tab-bar-item>
+</t-tab-bar>
+<!-- <view class="header"></view> -->

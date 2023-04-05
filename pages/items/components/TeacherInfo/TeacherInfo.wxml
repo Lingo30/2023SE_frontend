@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="avatar">
+    <image src="{{avatarUrl}}" mode="aspectFill"></image>
+  </view>
+  <view class="info">
+    <view class="name">{{name}}</view>
+    <view class="title">{{title}}</view>
+    <view class="intro">{{intro}}</view>
+  </view>
+</view>
