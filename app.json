@@ -1,7 +1,8 @@
 {
-  "entryPagePath": "pages/home/home",
+  "entryPagePath": "pages/items/details/index",
   "pages": [
     "pages/home/home",
+    "pages/items/details/index",
     "pages/usercenter/index",
     "pages/usercenter/person-info/index",
     "pages/usercenter/address/list/index",
