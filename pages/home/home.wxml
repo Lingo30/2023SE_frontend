@@ -49,7 +49,7 @@
           </view>
         </view>
       </view> -->
-      <intern-card itemData="{{item}}" bindclick="click" id="{{index}}" />
+      <intern-card itemData="{{item}}" id="{{index}}" />
     </block>
   </scroll-view>
   <t-toast id="t-toast" />
