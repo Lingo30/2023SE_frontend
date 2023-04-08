@@ -1,0 +1,29 @@
+<!--components/intern-card/index.wxml-->
+<view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
+  <!-- 包裹四行文字 -->
+  <view class="view_wenzi2">
+    <view class="view_wenzileft">
+      <text>{{itemData.title}}</text>
+    </view>
+    <view class="view_wenziright">
+      {{itemData.alreadynum}}/{{itemData.num}}人
+    </view>
+  </view>
+  <view class="view_wenzi2">
+    <text class="text_small">{{itemData.content}}</text>
+  </view>
+  <view class="view_tag">
+    <view wx:for="{{itemData.tags}}" wx:for-item="intm" wx:for-index="idx">
+      <t-tag class="margin-16" variant="light">{{intm}}</t-tag>
+    </view>
+  </view>
+  <view class="bottom-bar">
+    <view class="bottom-bar-left">
+      <t-icon name="user-avatar" size="48rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
+      {{itemData.tname}}
+    </view>
+    <view class="bottom-bar-right">
+      {{itemData.school}}
+    </view>
+  </view>
+</view>
