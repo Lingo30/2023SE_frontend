@@ -41,7 +41,8 @@ Page({
         alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
-        school: "北京航空航天大学"
+        school: "北京航空航天大学",
+        state: "招募中"
       },
       {
         id: 2,
@@ -51,7 +52,8 @@ Page({
         alreadynum: 0,
         tags: ["5个月", "线上", "CV", "python"],
         tname: "朱军教授",
-        school: "清华大学"
+        school: "清华大学",
+        state: "招募中"
       },
       {
         id: 3,
@@ -61,17 +63,19 @@ Page({
         alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
-        school: "北京航空航天大学"
+        school: "北京航空航天大学",
+        state: "招募中"
       },
       {
         id: 4,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num: 3,
+        num: 1,
         alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
-        school: "北京航空航天大学"
+        school: "北京航空航天大学",
+        state: "待评价"
       }
     ],
     goodsListLoadStatus: 0,

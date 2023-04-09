@@ -5,8 +5,11 @@
     <view class="view_wenzileft">
       <text>{{itemData.title}}</text>
     </view>
-    <view class="view_wenziright">
+    <view class="view_wenziright" wx:if="{{itemData.state == '招募中'}}">
       {{itemData.alreadynum}}/{{itemData.num}}人
+    </view>
+    <view class="view_wenziright" wx:if="{{itemData.state != '招募中'}}">
+      {{itemData.state}}
     </view>
   </view>
   <view class="view_wenzi2">
