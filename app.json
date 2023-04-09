@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/home/home",
+  "entryPagePath": "pages/login/index",
   "pages": [
     "pages/home/home",
     "pages/usercenter/index",
@@ -30,8 +30,7 @@
     "pages/order/delivery-detail/index",
     "pages/order/invoice/index",
     "pages/usercenter/name-edit/index",
-    "pages/login/index",
-    "pages/search/search"
+    "pages/login/index"
   ],
   "tabBar": {
     "custom": true,

@@ -24,6 +24,9 @@ Page({
       }, {
         label: '@thu.edu.cn',
         value: '@thu.edu.cn'
+      }, {
+        label: '@ruc.edu.cn',
+        value: '@thu.edu.cn'
       }
     ],
     universityValue: "",
@@ -38,6 +41,9 @@ Page({
       }, {
         label: '清华大学',
         value: '@thu.edu.cn'
+      }, {
+        label: '中国人民大学',
+        value: '@ruc.edu.cn'
       }
     ],
     userTypeValue: "",
