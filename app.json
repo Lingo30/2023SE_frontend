@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/home/home",
+  "entryPagePath": "pages/newintern/newintern",
   "pages": [
     "pages/login/index",
     "pages/home/home",
@@ -32,7 +32,8 @@
     "pages/order/invoice/index",
     "pages/usercenter/name-edit/index",
     "pages/search/search",
-    "pages/thome/thome"
+    "pages/thome/thome",
+    "pages/newintern/newintern"
   ],
   "tabBar": {
     "custom": true,
@@ -46,8 +47,8 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/goods/category/index",
-        "text": "分类"
+        "pagePath": "pages/thome/thome",
+        "text": "项目"
       },
       {
         "pagePath": "pages/cart/index",

@@ -1,0 +1,48 @@
+<t-toast id="t-toast" />
+<t-input label="项目标题" placeholder="最大输入10个字符" maxlength="{{10}}" data-key="title" clearable bindchange="getInputValue"></t-input>
+<t-input label="项目简介" placeholder="最大输入20个字符" maxlength="{{20}}" data-key="brief" clearable bindchange="getInputValue">
+</t-input>
+<t-input label="所需技能" placeholder="不同技能用逗号分隔" data-key="skills" clearable bindchange="getSkills">
+</t-input>
+
+<!-- 人数 -->
+<view class="textarea-example">
+  <text class="textarea-example__label">招募人数</text>
+  <t-radio-group default-value="0" borderless t-class="box" bind:change="getInputValue" data-key="capacity">
+    <t-radio block="{{false}}" label="1" value="1" />
+    <t-radio block="{{false}}" label="2" value="2" />
+    <t-radio block="{{false}}" label="3" value="3" />
+    <t-radio block="{{false}}" label="4" value="4" />
+    <t-radio block="{{false}}" label="5" value="5" />
+    <t-radio block="{{false}}" label="6" value="6" />
+    <t-radio block="{{false}}" label="7" value="7" />
+    <t-radio block="{{false}}" label="8" value="8" />
+  </t-radio-group>
+</view>
+
+<!-- type -->
+<view class="textarea-example">
+  <text class="textarea-example__label">项目形势</text>
+  <t-radio-group default-value="0" borderless t-class="box" bind:change="getInputValue" data-key="type">
+    <t-radio block="{{false}}" label="线上" value="线上" />
+    <t-radio block="{{false}}" label="线下" value="线下" />
+  </t-radio-group>
+</view>
+
+<t-cell class="mb-16" title="项目持续时间" arrow hover note="{{timeText}}" bind:click="onTitlePicker" />
+<t-picker visible="{{timeVisible}}" value="{{timeValue}}" data-key="time" title="{{timeTitle}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+  <t-picker-item options="{{times}}"></t-picker-item>
+</t-picker>
+
+<t-cell title="项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" />
+<!-- 年月日 -->
+<t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
+
+<view class="textarea-example">
+  <text class="textarea-example__label">项目详情</text>
+  <t-textarea t-class="external-class" placeholder="本项目" bordered disableDefaultPadding="{{true}}" indicator style="height: 250rpx" data-key="content" bindchange="getInputValue" />
+</view>
+
+<view class="button-example">
+  <t-button theme="primary" size="large" block bind:tap="submit">提交申请</t-button>
+</view>
