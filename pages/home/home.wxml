@@ -20,35 +20,37 @@
 
   <!-- <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" bind:addcart="goodListAddCartHandle" />
   <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" /> -->
-  <block wx:for="{{internlist[current]}}" wx:for-item="item" wx:for-index="index">
-    <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
-      <!-- 包裹四行文字 -->
-      <view class="view_wenzi2">
-        <view class="view_wenzileft">
-          <text>{{item.title}}</text>
+  <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
+    <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
+      <!-- <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
+        <view class="view_wenzi2">
+          <view class="view_wenzileft">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="view_wenziright">
+            {{item.alreadynum}}/{{item.num}}人
+          </view>
         </view>
-        <view class="view_wenziright">
-          {{item.alreadynum}}/{{item.num}}人
+        <view class="view_wenzi2">
+          <text class="text_small">{{item.content}}</text>
         </view>
-      </view>
-      <view class="view_wenzi2">
-        <text class="text_small">{{item.content}}</text>
-      </view>
-      <view class="view_tag">
-        <view wx:for="{{item.tags}}" wx:for-item="intm" wx:for-index="idx">
-          <t-tag class="margin-16" variant="light">{{intm}}</t-tag>
+        <view class="view_tag">
+          <view wx:for="{{item.tags}}" wx:for-item="intm" wx:for-index="idx">
+            <t-tag class="margin-16" variant="light">{{intm}}</t-tag>
+          </view>
         </view>
-      </view>
-      <view class="bottom-bar">
-        <view class="bottom-bar-left">
-          <t-icon name="user-avatar" size="48rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
-          {{item.tname}}
+        <view class="bottom-bar">
+          <view class="bottom-bar-left">
+            <t-icon name="user-avatar" size="48rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
+            {{item.tname}}
+          </view>
+          <view class="bottom-bar-right">
+            {{item.school}}
+          </view>
         </view>
-        <view class="bottom-bar-right">
-          {{item.school}}
-        </view>
-      </view>
-    </view>
-  </block>
+      </view> -->
+      <intern-card itemData="{{item}}" id="{{index}}" />
+    </block>
+  </scroll-view>
   <t-toast id="t-toast" />
 </view>

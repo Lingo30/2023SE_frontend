@@ -1,0 +1,6 @@
+<!--pages/user/index.wxml-->
+<view class="column">
+  <view class="row">
+    <t-avatar image="{{avatar}}" size="large" style="margin-top: 1em; margin-left: 1em;" />
+  </view>
+</view>

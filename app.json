@@ -1,6 +1,7 @@
 {
-  "entryPagePath": "pages/login/index",
+  "entryPagePath": "pages/user/index",
   "pages": [
+    "pages/login/index",
     "pages/home/home",
     "pages/usercenter/index",
     "pages/usercenter/person-info/index",
@@ -30,7 +31,9 @@
     "pages/order/delivery-detail/index",
     "pages/order/invoice/index",
     "pages/usercenter/name-edit/index",
-    "pages/login/index"
+    "pages/search/search",
+    "pages/thome/thome",
+    "pages/user/index"
   ],
   "tabBar": {
     "custom": true,
@@ -60,7 +63,6 @@
   "requiredPrivateInfos": [
     "chooseAddress"
   ],
-  "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
     "t-row": "tdesign-miniprogram/row/row",
     "t-col": "tdesign-miniprogram/col/col",
@@ -74,7 +76,9 @@
     "t-button": "tdesign-miniprogram/button/button",
     "t-radio": "tdesign-miniprogram/radio/radio",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
-    "t-toast": "tdesign-miniprogram/toast/toast"
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group"
   },
   "window": {
     "backgroundTextStyle": "light",

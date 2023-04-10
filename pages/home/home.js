@@ -9,6 +9,8 @@ import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   data: {
     imgSrcs: [],
+    page: 1,
+    current: "推荐",
     tabList: [{
       text: "推荐",
       key: 0
@@ -31,8 +33,7 @@ Page({
       text: "线下",
       key: 6
     }],
-    internlist: [
-      [{
+    internlist: [{
         id: 1,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
@@ -40,8 +41,10 @@ Page({
         alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }, {
+        school: "北京航空航天大学",
+        state: "招募中"
+      },
+      {
         id: 2,
         title: "计算机视觉实习",
         content: "对于diffusion model infer阶段算法加速",
@@ -49,72 +52,34 @@ Page({
         alreadynum: 0,
         tags: ["5个月", "线上", "CV", "python"],
         tname: "朱军教授",
-        school: "清华大学"
-      }],
-      [{
-        id: 1,
+        school: "清华大学",
+        state: "招募中"
+      },
+      {
+        id: 3,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
         num: 3,
         alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }],
-      [{
-        id: 1,
+        school: "北京航空航天大学",
+        state: "招募中"
+      },
+      {
+        id: 4,
         title: "计算机视觉实习",
         content: "传统目标检测，无人驾驶",
-        num: 3,
+        num: 1,
         alreadynum: 1,
         tags: ["3个月", "线下", "CV", "python"],
         tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }],
-      [{
-        id: 1,
-        title: "计算机视觉实习",
-        content: "传统目标检测，无人驾驶",
-        num: 3,
-        alreadynum: 1,
-        tags: ["3个月", "线下", "CV", "python"],
-        tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }],
-      [{
-        id: 1,
-        title: "计算机视觉实习",
-        content: "传统目标检测，无人驾驶",
-        num: 3,
-        alreadynum: 1,
-        tags: ["3个月", "线下", "CV", "python"],
-        tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }],
-      [{
-        id: 1,
-        title: "计算机视觉实习",
-        content: "传统目标检测，无人驾驶",
-        num: 3,
-        alreadynum: 1,
-        tags: ["3个月", "线下", "CV", "python"],
-        tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }],
-      [{
-        id: 1,
-        title: "计算机视觉实习",
-        content: "传统目标检测，无人驾驶",
-        num: 3,
-        alreadynum: 1,
-        tags: ["3个月", "线下", "CV", "python"],
-        tname: "刘偲教授",
-        school: "北京航空航天大学"
-      }],
+        school: "北京航空航天大学",
+        state: "待评价"
+      }
     ],
     goodsListLoadStatus: 0,
     pageLoading: false,
-    current: 0,
     autoplay: true,
     duration: '500',
     interval: 5000,
@@ -158,9 +123,9 @@ Page({
   loadHomePage() {
     wx.stopPullDownRefresh();
 
-    // this.setData({
-    //   pageLoading: true,
-    // });
+    this.setData({
+      pageLoading: true,
+    });
 
     // fetchHome().then(({
     //   swiper,
@@ -179,6 +144,10 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       method: 'POST',
+      data: {
+        page: this.page,
+        current: this.current
+      },
       success: (res) => {
         this.setData({
           internlist: res.data.internlist
@@ -190,10 +159,87 @@ Page({
     });
   },
 
+  loadMore() {
+    console.log(this.data.pageLoading)
+    if (this.data.pageLoading) {
+      return;
+    }
+    const page = this.data.page + 1;
+    this.setData({
+      pageLoading: true,
+    });
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getRecommend',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      method: 'POST',
+      data: {
+        page: page,
+        current: this.current
+      },
+      success: (res) => {
+        const internmore = res.data.internmore
+        const internlisttmp = this.data.internlist.concat(internmore)
+        this.setData({
+          internlist: internlisttmp,
+          page: page,
+          pageLoading: false
+        })
+      },
+      complete: () => {
+        wx.hideLoading();
+      },
+    })
+    /******************  for test ****************/
+    // let internmore = [{
+    //   id: 1,
+    //   title: "计算机视觉实习",
+    //   content: "传统目标检测，无人驾驶",
+    //   num: 3,
+    //   alreadynum: 1,
+    //   tags: ["3个月", "线下", "CV", "python"],
+    //   tname: "刘偲教授",
+    //   school: "北京航空航天大学"
+    // }]
+    // const internlisttmp = this.data.internlist.concat(internmore)
+    // this.setData({
+    //   internlist: internlisttmp,
+    //   page: page,
+    //   pageLoading: false
+    // })
+    // wx.hideLoading();
+    /****************test end  *****************/
+    console.log(this.data.page)
+  },
+
   tabChangeHandle(e) {
     console.log(e.detail)
     this.setData({
-      current: e.detail.value
+      page: 1
+    })
+    this.setData({
+      current: e.detail.label
+    })
+    console.log(this.data.page, this.data.current)
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getRecommend',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      method: 'POST',
+      data: {
+        page: this.page,
+        current: this.current
+      },
+      success: (res) => {
+        this.setData({
+          internlist: res.data.internlist
+        })
+      }
     })
   },
 

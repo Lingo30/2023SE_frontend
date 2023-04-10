@@ -16,6 +16,7 @@
     "goods-list": "/components/goods-list/index",
     "load-more": "/components/load-more/index",
     "t-tag": "tdesign-miniprogram/tag/tag",
-    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag"
+    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
+    "intern-card": "/components/intern-card/index"
   }
 }

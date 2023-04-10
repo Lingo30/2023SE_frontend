@@ -1,0 +1,14 @@
+/* pages/user/index.wxss */
+page {
+  background-color: #f5f5f5;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
