@@ -102,11 +102,10 @@ Page({
 
   onShow() {
     this.getTabBar().init();
-  },
-
-  onLoad() {
     this.init();
   },
+
+  onLoad() {},
 
   onReachBottom() {
     if (this.data.goodsListLoadStatus === 0) {}

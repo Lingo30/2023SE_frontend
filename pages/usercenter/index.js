@@ -92,6 +92,42 @@ Page({
       success: (res) => {
         if (res.data.result == 1) {
           this.pdf = res.data.pdf;
+          wx.downloadFile({
+            url: this.pdf,
+            success: (res) => {
+              console.log("pdf协议文件已下载")
+              let path = res.tempFilePath;
+              wx.openDocument({
+                filePath: path,
+                fileType: 'pdf',
+                success: (rest) => {
+                  console.log('打开文件成功')
+                },
+                fail: (error) => {
+                  Toast({
+                    context: this,
+                    selector: '#t-toast',
+                    message: "打开文件失败！",
+                    duration: 2500,
+                    theme: 'error',
+                    direction: 'column',
+                  });
+                },
+              })
+            },
+            fail: (err) => {
+              console.log('fail')
+              console.log(err)
+              Toast({
+                context: this,
+                selector: '#t-toast',
+                message: "加载文件失败！",
+                duration: 2500,
+                theme: 'error',
+                direction: 'column',
+              });
+            }
+          })
         } else {
           Toast({
             context: this,
@@ -101,46 +137,10 @@ Page({
             theme: 'error',
             direction: 'column',
           });
+          return
         }
       }
     });
-    wx.downloadFile({
-      url: this.pdf,
-      success: function (res) {
-        console.log("pdf协议文件已下载")
-        let path = res.tempFilePath;
-        wx.openDocument({
-          filePath: path,
-          fileType: 'pdf',
-          success: function (rest) {
-            console.log('打开文件成功')
-            console.log(rest);
-          },
-          fail: function (error) {
-            Toast({
-              context: this,
-              selector: '#t-toast',
-              message: "打开文件失败！",
-              duration: 2500,
-              theme: 'error',
-              direction: 'column',
-            });
-          },
-        })
-      },
-      fail: function (err) {
-        console.log('fail')
-        console.log(err)
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: "加载文件失败！",
-          duration: 2500,
-          theme: 'error',
-          direction: 'column',
-        });
-      }
-    })
   },
 
   logout() {
@@ -153,9 +153,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    this.init();
-  },
+  onLoad(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

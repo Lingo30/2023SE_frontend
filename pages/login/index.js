@@ -136,7 +136,7 @@ Page({
           password: this.password
         },
         success: (res) => {
-          console.log(res.data);
+          console.log(res);
           if (res.data.result == 1) {
             wx.setStorage({
               key: "token",

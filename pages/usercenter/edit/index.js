@@ -126,28 +126,32 @@ Page({
       count: 1,
       mediaType: ['image'],
       sizeType: ['compressed'],
-      success(res) {
+      success: (res) => {
         console.log(res.tempFiles[0].tempFilePath)
+        let tempFilePath = res.tempFiles[0].tempFilePath;
         wx.uploadFile({
           url: getApp().globalData.baseUrl + '/user/uploadAvatar',
-          filePath: res.tempFiles[0].tempFilePath,
+          filePath: tempFilePath,
           name: 'file',
           formData: {
-            'file': res.tempFiles[0].tempFilePath
+            'file': tempFilePath
           },
           header: {
             Authorization: wx.getStorageSync('token'),
           },
-          success: function (res) {
-            console.log(res)
-            if (res.data.result == 1) {
+          success: (res2) => {
+            let res2json = JSON.parse(res2.data);
+            if (res2json.result == 1) {
               Toast({
                 context: this,
                 selector: '#t-toast',
-                message: "上传成功！",
+                message: "修改成功！",
                 duration: 2500,
                 theme: 'success',
                 direction: 'column',
+              });
+              this.setData({
+                avatar: tempFilePath
               });
             } else {
               Toast({
@@ -160,7 +164,7 @@ Page({
               });
             }
           },
-          fail: function (err) {
+          fail: (err) => {
             console.log(err)
           }
         })
@@ -186,8 +190,9 @@ Page({
           header: {
             Authorization: wx.getStorageSync('token'),
           },
-          success: function (res) {
-            if (res.data.result == 1) {
+          success: (res) => {
+            let resjson = JSON.parse(res.data);
+            if (resjson.result == 1) {
               Toast({
                 context: this,
                 selector: '#t-toast',
@@ -200,14 +205,14 @@ Page({
               Toast({
                 context: this,
                 selector: '#t-toast',
-                message: res.data.msg,
+                message: resjson.msg,
                 duration: 2500,
                 theme: 'error',
                 direction: 'column',
               });
             }
           },
-          fail: function (err) {
+          fail: (err) => {
             console.log(err)
           }
         })
