@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/user/index",
+  "entryPagePath": "pages/home/home",
   "pages": [
     "pages/login/index",
     "pages/home/home",
@@ -33,12 +33,16 @@
     "pages/usercenter/name-edit/index",
     "pages/search/search",
     "pages/thome/thome",
-    "pages/user/index"
+    "pages/newintern/newintern",
+    "pages/usercenter/edit/index",
+    "pages/usercenter/project/index",
+    "pages/usercenter/favor/index",
+    "pages/usercenter/company/index"
   ],
   "tabBar": {
     "custom": true,
     "color": "#666666",
-    "selectedColor": "#FF5F15",
+    "selectedColor": "#0052D9",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
     "list": [
@@ -47,12 +51,12 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/goods/category/index",
-        "text": "分类"
+        "pagePath": "pages/thome/thome",
+        "text": "项目"
       },
       {
         "pagePath": "pages/cart/index",
-        "text": "购物车"
+        "text": "社区"
       },
       {
         "pagePath": "pages/usercenter/index",
@@ -78,12 +82,15 @@
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
-    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group"
+    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
+    "t-collapse": "tdesign-miniprogram/collapse/collapse",
+    "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea"
   },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

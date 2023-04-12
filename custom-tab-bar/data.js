@@ -1,22 +1,21 @@
-export default [
-  {
+export default [{
     icon: 'home',
     text: '首页',
     url: 'pages/home/home',
   },
   {
     icon: 'sort',
-    text: '分类',
-    url: 'pages/goods/category/index',
+    text: '项目',
+    url: 'pages/thome/thome',
   },
   {
-    icon: 'cart',
-    text: '购物车',
+    icon: 'home',
+    text: '社区',
     url: 'pages/cart/index',
   },
   {
     icon: 'person',
-    text: '个人中心',
+    text: '我的',
     url: 'pages/usercenter/index',
   },
 ];

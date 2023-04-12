@@ -1,11 +1,11 @@
-// pages/user/index.js
+// pages/usercenter/favor/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatar: 'https://tdesign.gtimg.com/miniprogram/images/avatar1.png',
+
   },
 
   /**
