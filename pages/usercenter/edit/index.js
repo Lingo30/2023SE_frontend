@@ -113,9 +113,9 @@ Page({
             theme: 'error',
             direction: 'column',
           });
-          // wx.redirectTo({
-          //   url: '/pages/usercenter/index',
-          // });
+          wx.switchTab({
+            url: '/pages/usercenter/index',
+          });
         }
       }
     })
@@ -244,7 +244,7 @@ Page({
             theme: 'success',
             direction: 'column',
           });
-          wx.redirectTo({
+          wx.switchTab({
             url: '/pages/usercenter/index',
           })
         } else {

@@ -116,6 +116,7 @@ Page({
   },
 
   init() {
+    this.page = 1;
     this.loadHomePage();
   },
 
