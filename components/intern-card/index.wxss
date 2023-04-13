@@ -35,12 +35,15 @@
 }
 
 .view_wenzileft {
+  width: 80%;
   align-items: center;
   display: inline-flex;
 }
 
 .view_wenziright {
-  color: rgb(30, 72, 189);
+  color: #0052D9;
+  display: flex;
+  align-self: flex-start;
 }
 
 /* 包裹tag的block  */

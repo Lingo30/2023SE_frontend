@@ -104,7 +104,7 @@ page {
   --td-tab-nav-bg-color: transparent;
   --td-tab-border-color: transparent;
   --td-tab-item-color: #666;
-  --td-tab-track-color: red;
+  --td-tab-track-color: #0052D9;
 }
 
 /* 我的 */
@@ -149,7 +149,7 @@ page {
 }
 
 .view_wenziright {
-  color: rgb(30, 72, 189);
+  color: #0052D9;
 }
 
 /* 包裹tag的block  */

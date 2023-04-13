@@ -178,12 +178,13 @@ Page({
       },
       method: 'POST',
       data: {
-        page: page,
-        current: this.current
+        page: this.data.page,
+        current: this.data.current
       },
       success: (res) => {
-        const internmore = res.data.internmore
+        const internmore = res.data.internlist
         const internlisttmp = this.data.internlist.concat(internmore)
+        // console.log(internlisttmp)
         this.setData({
           internlist: internlisttmp,
           page: page,
