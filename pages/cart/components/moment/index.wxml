@@ -1,0 +1,24 @@
+<!--pages/cart/components/moment/index.wxml-->
+<view class="card">
+  <view class="row">
+    <t-avatar image="{{item.avatar}}" style="padding-top: 15rpx; padding-bottom: 15rpx;" />
+    <view class="column" style="margin-left: 1rem; margin-top: 0.5rem;flex-grow:1">
+      <text class="username">{{item.username}}</text>
+      <text style=" margin-top: 0.5rem; font-size: medium; word-break:break-all">{{item.content}}</text>
+      <view class="row" style="justify-content: flex-end;">
+        <text style="font-size: medium;color: grey; margin-top:0.5rem">发表于{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="column" wx:if="{{item.hasComment}}">
+    <view class="row" style="margin-top: 0.5rem;margin-bottom: 0.5rem;">
+      <t-icon name="chat" size="48rpx" color="#0052D9"></t-icon>
+    </view>
+
+    <view class="column">
+      <text style="font-weight: 600; font-size: medium;">{{item.commentUser}}：</text>
+      <text style="margin-top: 0.3rem; font-size: medium;word-break:break-all">{{item.commentContent}}</text>
+    </view>
+  </view>
+</view>

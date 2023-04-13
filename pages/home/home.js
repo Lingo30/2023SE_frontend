@@ -1,9 +1,3 @@
-import {
-  fetchHome
-} from '../../services/home/home';
-import {
-  fetchGoodsList
-} from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
@@ -127,17 +121,6 @@ Page({
       pageLoading: true,
     });
 
-    // fetchHome().then(({
-    //   swiper,
-    //   tabList
-    // }) => {
-    //   this.setData({
-    //     tabList,
-    //     imgSrcs: swiper,
-    //     pageLoading: false,
-    //   });
-    //   this.loadGoodsList(true);
-    // });
     wx.request({
       url: getApp().globalData.baseUrl + '/getRecommend',
       header: {

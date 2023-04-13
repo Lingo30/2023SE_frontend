@@ -1,86 +1,66 @@
-// import { getCommentDetail } from '../../../../services/good/comments/fetchCommentDetail';
-import Toast from 'tdesign-miniprogram/toast/index';
+// pages/goods/comments/create/index.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    serviceRateValue: 1,
-    goodRateValue: 1,
-    conveyRateValue: 1,
-    isAnonymous: false,
-    uploadFiles: [],
-    gridConfig: {
-      width: 218,
-      height: 218,
-      column: 3,
-    },
-    isAllowedSubmit: false,
-    imgUrl: '',
-    title: '',
-    goodsDetail: '',
-    imageProps: {
-      mode: 'aspectFit',
-    },
+
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad(options) {
-    this.setData({
-      imgUrl: options.imgUrl,
-      title: options.title,
-      goodsDetail: options.specs,
-    });
+
   },
 
-  onRateChange(e) {
-    const { value } = e?.detail;
-    const item = e?.currentTarget?.dataset?.item;
-    this.setData({ [item]: value }, () => {
-      this.updateButtonStatus();
-    });
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
-  onAnonymousChange(e) {
-    const status = !!e?.detail?.checked;
-    this.setData({ isAnonymous: status });
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
 
-  handleSuccess(e) {
-    const { files } = e.detail;
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
 
-    this.setData({
-      uploadFiles: files,
-    });
   },
 
-  handleRemove(e) {
-    const { index } = e.detail;
-    const { uploadFiles } = this.data;
-    uploadFiles.splice(index, 1);
-    this.setData({
-      uploadFiles,
-    });
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
 
-  onTextAreaChange(e) {
-    const value = e?.detail?.value;
-    this.textAreaValue = value;
-    this.updateButtonStatus();
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
   },
 
-  updateButtonStatus() {
-    const { serviceRateValue, goodRateValue, conveyRateValue, isAllowedSubmit } = this.data;
-    const { textAreaValue } = this;
-    const temp = serviceRateValue && goodRateValue && conveyRateValue && textAreaValue;
-    if (temp !== isAllowedSubmit) this.setData({ isAllowedSubmit: temp });
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
   },
 
-  onSubmitBtnClick() {
-    const { isAllowedSubmit } = this.data;
-    if (!isAllowedSubmit) return;
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '评价提交成功',
-      icon: 'check-circle',
-    });
-    wx.navigateBack();
-  },
-});
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
+})

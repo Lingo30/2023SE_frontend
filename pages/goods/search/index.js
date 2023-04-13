@@ -1,119 +1,66 @@
-import {
-  getSearchHistory,
-  getSearchPopular,
-} from '../../../services/good/fetchSearchHistory';
-
+// pages/goods/search/index.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    historyWords: [],
-    popularWords: [],
-    searchValue: '',
-    dialog: {
-      title: '确认删除当前历史记录',
-      showCancelButton: true,
-      message: '',
-    },
-    dialogShow: false,
+
   },
 
-  deleteType: 0,
-  deleteIndex: '',
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
 
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow() {
-    this.queryHistory();
-    this.queryPopular();
+
   },
 
-  async queryHistory() {
-    try {
-      const data = await getSearchHistory();
-      const code = 'Success';
-      if (String(code).toUpperCase() === 'SUCCESS') {
-        const { historyWords = [] } = data;
-        this.setData({
-          historyWords,
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
 
-  async queryPopular() {
-    try {
-      const data = await getSearchPopular();
-      const code = 'Success';
-      if (String(code).toUpperCase() === 'SUCCESS') {
-        const { popularWords = [] } = data;
-        this.setData({
-          popularWords,
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
 
-  confirm() {
-    const { historyWords } = this.data;
-    const { deleteType, deleteIndex } = this;
-    historyWords.splice(deleteIndex, 1);
-    if (deleteType === 0) {
-      this.setData({
-        historyWords,
-        dialogShow: false,
-      });
-    } else {
-      this.setData({ historyWords: [], dialogShow: false });
-    }
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
   },
 
-  close() {
-    this.setData({ dialogShow: false });
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
   },
 
-  handleClearHistory() {
-    const { dialog } = this.data;
-    this.deleteType = 1;
-    this.setData({
-      dialog: {
-        ...dialog,
-        message: '确认删除所有历史记录',
-      },
-      dialogShow: true,
-    });
-  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
 
-  deleteCurr(e) {
-    const { index } = e.currentTarget.dataset;
-    const { dialog } = this.data;
-    this.deleteIndex = index;
-    this.setData({
-      dialog: {
-        ...dialog,
-        message: '确认删除当前历史记录',
-        deleteType: 0,
-      },
-      dialogShow: true,
-    });
-  },
-
-  handleHistoryTap(e) {
-    const { historyWords } = this.data;
-    const { dataset } = e.currentTarget;
-    const _searchValue = historyWords[dataset.index || 0] || '';
-    if (_searchValue) {
-      wx.navigateTo({
-        url: `/pages/goods/result/index?searchValue=${_searchValue}`,
-      });
-    }
-  },
-
-  handleSubmit(e) {
-    const { value } = e.detail.value;
-    if (value.length === 0) return;
-    wx.navigateTo({
-      url: `/pages/goods/result/index?searchValue=${value}`,
-    });
-  },
-});
+  }
+})

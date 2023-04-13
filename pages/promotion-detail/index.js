@@ -1,57 +1,66 @@
-import Toast from 'tdesign-miniprogram/toast/index';
-import { fetchPromotion } from '../../services/promotion/detail';
-
+// pages/promotion-detail/index.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    list: [],
-    banner: '',
-    time: 0,
-    showBannerDesc: false,
-    statusTag: '',
+
   },
 
-  onLoad(query) {
-    const promotionID = parseInt(query.promotion_id);
-    this.getGoodsList(promotionID);
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
 
-  getGoodsList(promotionID) {
-    fetchPromotion(promotionID).then(
-      ({ list, banner, time, showBannerDesc, statusTag }) => {
-        const goods = list.map((item) => ({
-          ...item,
-          tags: item.tags.map((v) => v.title),
-        }));
-        this.setData({
-          list: goods,
-          banner,
-          time,
-          showBannerDesc,
-          statusTag,
-        });
-      },
-    );
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
-  goodClickHandle(e) {
-    const { index } = e.detail;
-    const { spuId } = this.data.list[index];
-    wx.navigateTo({ url: `/pages/goods/details/index?spuId=${spuId}` });
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
 
-  cardClickHandle() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '点击加购',
-    });
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
 
-  bannerClickHandle() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '点击规则详情',
-    });
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
-});
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
+})
