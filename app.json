@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/items/details/index",
+  "entryPagePath": "pages/login/index",
   "pages": [
     "pages/login/index",
     "pages/home/home",
@@ -35,7 +35,8 @@
     "pages/usercenter/project/index",
     "pages/usercenter/favor/index",
     "pages/usercenter/company/index",
-    "pages/usercenter/company/components/moment/index"
+    "pages/usercenter/company/components/moment/index",
+    "pages/proflist/proflist"
   ],
   "tabBar": {
     "custom": true,
@@ -62,7 +63,9 @@
       }
     ]
   },
-  "requiredPrivateInfos": ["chooseAddress"],
+  "requiredPrivateInfos": [
+    "chooseAddress"
+  ],
   "usingComponents": {
     "t-row": "tdesign-miniprogram/row/row",
     "t-col": "tdesign-miniprogram/col/col",

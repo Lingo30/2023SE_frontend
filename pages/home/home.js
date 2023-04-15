@@ -2,7 +2,6 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
-    imgSrcs: [],
     page: 1,
     current: "推荐",
     tabList: [{
@@ -74,20 +73,6 @@ Page({
     ],
     goodsListLoadStatus: 0,
     pageLoading: false,
-    autoplay: true,
-    duration: '500',
-    interval: 5000,
-    navigation: {
-      type: 'dots'
-    },
-    swiperImageProps: {
-      mode: 'scaleToFill'
-    },
-  },
-
-  goodListPagination: {
-    index: 0,
-    num: 20,
   },
 
   privateData: {
