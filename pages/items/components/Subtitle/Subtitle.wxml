@@ -1,0 +1,4 @@
+<!--pages/items/components/Subtitle/Subtitle.wxml-->
+<view class="l" />
+<t-icon class="i" name="{{icon}}" size="48rpx" color="rgb(30, 72, 189)" />
+<view class="v2">{{title}}</view>

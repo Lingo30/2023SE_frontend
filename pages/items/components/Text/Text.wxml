@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="info">
+    <view class="name">{{name1}}</view>
+    <view class="intro">{{intro1}}</view>
+    <view class="name">{{name2}}</view>
+    <view class="intro">{{intro2}}</view>
+  </view>
+</view>

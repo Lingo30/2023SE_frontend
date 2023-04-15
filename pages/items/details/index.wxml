@@ -1,0 +1,90 @@
+<!--pages/items/details/index.wxml-->
+<!-- 1. header -->
+<view class="container">
+  <view class="left">
+    <view class="title">{{iTitle}}</view>
+    <view class="sub">{{tName + tPosition}}</view>
+  </view>
+  <view class="right">
+    <view class="item">
+      <view class="label">招收人数：</view>
+      <view class="value"> {{iNum}} / {{iCap}} </view>
+    </view>
+    <view class="item">
+      <view class="label">持续时间：</view>
+      <view class="value">{{iDuration}}</view>
+    </view>
+    <view class="item">
+      <view class="label">科研单位：</view>
+      <view class="value">{{iPlace}}</view>
+    </view>
+  </view>
+</view>
+<!-- 2. 导师介绍 -->
+<Subtitle title="导师简介" icon="user-avatar" />
+<view class="mentor-container">
+  <view class="avatar">
+    <image
+      class="mentor-image"
+      src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
+      mode="aspectFill"
+    ></image>
+  </view>
+  <view class="mentor-info">
+    <view class="mentor-name">{{tName}}</view>
+    <view class="mentor-title">{{tPosition}}</view>
+    <view class="small-text">{{tInfo}}</view>
+  </view>
+  <t-icon name="chevron-right" size="80rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
+</view>
+
+<!-- 3. 项目详情 -->
+<view class="itemInfo-container">
+  <Subtitle title="项目详情" icon="laptop" />
+  <Text />
+</view>
+
+<!-- 4. 其他岗位推荐 -->
+<view class="other-item-container">
+  <Subtitle title="其他项目" icon="search" />
+  <block wx:for="{{internlist[current]}}" wx:for-item="item" wx:for-index="index">
+    <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
+      <!-- 包裹四行文字 -->
+      <view class="view_wenzi2">
+        <view class="view_wenzileft">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="view_wenziright"> {{item.alreadynum}}/{{item.num}}人 </view>
+      </view>
+      <view class="view_wenzi2">
+        <text class="text_small">{{item.content}}</text>
+      </view>
+      <view class="bottom-bar">
+        <view class="bottom-bar-left">
+          <t-icon name="user-avatar" size="40rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
+          {{item.tname}}
+        </view>
+        <view class="bottom-bar-right"> {{item.school}} </view>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 5. 底边栏：Home | 收藏 | 立即沟通 (三个按钮)-->
+<view class="button-container">
+  <t-button class="home-button-container" theme="primary" size="large" shape="round">
+    <t-icon class="i" name="home" size="48rpx" color="rgb(256, 256, 256)" />
+    <text class="white-text">|</text>
+    <text class="button-text">主页</text>
+  </t-button>
+  <t-button class="star-button-container" theme="primary" size="large" shape="round">
+    <t-icon class="i" name="star" size="48rpx" color="rgb(256, 256, 256)" />
+    <text class="white-text">|</text>
+    <text class="button-text">收藏</text>
+  </t-button>
+  <t-button class="chat-button-container" theme="primary" size="large" shape="round">
+    <t-icon class="i" name="chat" size="48rpx" color="rgb(256, 256, 256)" />
+    <text class="white-text">|</text>
+    <text class="button-text">立即沟通</text>
+  </t-button>
+</view>
+<!-- <view class="header"></view> -->

@@ -1,8 +1,9 @@
 {
-  "entryPagePath": "pages/cart/index",
+  "entryPagePath": "pages/items/details/index",
   "pages": [
     "pages/login/index",
     "pages/home/home",
+    "pages/items/details/index",
     "pages/usercenter/index",
     "pages/goods/list/index",
     "pages/goods/details/index",
@@ -61,9 +62,7 @@
       }
     ]
   },
-  "requiredPrivateInfos": [
-    "chooseAddress"
-  ],
+  "requiredPrivateInfos": ["chooseAddress"],
   "usingComponents": {
     "t-row": "tdesign-miniprogram/row/row",
     "t-col": "tdesign-miniprogram/col/col",
