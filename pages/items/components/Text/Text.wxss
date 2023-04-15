@@ -1,30 +1,6 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
-  background-color: #ffffff;
-  border-radius: 10rpx;
+  
 }
 
-.info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
-.name {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-  margin-top: 10px;
-}
 
-.intro {
-  font-size: 27rpx;
-  color: #666666;
-  margin-top: 10rpx;
-  padding-bottom: 12rpx;
-}
