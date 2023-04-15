@@ -189,21 +189,21 @@ Page({
       title: '加载中',
     });
     wx.request({
-      url: getApp().globalData.baseUrl + '/getRecommend',
+      url: getApp().globalData.baseUrl + '/getProflist',
       header: {
         Authorization: wx.getStorageSync('token'),
       },
       method: 'POST',
       data: {
         page: this.data.page,
-        current: this.data.current
+        content: this.data.current
       },
       success: (res) => {
-        const internmore = res.data.internlist
-        const internlisttmp = this.data.internlist.concat(internmore)
+        const proflistmore = res.data.proflist
+        const proflisttmp = this.data.proflist.concat(proflistmore)
         // console.log(internlisttmp)
         this.setData({
-          internlist: internlisttmp,
+          proflist: proflisttmp,
           page: page,
           pageLoading: false
         })
