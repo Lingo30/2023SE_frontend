@@ -7,6 +7,7 @@ Page({
   data: {
     pageLoading: false,
     content: "",
+    page: 1,
     proflist: [{
         id: 1,
         name: "刘偲",
@@ -107,7 +108,6 @@ Page({
       }
     ],
     goodsListLoadStatus: 0,
-    pageLoading: false,
   },
 
   /**
@@ -226,7 +226,7 @@ Page({
       method: 'POST',
       data: {
         page: this.data.page,
-        content: this.data.current
+        content: this.data.content
       },
       success: (res) => {
         this.setData({
@@ -259,7 +259,7 @@ Page({
       method: 'POST',
       data: {
         page: this.data.page,
-        content: this.data.current
+        content: this.data.content
       },
       success: (res) => {
         const proflistmore = res.data.proflist

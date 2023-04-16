@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "消息",
+  "onReachBottomDistance": 10,
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "msgcard": "/components/msgcard/msg"
+  }
+}

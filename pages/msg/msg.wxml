@@ -1,0 +1,7 @@
+<view class="container">
+  <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="loadMore" style='height:600px'>
+    <block wx:for="{{msglist}}" wx:for-item="item" wx:for-index="index">
+      <msgcard itemData="{{item}}" id="{{index}}" />
+    </block>
+  </scroll-view>
+</view>

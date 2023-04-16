@@ -1,0 +1,14 @@
+<view class="message">
+  <view class="avatar">
+    <t-avatar image="{{itemData.avatar}}" size="80rpx" />
+  </view>
+  <view class="content">
+    <view class="name-time">
+      <text class="name">{{itemData.name}}</text>
+      <text class="time">{{itemData.time}}</text>
+    </view>
+    <view class="message-text">
+      <text>{{itemData.content}}</text>
+    </view>
+  </view>
+</view>
