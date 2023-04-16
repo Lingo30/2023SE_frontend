@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   padding: 20rpx;
-  border-radius: 20rpx;
+  /* border-radius: 20rpx; */
   /* 边 */
-  border: 3rpx solid #E0E3DA;
-  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  /* border: 3rpx solid #E0E3DA; */
+  /* box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA; */
   background-color: #ffffff;
-  margin: 30rpx;
+  /* margin: 30rpx; */
 }
 
 .avatar {

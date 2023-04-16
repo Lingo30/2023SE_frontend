@@ -41,6 +41,69 @@ Page({
         school: "北航",
         avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
         major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
       }
     ],
     goodsListLoadStatus: 0,
