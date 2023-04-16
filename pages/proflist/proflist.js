@@ -8,6 +8,99 @@ Page({
     pageLoading: false,
     content: "",
     page: 1,
+    onepagenum: 13,
+    showlist: [{
+        id: 1,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 5,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      }
+    ],
     proflist: [{
         id: 1,
         name: "刘偲",
@@ -105,7 +198,98 @@ Page({
         school: "北航",
         avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
         major: "AI"
-      }
+      },
+      {
+        id: 1,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 5,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 4,
+        name: "刘偲",
+        school: "北航",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 2,
+        name: "朱军",
+        school: "清华",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
+      {
+        id: 3,
+        name: "李崇轩",
+        school: "人大",
+        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg",
+        major: "AI"
+      },
     ],
     goodsListLoadStatus: 0,
   },
@@ -192,7 +376,8 @@ Page({
       },
       success: (res) => {
         this.setData({
-          proflist: res.data.proflist
+          proflist: res.data.proflist,
+          showlist: res.data.proflist.slice(0, this.data.onepagenum)
         })
       },
       complete: () => {
@@ -207,6 +392,8 @@ Page({
 
   init() {
     this.page = 1;
+    this.onepagenum = 13;
+    this.showlist = [];
     this.proflist = [];
     this.loadHomePage();
   },
@@ -224,13 +411,10 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       method: 'POST',
-      data: {
-        page: this.data.page,
-        content: this.data.content
-      },
       success: (res) => {
         this.setData({
-          proflist: res.data.proflist
+          proflist: res.data.proflist,
+          showlist: res.data.proflist.slice(0, this.data.onepagenum)
         })
       }
     })
@@ -244,37 +428,44 @@ Page({
     if (this.data.pageLoading) {
       return;
     }
-    const page = this.data.page + 1;
+    const numtmp = this.data.page * this.data.onepagenum;
     this.setData({
       pageLoading: true,
     });
     wx.showLoading({
       title: '加载中',
     });
-    wx.request({
-      url: getApp().globalData.baseUrl + '/getProflist',
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
-      method: 'POST',
-      data: {
-        page: this.data.page,
-        content: this.data.content
-      },
-      success: (res) => {
-        const proflistmore = res.data.proflist
-        const proflisttmp = this.data.proflist.concat(proflistmore)
-        // console.log(internlisttmp)
-        this.setData({
-          proflist: proflisttmp,
-          page: page,
-          pageLoading: false
-        })
-      },
-      complete: () => {
-        wx.hideLoading();
-      },
-    })
+    const proflistmore = this.data.proflist.slice(numtmp, numtmp + this.data.onepagenum);
+    this.setData({
+      showlist: this.data.showlist.concat(proflistmore),
+      page: this.data.page + 1,
+      pageLoading: false
+    });
+    wx.hideLoading();
+    // wx.request({
+    //   url: getApp().globalData.baseUrl + '/getProflist',
+    //   header: {
+    //     Authorization: wx.getStorageSync('token'),
+    //   },
+    //   method: 'POST',
+    //   data: {
+    //     page: this.data.page,
+    //     content: this.data.content
+    //   },
+    //   success: (res) => {
+    //     const proflistmore = res.data.proflist
+    //     const proflisttmp = this.data.proflist.concat(proflistmore)
+    //     // console.log(internlisttmp)
+    //     this.setData({
+    //       proflist: proflisttmp,
+    //       page: page,
+    //       pageLoading: false
+    //     })
+    //   },
+    //   complete: () => {
+    //     wx.hideLoading();
+    //   },
+    // })
     console.log(this.data.page)
   },
 })

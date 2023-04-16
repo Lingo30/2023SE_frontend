@@ -37,7 +37,8 @@
     "pages/usercenter/company/index",
     "pages/usercenter/company/components/moment/index",
     "pages/proflist/proflist",
-    "pages/msg/msg"
+    "pages/msg/msg",
+    "pages/search/searchres/index"
   ],
   "tabBar": {
     "custom": true,

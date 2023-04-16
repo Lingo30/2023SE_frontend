@@ -250,7 +250,7 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.data.page
+        page: page
       },
       success: (res) => {
         const msgmore = res.data.msglist

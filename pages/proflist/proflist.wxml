@@ -10,7 +10,7 @@
 </view>
 <view class="home-page-container">
   <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
-    <block wx:for="{{proflist}}" wx:for-item="item" wx:for-index="index">
+    <block wx:for="{{showlist}}" wx:for-item="item" wx:for-index="index">
       <infocard itemData="{{item}}" id="{{index}}" />
     </block>
   </scroll-view>

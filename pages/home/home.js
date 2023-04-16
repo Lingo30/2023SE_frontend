@@ -146,7 +146,7 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.data.page,
+        page: page,
         current: this.data.current
       },
       success: (res) => {
