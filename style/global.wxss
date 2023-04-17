@@ -284,16 +284,6 @@ textarea {
   color: #ec8131;
 }
 
-.bg-cart {
-  background-color: #ffc220;
-  color: #fff;
-}
-
-.market-addcart {
-  color: #ec8131;
-  font-size: 42rpx;
-}
-
 .ovh {
   overflow: hidden;
 }
@@ -1070,10 +1060,6 @@ h6 {
 
 .theme-bdc {
   border-color: #0052D9;
-}
-
-.theme-bgcart {
-  background-color: #ffb56c;
 }
 
 .IphoneX {

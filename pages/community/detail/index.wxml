@@ -1,0 +1,48 @@
+<!--pages/community/detail/index.wxml-->
+<t-toast id="t-toast" />
+<scroll-view scroll-y="true">
+  <view class="column card">
+    <view class="row">
+      <text class="title">{{title}}</text>
+
+      <view wx:if="{{following==0}}" style="display: flex; flex-direction: column; flex-grow: 1;align-items: flex-end;">
+        <t-button style="background-color: white;color: #FDBD54;border: none;margin:0;" icon="star" shape="circle" size="large" bind:tap="follow"></t-button>
+        <text style="font-size: small; color: grey;margin-right: 0.7rem;">收藏</text>
+      </view>
+
+      <view wx:if="{{following==1}}" style="display: flex; flex-direction: column; flex-grow: 1;align-items: flex-end;">
+        <t-button style="background-color: white;color: #FDBD54;border: none;margin:0;" icon="star-filled" shape="circle" size="large" bind:tap="follow"></t-button>
+        <text style="font-size: small; color: grey;margin-right: 0.3rem;">已收藏</text>
+      </view>
+
+    </view>
+
+    <view class="row" style="align-items: center; margin-top: 1rem;">
+      <t-avatar image="{{avatar}}" style="padding-top: 15rpx; padding-bottom: 15rpx;" size="small" />
+      <text class="username" style="margin-left: 0.7rem;">{{username}}</text>
+    </view>
+    <text class="content" style="margin-top: 1rem;">{{content}}</text>
+    <view class="row" style="justify-content: flex-end;">
+      <text style="font-size: small;color: grey; margin-top:0.5rem">发表于{{date}}</text>
+    </view>
+  </view>
+
+  <view class="card column">
+    <block wx:for="{{comments}}" wx:for-item="item" wx:for-index="index">
+      <view class="row">
+        <t-icon name="chat" size="48rpx" color="#0052D9"></t-icon>
+        <text style="font-weight: 600; font-size: 28rpx;">{{item.commentUser}}：</text>
+      </view>
+      <text style="margin-top: 0.3rem; margin-bottom: 0.5rem;font-size: small;word-break:break-all">{{item.commentContent}}</text>
+    </block>
+
+    <view class="row">
+      <t-icon name="chat" size="48rpx" color="#0052D9" style="margin-left: 0;"></t-icon>
+      <text style="font-weight: 600; font-size: 28rpx;">{{loginUsername}}：</text>
+    </view>
+    <view class="row">
+      <t-input placeholder="评论一下~" data-key="commentContent" bindchange="getInputValue" clearable value="{{commentContent}}"> </t-input>
+      <t-button theme="primary" bind:tap="comment" size="small">评论</t-button>
+    </view>
+  </view>
+</scroll-view>

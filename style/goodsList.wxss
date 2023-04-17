@@ -85,19 +85,6 @@
   border: 2rpx solid #fa550f;
   border: 2rpx solid var(--color-primary, #fa550f);
 }
-.goods-list-wrap .wr-goods-card .goods-add-cart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 48rpx;
-}
-.goods-list-wrap .wr-goods-card .goods-add-cart .goods-add-cart {
-  line-height: 48rpx;
-  height: 48rpx;
-}
 .goods-list-wrap.vertical {
   padding: 20rpx 24rpx;
   display: flex;
@@ -151,10 +138,6 @@
   margin-left: 0;
   font-size: 24rpx;
   color: #aaaaaa;
-}
-.goods-list-wrap.vertical .wr-goods-card .goods-add-cart {
-  right: 20rpx;
-  bottom: 20rpx;
 }
 .goods-list-wrap.vertical .grouponPrice {
   margin-bottom: 50rpx;

@@ -1,6 +1,0 @@
-<t-toast id="t-toast" />
-<scroll-view scroll-y="true" style='height:88vh' bindscrolltolower="loadMore">
-  <block wx:for="{{momentList}}" wx:for-item="item" wx:for-index="index">
-    <moment item="{{item}}" id="{{index}}" />
-  </block>
-</scroll-view>

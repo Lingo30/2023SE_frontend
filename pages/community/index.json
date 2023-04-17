@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "社区",
+  "usingComponents": {
+    "moment": "/pages/community/components/moment/index"
+  }
+}

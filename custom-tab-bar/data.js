@@ -11,7 +11,7 @@ export default [{
   {
     icon: 'home',
     text: '社区',
-    url: 'pages/cart/index',
+    url: 'pages/community/index',
   },
   {
     icon: 'person',

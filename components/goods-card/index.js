@@ -71,17 +71,6 @@ Component({
       this.triggerEvent('thumb', { goods: this.data.goods });
     },
 
-    addCartHandle(e) {
-      const { id } = e.currentTarget;
-      const { id: cardID } = e.currentTarget.dataset;
-      this.triggerEvent('add-cart', {
-        ...e.detail,
-        id,
-        cardID,
-        goods: this.data.goods,
-      });
-    },
-
     genIndependentID(id) {
       let independentID;
       if (id) {

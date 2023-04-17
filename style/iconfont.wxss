@@ -56,17 +56,11 @@
 .wr-wechat:before {
   content: '\e065';
 }
-.wr-cartAdd:before {
-  content: '\e05d';
-}
 .wr-home:before {
   content: '\e020';
 }
 .wr-person:before {
   content: '\e02c';
-}
-.wr-cart:before {
-  content: '\e023';
 }
 .wr-location:before {
   content: '\e016';
@@ -181,9 +175,6 @@
 .wr-person_filled:before {
   content: '\e02d';
 }
-.wr-cart_filled:before {
-  content: '\e02e';
-}
 .wr-home_filled:before {
   content: '\e02f';
 }
@@ -255,9 +246,6 @@
 }
 .wr-indent_time:before {
   content: '\e05c';
-}
-.wr-cart_add:before {
-  content: '\e05d';
 }
 .wr-classify:before {
   content: '\e060';

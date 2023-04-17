@@ -1,32 +1,10 @@
 {
-  "entryPagePath": "pages/cart/index",
+  "entryPagePath": "pages/community/index",
   "pages": [
     "pages/login/index",
     "pages/home/home",
     "pages/usercenter/index",
-    "pages/goods/list/index",
-    "pages/goods/details/index",
-    "pages/goods/category/index",
-    "pages/goods/search/index",
-    "pages/goods/result/index",
-    "pages/cart/index",
-    "pages/order/order-confirm/index",
-    "pages/order/receipt/index",
-    "pages/order/pay-result/index",
-    "pages/order/order-list/index",
-    "pages/order/order-detail/index",
-    "pages/goods/comments/index",
-    "pages/order/apply-service/index",
-    "pages/order/after-service-list/index",
-    "pages/order/after-service-detail/index",
-    "pages/goods/comments/create/index",
-    "pages/coupon/coupon-list/index",
-    "pages/coupon/coupon-detail/index",
-    "pages/coupon/coupon-activity-goods/index",
-    "pages/promotion-detail/index",
-    "pages/order/fill-tracking-no/index",
-    "pages/order/delivery-detail/index",
-    "pages/order/invoice/index",
+    "pages/community/index",
     "pages/search/search",
     "pages/thome/thome",
     "pages/newintern/newintern",
@@ -34,7 +12,8 @@
     "pages/usercenter/project/index",
     "pages/usercenter/favor/index",
     "pages/usercenter/company/index",
-    "pages/usercenter/company/components/moment/index"
+    "pages/usercenter/company/components/moment/index",
+    "pages/community/detail/index"
   ],
   "tabBar": {
     "custom": true,
@@ -52,7 +31,7 @@
         "text": "项目"
       },
       {
-        "pagePath": "pages/cart/index",
+        "pagePath": "pages/community/index",
         "text": "社区"
       },
       {
@@ -82,7 +61,8 @@
     "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
-    "t-textarea": "tdesign-miniprogram/textarea/textarea"
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-divider": "tdesign-miniprogram/divider/divider"
   },
   "window": {
     "backgroundTextStyle": "light",

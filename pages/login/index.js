@@ -142,6 +142,14 @@ Page({
               key: "token",
               data: res.data.token
             });
+            wx.setStorage({
+              key: "userType",
+              data: res.data.userType
+            });
+            wx.setStorage({
+              key: "username",
+              data: res.data.username
+            });
             Toast({
               context: this,
               selector: '#t-toast',

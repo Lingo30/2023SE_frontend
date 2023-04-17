@@ -18,8 +18,6 @@
     </t-tabs>
   </view>
 
-  <!-- <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" bind:addcart="goodListAddCartHandle" />
-  <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" /> -->
   <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
       <!-- <view class="view_tupian_wenzi" bindtap="click" id="{{index}}">
