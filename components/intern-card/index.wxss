@@ -35,15 +35,18 @@
 }
 
 .view_wenzileft {
-  width: 80%;
+  width: 70%;
   align-items: center;
   display: inline-flex;
+  border-left: 10rpx solid #0052D9;
+  padding-left: 10rpx;
 }
 
 .view_wenziright {
   color: #0052D9;
   display: flex;
   align-self: flex-start;
+  margin-left: 5rpx;
 }
 
 /* 包裹tag的block  */
