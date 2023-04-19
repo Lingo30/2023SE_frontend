@@ -96,6 +96,7 @@ Page({
 
   init() {
     this.page = 1;
+    this.current = "推荐";
     this.loadHomePage();
   },
 
@@ -113,8 +114,8 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.page,
-        current: this.current
+        page: this.data.page,
+        current: this.data.current
       },
       success: (res) => {
         this.setData({
@@ -128,7 +129,7 @@ Page({
   },
 
   loadMore() {
-    console.log(this.data.pageLoading)
+    // console.log(this.data.pageLoading)
     if (this.data.pageLoading) {
       return;
     }
@@ -182,7 +183,7 @@ Page({
     // })
     // wx.hideLoading();
     /****************test end  *****************/
-    console.log(this.data.page)
+    console.log(page)
   },
 
   tabChangeHandle(e) {
@@ -201,8 +202,8 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.page,
-        current: this.current
+        page: this.data.page,
+        current: this.data.current
       },
       success: (res) => {
         this.setData({
