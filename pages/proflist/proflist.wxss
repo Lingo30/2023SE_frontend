@@ -149,7 +149,7 @@ page {
 }
 
 .view_wenziright {
-  color: rgb(30, 72, 189);
+  color: #0052D9;
 }
 
 /* 包裹tag的block  */
@@ -201,13 +201,4 @@ page {
 .bottom-bar-right {
   font-size: 28rpx;
   color: #b6b2b2;
-}
-
-.img {
-  float: right;
-  position: fixed;
-  bottom: 200rpx;
-  right: 20rpx;
-  width: 80rpx;
-  height: 80rpx;
 }

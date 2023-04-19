@@ -3,16 +3,43 @@ Page({
   data: {
     page: 1,
     pageLoading: false,
-    momentList: []
+    momentList: [],
+    isInter: 0,
+    tabList: [{
+      text: "普通帖",
+      key: 0
+    }, {
+      text: "内推帖",
+      key: 1
+    }],
+  },
+
+  tabChangeHandle(e) {
+    this.setData({
+      page: 1,
+      isInter: e.detail.value,
+      momentList: []
+    })
+    this.page = 1
+    this.isInter = e.detail.value
+    this.load(this.page)
   },
 
   init() {
+    this.isInter = 0;
+    this.page = 1;
     this.load(this.page);
   },
 
   jump2Detail(e) {
     wx.navigateTo({
       url: '/pages/community/detail/index?momentId=' + e.currentTarget.dataset.id,
+    })
+  },
+
+  jump2post() {
+    wx.navigateTo({
+      url: '/pages/community/post/index',
     })
   },
 
@@ -36,6 +63,7 @@ Page({
       method: 'POST',
       data: {
         page: p,
+        isInter: this.isInter
       },
       success: (res) => {
         if (res.data.result == 1) {

@@ -1,4 +1,4 @@
-/* pages/community/detail/index.wxss */
+/* pages/community/post/index.wxss */
 page {
   background-color: #f5f5f5;
 }
@@ -27,18 +27,12 @@ page {
 }
 
 .title {
-  font-weight: 600;
-  word-break: break-all;
-  font-size: larger;
   border-left: 10rpx solid #0052D9;
   padding-left: 10rpx;
 }
 
-.username {
-  font-weight: 600;
-  font-size: 32rpx;
-}
-
-.content {
+.label {
   font-size: 30rpx;
+  margin-left: 25rpx;
+  margin-right: 30rpx;
 }

@@ -19,6 +19,10 @@ Page({
   },
 
   init() {
+    wx.setNavigationBarTitle({
+      title: '帖子详情',
+    })
+    wx.hideHomeButton();
     this.loginUsername = wx.getStorageSync('username')
     this.setData({
       loginUsername: this.loginUsername
@@ -103,7 +107,6 @@ Page({
   },
 
   comment() {
-    console.log(this.commentContent)
     if (!this.commentContent) {
       Toast({
         context: this,

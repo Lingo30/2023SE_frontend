@@ -1,0 +1,17 @@
+<!--pages/community/post/index.wxml-->
+<t-toast id="t-toast" />
+<view class="card column">
+  <t-input label="标题" placeholder="请输入帖子标题（上限15字）" data-key="title" bindchange="getInputValue" maxlength="15" clearable> </t-input>
+  <t-textarea label="内容" placeholder="请输入帖子内容（上限1500字）" disableDefaultPadding="{{true}}" style="height: 600rpx;" data-key="content" bindchange="getInputValue" maxlength="1500" clearable />
+  <view class="row" style="margin-top: 20rpx;" wx:if="{{hasInterAuthority}}">
+    <text class="label">帖子类型</text>
+    <t-radio-group default-value="0" borderless bind:change="choose">
+      <t-radio block="{{false}}" label="普通帖" value="0" style="margin-right: 30rpx;" />
+      <t-radio block="{{false}}" label="内推帖" value="1" />
+    </t-radio-group>
+  </view>
+</view>
+
+<view class="row">
+  <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px" bind:tap="post">发表</t-button>
+</view>

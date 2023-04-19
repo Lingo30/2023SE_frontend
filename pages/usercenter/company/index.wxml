@@ -2,20 +2,27 @@
 <t-toast id="t-toast" />
 <scroll-view scroll-y="true" style='height:88vh'>
   <view class="column card">
-    <t-input label="邮箱" placeholder="请输入企业邮箱前缀" data-key="companyEmail" bindchange="getInputValue" clearable> </t-input>
 
-    <t-cell title=" 邮箱域名" arrow hover note="{{emailText}}" bind:click="onEmailPicker" />
-    <t-picker visible="{{emailVisible}}" data-key="email" title="选择邮箱域名" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
-      <t-picker-item options="{{emails}}" />
-    </t-picker>
+    <view class="column" wx:if="{{!hasInterAuthority}}">
+      <t-input label="邮箱" placeholder="请输入企业邮箱前缀" data-key="companyEmail" bindchange="getInputValue" clearable> </t-input>
 
-    <view class="row" style="align-items: center;">
-      <t-input label="验证码" placeholder="请填写验证码" data-key="checkCode" bindchange="getInputValue" clearable> </t-input>
-      <t-button size="small" theme="light" bind:tap="sendCheckCode">发送验证码</t-button>
+      <t-cell title=" 邮箱域名" arrow hover note="{{emailText}}" bind:click="onEmailPicker" />
+      <t-picker visible="{{emailVisible}}" data-key="email" title="选择邮箱域名" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+        <t-picker-item options="{{emails}}" />
+      </t-picker>
+
+      <view class="row" style="align-items: center;">
+        <t-input label="验证码" placeholder="请填写验证码" data-key="checkCode" bindchange="getInputValue" clearable> </t-input>
+        <t-button size="small" theme="light" bind:tap="sendCheckCode">发送验证码</t-button>
+      </view>
+
+      <view class="row">
+        <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px" bind:tap="verify">验证</t-button>
+      </view>
     </view>
 
-    <view class="row">
-      <t-button theme="primary" size="large" style="width: 80%;margin-top: 8px" bind:tap="verify">验证</t-button>
+    <view class="column" wx:if="{{hasInterAuthority}}">
+      <t-result theme="success" title="已认证" description="当前认证的企业邮箱：{{interEmail}}" />
     </view>
 
     <text style="margin-top: 2.5rem; color: grey; font-size: small;">*进行企业认证后，可解锁在社区发布实习内推帖权限</text>

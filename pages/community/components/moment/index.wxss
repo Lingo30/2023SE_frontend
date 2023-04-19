@@ -22,6 +22,14 @@
   padding: 30rpx;
 }
 
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  word-break: break-all;
+  border-left: 10rpx solid #0052D9;
+  padding-left: 10rpx;
+}
+
 .username {
   font-weight: 600;
   font-size: 32rpx;

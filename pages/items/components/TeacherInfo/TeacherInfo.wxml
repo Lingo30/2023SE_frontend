@@ -1,0 +1,10 @@
+<view class="mentor-container">
+  <view class="avatar">
+    <image src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"></image>
+  </view>
+  <view class="mentor-info">
+    <view class="mentor-name">{{name}}</view>
+    <view class="mentor-title">{{title}}</view>
+    <view class="mentor-intro">{{intro}}</view>
+  </view>
+</view>

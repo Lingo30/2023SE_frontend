@@ -1,0 +1,27 @@
+/* pages/items/components/Subtitle/Subtitle.wxss */
+.l {
+  position: relative;
+  width: 90%;
+  left: 5%;
+  background: rgb(187, 165, 165);
+  height: 3rpx;
+  margin-bottom: -2rpx;
+}
+
+.i {
+  height: 12rpx;
+  width: fit-content;
+  display: block;
+  position: relative;
+  left: 4%;
+  top: 25rpx;
+}
+
+.v2 {
+  font-size: 38rpx;
+  font-weight: 700;
+  position: relative;
+  left: 90rpx;
+  width: fit-content;
+  margin-top: 9rpx;
+}

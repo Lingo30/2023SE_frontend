@@ -2,8 +2,14 @@
 <view style="text-align: center; color: #b9b9b9" wx:if="{{pageLoading}}">
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
-<scroll-view scroll-y="true" style='height:88vh' bindscrolltolower="loadMore">
+<view class="home-page-tabs">
+  <t-tabs t-class="t-tabs" t-class-active="tabs-external__active" t-class-item="tabs-external__item" defaultValue="{{0}}" space-evenly="{{false}}" bind:change="tabChangeHandle">
+    <t-tab-panel wx:for="{{tabList}}" wx:for-index="index" wx:key="index" label="{{item.text}}" value="{{item.key}}" />
+  </t-tabs>
+</view>
+<scroll-view scroll-y="true" style='height:80vh' bindscrolltolower="loadMore">
   <block wx:for="{{momentList}}" wx:for-item="item" wx:for-index="index">
     <moment item="{{item}}" id="{{index}}" bindtap="jump2Detail" data-id="{{item.momentId}}" />
   </block>
 </scroll-view>
+<t-fab icon="edit" style="margin-bottom: 12vh; margin-right: 5vw;" bind:click="jump2post"></t-fab>

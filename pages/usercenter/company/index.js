@@ -7,6 +7,8 @@ Page({
    */
   data: {
     companyEmail: "",
+    hasInterAuthority: false,
+    interEmail: "",
     checkCode: "",
     emailValue: "",
     emailText: "",
@@ -22,6 +24,21 @@ Page({
       title: '企业认证',
     })
     wx.hideHomeButton();
+    wx.request({
+      url: getApp().globalData.baseUrl + '/community/checkInter',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      method: 'POST',
+      success: (res) => {
+        this.hasInterAuthority = res.data.result;
+        this.interEmail = res.data.email;
+        this.setData({
+          hasInterAuthority: res.data.result,
+          interEmail: res.data.email
+        })
+      },
+    });
   },
 
   onColumnChange(e) {

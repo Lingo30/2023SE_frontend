@@ -3,8 +3,13 @@
 <scroll-view scroll-y="true">
   <view class="column card">
     <view class="row">
-      <text class="title">{{title}}</text>
-
+      <view class="column">
+        <text class="title">{{title}}</text>
+        <view class="row" style="align-items: center; margin-top: 1rem;">
+          <t-avatar image="{{avatar}}" style="padding-top: 15rpx; padding-bottom: 15rpx;" size="small" />
+          <text class="username" style="margin-left: 0.7rem;">{{username}}</text>
+        </view>
+      </view>
       <view wx:if="{{following==0}}" style="display: flex; flex-direction: column; flex-grow: 1;align-items: flex-end;">
         <t-button style="background-color: white;color: #FDBD54;border: none;margin:0;" icon="star" shape="circle" size="large" bind:tap="follow"></t-button>
         <text style="font-size: small; color: grey;margin-right: 0.7rem;">收藏</text>
@@ -15,11 +20,6 @@
         <text style="font-size: small; color: grey;margin-right: 0.3rem;">已收藏</text>
       </view>
 
-    </view>
-
-    <view class="row" style="align-items: center; margin-top: 1rem;">
-      <t-avatar image="{{avatar}}" style="padding-top: 15rpx; padding-bottom: 15rpx;" size="small" />
-      <text class="username" style="margin-left: 0.7rem;">{{username}}</text>
     </view>
     <text class="content" style="margin-top: 1rem;">{{content}}</text>
     <view class="row" style="justify-content: flex-end;">

@@ -1,6 +1,6 @@
 <!--pages/search/search.wxml-->
 <view class="search-page">
-  <t-search t-class-input-container="t-class__input-container" t-class-input="t-search__input" value="{{searchValue}}" leftIcon="" placeholder="北航校内实习" bind:submit="handleSubmit" focus>
+  <t-search t-class-input-container="t-class__input-container" t-class-input="t-search__input" value="{{content}}" leftIcon="" placeholder="北航校内实习" bind:submit="handleSubmit" bind:change="changeContent" focus>
     <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
   </t-search>
 
@@ -22,7 +22,7 @@
         <text class="search-title">学校</text>
       </view>
       <view class="search-content">
-        <view class="search-item" hover-class="hover-history-item" wx:for="{{schoollist}}" bind:tap="addOp" wx:for-index="idx" wx:for-item="item">
+        <view class="{{isSelected[item] ? 'search-item-activate' : 'search-item'}}" hover-class="hover-history-item" wx:for="{{schoollist}}" bind:tap="addOp" wx:for-index="idx" wx:for-item="item" data-item="{{item}}" data-type="school">
           {{item}}
         </view>
       </view>
@@ -32,7 +32,7 @@
         <text class="search-title">专业</text>
       </view>
       <view class="search-content">
-        <view class="search-item" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{majorlist}}" data-index="{{index}}" wx:key="*this">
+        <view class="{{isSelected[item] ? 'search-item-activate' : 'search-item'}}" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{majorlist}}" data-index="{{index}}" wx:key="*this" data-item="{{item}}" data-type="skills">
           {{item}}
         </view>
       </view>
@@ -42,7 +42,7 @@
         <text class="search-title">持续时间</text>
       </view>
       <view class="search-content">
-        <view class="search-item" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{timelist}}" data-index="{{index}}" wx:key="*this">
+        <view class="{{isSelected[item] ? 'search-item-activate' : 'search-item'}}" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{timelist}}" data-index="{{index}}" wx:key="*this" data-item="{{item}}" data-type="time">
           {{item}}
         </view>
       </view>
@@ -52,7 +52,7 @@
         <text class="search-title">项目类别</text>
       </view>
       <view class="search-content">
-        <view class="search-item" hover-class="hover-history-item" data-index="item.index" bind:tap="addOp" wx:for="{{typelist}}" data-index="{{index}}" wx:key="*this">
+        <view class="{{isSelected[item] ? 'search-item-activate' : 'search-item'}}" hover-class="hover-history-item" data-index="item.index" bind:tap="addOp" wx:for="{{typelist}}" data-index="{{index}}" wx:key="*this" data-item="{{item}}" data-type="type">
           {{item}}
         </view>
       </view>
