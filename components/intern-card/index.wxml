@@ -9,7 +9,7 @@
       {{itemData.alreadynum}}/{{itemData.num}}人
     </view>
     <view class="view_wenziright" wx:if="{{itemData.state != '招募中'}}">
-      {{itemData.state}}
+      <!-- {{itemData.state}} -->
     </view>
   </view>
   <view class="view_wenzi2">

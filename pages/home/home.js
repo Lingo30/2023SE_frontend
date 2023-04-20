@@ -5,7 +5,7 @@ Page({
     page: 1,
     current: "推荐",
     tabList: [{
-      text: "推荐",
+      text: "综合",
       key: 0
     }, {
       text: "学校",

@@ -18,7 +18,8 @@
     "pages/proflist/proflist",
     "pages/msg/msg",
     "pages/search/searchres/index",
-    "pages/community/post/index"
+    "pages/community/post/index",
+    "pages/stulist/stulist"
   ],
   "tabBar": {
     "custom": true,
