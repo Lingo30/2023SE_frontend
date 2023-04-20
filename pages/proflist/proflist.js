@@ -1,4 +1,5 @@
 // pages/proflist/proflist.js
+import Toast from 'tdesign-miniprogram/toast/index';
 Page({
 
   /**
@@ -180,18 +181,35 @@ Page({
   },
 
   loadMore() {
-    console.log(this.data.pageLoading)
+    const numtmp = this.data.page * this.data.onepagenum;
+    let lasttmp;
+    if (numtmp + this.data.onepagenum > this.data.proflist.length) {
+      lasttmp = this.data.proflist.length
+    } else {
+      lasttmp = numtmp + this.data.onepagenum
+    }
+    console.log(lasttmp)
+    if (lasttmp >= this.data.proflist.length) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "不能加载更多了～",
+        duration: 2500,
+        theme: 'warning',
+        direction: 'column',
+      });
+    }
+    // console.log(this.data.pageLoading)
     if (this.data.pageLoading) {
       return;
     }
-    const numtmp = this.data.page * this.data.onepagenum;
     this.setData({
       pageLoading: true,
     });
     wx.showLoading({
       title: '加载中',
     });
-    const proflistmore = this.data.proflist.slice(numtmp, numtmp + this.data.onepagenum);
+    const proflistmore = this.data.proflist.slice(numtmp, lasttmp);
     this.setData({
       showlist: this.data.showlist.concat(proflistmore),
       page: this.data.page + 1,
@@ -222,6 +240,6 @@ Page({
     //     wx.hideLoading();
     //   },
     // })
-    console.log(this.data.page)
+    // console.log(this.data.page)
   },
 })
