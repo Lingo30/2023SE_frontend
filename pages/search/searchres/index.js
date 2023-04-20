@@ -64,7 +64,7 @@ Page({
       method: 'POST',
       data: {
         searchcontent: this.data.content,
-        tags: this.data.searchOp,
+        tags: this.data.searchtags,
         page: this.data.page
       },
       success: (res) => {
@@ -99,7 +99,7 @@ Page({
       method: 'POST',
       data: {
         searchcontent: this.data.content,
-        tags: this.data.searchOp,
+        tags: this.data.searchtags,
         page: page
       },
       success: (res) => {
