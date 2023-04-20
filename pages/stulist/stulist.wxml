@@ -3,7 +3,7 @@
 </view>
 <view class="home-page-header" style="margin-bottom: 20rpx;">
   <view class="search">
-    <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="北航导师" value="{{content}}" leftIcon="" bind:change="changeContent" bind:submit="getProflist">
+    <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="北航" value="{{content}}" leftIcon="" bind:change="changeContent" bind:submit="getStulist">
       <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>

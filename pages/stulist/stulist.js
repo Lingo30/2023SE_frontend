@@ -79,37 +79,37 @@ Page({
     console.log("输入内容：", this.data.content)
   },
 
-  // getProflist(e) {
-  //   this.setData({
-  //     pageLoading: true,
-  //   });
-  //   wx.showLoading({
-  //     title: '加载中',
-  //   });
-  //   wx.request({
-  //     url: getApp().globalData.baseUrl + '/searchProf',
-  //     header: {
-  //       Authorization: wx.getStorageSync('token'),
-  //     },
-  //     method: 'POST',
-  //     data: {
-  //       content: this.data.content
-  //     },
-  //     success: (res) => {
-  //       this.setData({
-  //         proflist: res.data.proflist,
-  //         showlist: res.data.proflist.slice(0, this.data.onepagenum)
-  //       })
-  //     },
-  //     complete: () => {
-  //       wx.hideLoading();
-  //     },
-  //   })
-  //   this.setData({
-  //     pageLoading: false,
-  //     page: 1
-  //   });
-  // },
+  getStulist(e) {
+    this.setData({
+      pageLoading: true,
+    });
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({
+      url: getApp().globalData.baseUrl + '/searchStu',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      method: 'POST',
+      data: {
+        content: this.data.content
+      },
+      success: (res) => {
+        this.setData({
+          stulist: res.data.stulist,
+          showlist: res.data.stulist.slice(0, this.data.onepagenum)
+        })
+      },
+      complete: () => {
+        wx.hideLoading();
+      },
+    })
+    this.setData({
+      pageLoading: false,
+      page: 1
+    });
+  },
 
   init() {
     this.page = 1;
