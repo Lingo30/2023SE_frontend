@@ -137,13 +137,15 @@ Page({
             context: this,
             selector: '#t-toast',
             message: '申请成功！',
-            duration: 3000,
+            duration: 2000,
             icon: 'check-circle',
             direction: 'column',
           });
-          setTimeout(()=>{ wx.navigateBack();}, 3000);
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 2000);
           // 5-2. 跳转
-         
+
         } else {
           Toast({
             context: this,
