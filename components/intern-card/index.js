@@ -26,9 +26,9 @@ Component({
       // console.log(e.currentTarget.dataset.item)
       let id = e.currentTarget.dataset.item.id
       console.log(id)
-      // wx.navigateTo({
-      //   url: '/pages/destination/destination?id=' + JSON.stringify(id)
-      // })
+      wx.navigateTo({
+        url: '/pages/items/browse/0_details/index?iId=' + JSON.stringify(id)
+      })
     }
   }
 })
