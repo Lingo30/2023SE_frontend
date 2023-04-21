@@ -58,7 +58,7 @@
 <!-- 4. 其他岗位推荐 -->
 <view class="other-item-container">
   <Subtitle title="其他项目" icon="search" />
-  <block wx:for="{{internlist[current]}}" wx:for-item="item" wx:for-index="index">
+  <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
     <view class="view_tupian_wenzi" bind:tap="jump2Item" id="{{index}}">
       <!-- 包裹四行文字 -->
       <view class="view_wenzi2">
@@ -73,7 +73,7 @@
       <view class="bottom-bar">
         <view class="bottom-bar-left">
           <t-icon name="user-avatar" size="40rpx" data-name="user-avatar" color="rgb(30, 72, 189)" />
-          {{item.tName + item.tPosition}}
+          {{item.tName}}
         </view>
         <view class="bottom-bar-right"> {{item.iPlace}} </view>
       </view>

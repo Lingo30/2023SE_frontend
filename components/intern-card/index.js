@@ -25,7 +25,7 @@ Component({
       // 组件的点击事件逻辑代码
       // console.log(e.currentTarget.dataset.item)
       let id = e.currentTarget.dataset.item.id
-      console.log(id)
+      console.log("itemId=", id)
       wx.navigateTo({
         url: '/pages/items/browse/0_details/index?iId=' + JSON.stringify(id)
       })

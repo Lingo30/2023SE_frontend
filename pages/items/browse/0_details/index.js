@@ -4,29 +4,30 @@ import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   // 1. 全部数据
   data: {
-    iId: "123",
-    i_tLiked: true,
-    iTitle: '计算机视觉',
-    tName: '刘偲',
-    tPosition: '教授',
-    iNum: 2,
-    iCapacity: 3,
-    iPlace: '北京航空航天大学',
-    iDuration: '3个月',
-    tInfo: '以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简以下是导师简介以下是导师简介以下是导师简介以下是导师简介以下是导师简介',
+    iId: "default",
+    i_tLiked: false,
+    iTitle: "default",
+    tName: "default",
+    tPosition: "default",
+    iNum: null,
+    iCapacity: null,
+    iPlace: "default",
+    iDuration: 'n个月',
+    tInfo: 'default',
     // item_info: 365
-    iTime: '2023年4月15日',
+    iTime: 'YYYY年M月D日',
     iType: '线上',
-    iInfo: '以下是项目简介以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简介以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简介以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简介以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简以下是项目简',
+    iInfo: 'default',
     imgSrc: '',
     internlist: [],
   },
 
   // 2. 生命周期函数---onLoad
-  onLoad( /*options*/ ) {
+  onLoad(options) {
     // 2-1. 获取项目id
     console.log("in onLoad() function");
-    this.data.iId = "TODO";
+    this.data.iId = options.iId;
+    console.log("iId=", this.data.iId);
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemInfo',
       method: 'post',
@@ -38,6 +39,7 @@ Page({
       },
       success: (res) => {
         console.log("success!!!");
+        console.log(res);
         this.setData({
           iTitle: res.data.iTitle,
           iNum: res.data.iNum,
@@ -54,6 +56,7 @@ Page({
           i_tLiked: res.data.i_tLiked,
           internlist: res.data.otherItems
         });
+        console.log(this.data.internlist);
       },
       fail: () => {
         Toast({
@@ -71,6 +74,7 @@ Page({
 
   // 3. 收藏函数
   star() {
+    console.log(this.data.iId);
     wx.request({
       url: getApp().globalData.baseUrl + '/likeOrUnlike',
       method: 'post',
@@ -108,7 +112,6 @@ Page({
 
   // 4. 导师详情函数
   jump2Mentor() {
-    console.log("Bind-tap成功！！！");
     wx.navigateTo({
       /* 导师详情页url */
       url: 'TODO_url' + '?iId=' + this.data.iId
@@ -129,16 +132,18 @@ Page({
       },
       success: (res) => {
         if (res.data.success) {
+          console.log("Succeed in applying!!!");
           Toast({
             context: this,
             selector: '#t-toast',
             message: '申请成功！',
-            duration: 1500,
+            duration: 3000,
             icon: 'check-circle',
             direction: 'column',
           });
+          setTimeout(()=>{ wx.navigateBack();}, 3000);
           // 5-2. 跳转
-          wx.navigateBack();
+         
         } else {
           Toast({
             context: this,
