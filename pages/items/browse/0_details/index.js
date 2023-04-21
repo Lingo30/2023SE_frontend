@@ -137,13 +137,14 @@ Page({
             context: this,
             selector: '#t-toast',
             message: '申请成功！',
-            duration: 2000,
+            duration: 1000,
             icon: 'check-circle',
             direction: 'column',
           });
           setTimeout(() => {
+            // TODO: 这里应该跳转至带选中页面
             wx.navigateBack();
-          }, 2000);
+          }, 1000);
           // 5-2. 跳转
 
         } else {
@@ -206,6 +207,14 @@ Page({
         });
       }
     });
+  },
+
+  // 7. 其他项目跳转
+  jump2Item(e) {
+    let targetIId = (this.data.internlist)[e.currentTarget.id].iId;
+    wx.navigateTo({
+      url: '/pages/items/browse/0_details/index?iId=' + targetIId,
+    })
   },
 
   /**
