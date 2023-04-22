@@ -4,9 +4,10 @@ import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   // 1. 全部数据
   data: {
-    iId: "default",
+    tAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
+    iId: "1",
     i_tLiked: false,
-    iTitle: "default",
+    iTitle: "计算机视觉图像去雾元学习MAMLReptileSGD自然语言处理",
     tName: "default",
     tPosition: "default",
     iNum: null,
@@ -19,7 +20,25 @@ Page({
     iType: '线上',
     iInfo: 'default',
     imgSrc: '',
-    internlist: [],
+    internlist: [{
+      iCapacity: 3,
+      iContent: "胶囊机器人三维感知与图传系统",
+      iId: "17",
+      iNum: 0,
+      iPlace: "ACT",
+      iTitle: "胶囊机器人三维感知与图传系统",
+      tName: "杨建磊",
+      tPosition: "副教授  博士生导师"
+    }, {
+      iCapacity: 3,
+      iContent: "胶囊机器人三维感知与图传系统",
+      iId: "17",
+      iNum: 0,
+      iPlace: "ACT",
+      iTitle: "胶囊机器人三维感知与图传系统",
+      tName: "杨建磊",
+      tPosition: "副教授  博士生导师"
+    }]
   },
 
   // 2. 生命周期函数---onLoad
@@ -46,7 +65,7 @@ Page({
           iCapacity: res.data.iCapacity,
           iDuration: res.data.iDuration,
           iPlace: res.data.iPlace,
-          // TODO: 其实应该新增一个tAvatar，但是我太懒了
+          tAvatarUrl: res.data.tAvatarUrl,
           tName: res.data.tName,
           tPosition: res.data.tPosition,
           tInfo: res.data.tInfo,

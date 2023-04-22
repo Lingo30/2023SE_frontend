@@ -17,6 +17,7 @@
 }
 
 .title {
+  width: 420rpx;
   font-size: 36rpx;
   font-weight: bold;
   margin-bottom: 10rpx;
@@ -154,9 +155,10 @@
 }
 
 .view_tupian_wenzi {
-  height: 170rpx;
+  /* height: 170rpx; */
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   font-size: large;
 
@@ -182,13 +184,14 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   font-size: 30rpx;
   /* font-weight: bold; */
 }
 
 .view_wenzileft {
+  width: 500rpx;
   align-items: center;
   display: inline-flex;
 }

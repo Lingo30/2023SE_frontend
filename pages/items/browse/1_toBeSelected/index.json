@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "Subtitle": "/pages/items/components/Subtitle/Subtitle",
+    "TeacherInfo": "/pages/items/components/TeacherInfo/TeacherInfo",
+    "Text": "/pages/items/components/Text/Text",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
 }
