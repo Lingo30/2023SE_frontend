@@ -1,12 +1,11 @@
-// import Toast from 'tdesign-miniprogram/toast/index';
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
     imgSrcs: [],
     page: 1,
     current: '招募中',
-    tabList: [
-      {
+    tabList: [{
         text: '招募中',
         key: 0,
       },
@@ -23,8 +22,7 @@ Page({
         key: 3,
       },
     ],
-    internlist: [
-      {
+    internlist: [{
         id: 1,
         title: '计算机视觉实习',
         content: '传统目标检测，无人驾驶',
@@ -98,8 +96,7 @@ Page({
   },
 
   onReachBottom() {
-    if (this.data.goodsListLoadStatus === 0) {
-    }
+    if (this.data.goodsListLoadStatus === 0) {}
   },
 
   onPullDownRefresh() {
@@ -161,15 +158,29 @@ Page({
         current: this.current,
       },
       success: (res) => {
-        const { internmore } = res.data;
-        const internlisttmp = this.data.internlist.concat(internmore);
-        this.setData({
-          internlist: internlisttmp,
-          page: page,
-          pageLoading: false,
-        });
+        if (res.data.result == 1) {
+          const internmore = res.data.internlist
+          const internlisttmp = this.data.internlist.concat(internmore)
+          // console.log(internlisttmp)
+          this.setData({
+            internlist: internlisttmp,
+            page: page
+          })
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'warning',
+            direction: 'column',
+          });
+        }
       },
       complete: () => {
+        this.setData({
+          pageLoading: false
+        });
         wx.hideLoading();
       },
     });
@@ -229,8 +240,12 @@ Page({
     });
   },
 
-  navToActivityDetail({ detail }) {
-    const { index: promotionID = 0 } = detail || {};
+  navToActivityDetail({
+    detail
+  }) {
+    const {
+      index: promotionID = 0
+    } = detail || {};
     wx.navigateTo({
       url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
     });
