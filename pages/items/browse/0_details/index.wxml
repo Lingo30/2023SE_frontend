@@ -3,7 +3,7 @@
 <view class="header-container">
   <view class="left">
     <view class="title">{{iTitle}}</view>
-    <view class="sub">{{tName + tPosition}}</view>
+    <view class="sub">{{tName}}</view>
   </view>
   <view class="right">
     <view class="item">
@@ -25,7 +25,7 @@
   <Subtitle title="导师简介" icon="user-avatar" />
   <view class="mentor-flex-container">
     <view class="avatar">
-      <image class="mentor-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"></image>
+      <image class="mentor-image" src="{{tAvatarUrl}}" mode="aspectFill"></image>
     </view>
     <view class="mentor-info">
       <view class="mentor-name">{{tName}}</view>
