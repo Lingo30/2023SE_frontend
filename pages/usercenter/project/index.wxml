@@ -12,7 +12,7 @@
 
   <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
-      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'t_' + current}}"/>
+      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'s_' + current}}"/>
     </block>
   </scroll-view>
 
