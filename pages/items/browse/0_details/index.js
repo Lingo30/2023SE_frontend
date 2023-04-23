@@ -162,7 +162,9 @@ Page({
           });
           setTimeout(() => {
             // TODO: 这里应该跳转至带选中页面
-            wx.navigateBack();
+            wx.navigateTo({
+              url: '/pages/usercenter/project/index'
+            });
           }, 1000);
           // 5-2. 跳转
 

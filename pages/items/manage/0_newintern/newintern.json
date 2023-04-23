@@ -14,6 +14,7 @@
     "t-radio": "tdesign-miniprogram/radio/radio",
     "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
     "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
-    "t-button": "tdesign-miniprogram/button/button"
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-divider": "tdesign-miniprogram/divider/divider"
   }
 }

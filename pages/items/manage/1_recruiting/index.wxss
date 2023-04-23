@@ -1,1 +1,163 @@
 /* pages/items/manage/1_recruiting/index.wxss */
+/* 1. header */
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx;
+  background-color: rgb(30, 72, 189);
+  color: #FFFFFF;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  width: 360rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.sub {
+  font-size: 28rpx;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.label {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.value {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+/* 2. 项目详情修改 */
+
+text {
+  font-weight: bold;
+}
+
+.recruitNum-8radio-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.recruitNum-4radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15rpx 0 15rpx 0;
+}
+
+.box {
+  padding: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.textarea-example {
+  padding: 32rpx 32rpx 0;
+  background-color: #fff;
+}
+
+.l {
+  width: 100%;
+  background: #e7e7e7;
+  height: 3rpx;
+}
+
+/* 3. 学生申请管理 */
+.sInfo {
+  width: 80%;
+  /* transform: translateX(12%); */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30rpx 10rpx 30rpx 10rpx;
+  border-radius: 20rpx;
+  /* 边 */
+  border: 3rpx solid #E0E3DA;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  background-color: #ffffff;
+  padding: 10rpx;
+  transform: translateX();
+}
+
+.sInfoList {
+  display: flex;
+  flex-direction: column;
+}
+
+.sInfoItem {
+  display: flex;
+  flex-direction: row;
+  padding: 6rpx;
+  font-size: 30rpx;
+}
+
+.sInfoItem .sInfoItem-title {
+  font-weight: bold;
+}
+
+.checkbox {
+  margin-left: 24rpx;
+  margin-top: 74rpx;
+}
+
+.checkbox-info-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.boxes {
+  margin-bottom: 20rpx;
+}
+
+/* 4. button */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 16rpx 16rpx;
+  padding-bottom: 10px;
+}
+
+.button-container button .t-button__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.white-text {
+  color: #0052d9;
+}

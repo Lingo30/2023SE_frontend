@@ -210,7 +210,7 @@ Page({
       tagstmp.type = this.type;
       console.log('tags:', tagstmp);
       wx.request({
-        url: `${getApp().globalData.baseUrl}/newIntern`,
+        url: `${getApp().globalData.baseUrl}/newItem`,
         header: {
           Authorization: wx.getStorageSync('token'),
         },

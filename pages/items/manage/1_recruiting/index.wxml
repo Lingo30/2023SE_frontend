@@ -1,2 +1,103 @@
 <!--pages/items/manage/1_recruiting/index.wxml-->
-<text>pages/items/manage/1_recruiting/index.wxml</text>
+<!-- 1. header -->
+<view class="header-container">
+  <view class="left">
+    <view class="title">{{iTitle}}</view>
+    <view class="sub">项目类型：{{iType}}</view>
+  </view>
+  <view class="right">
+    <view class="item">
+      <view class="label">已申请人数：</view>
+      <view class="value"> {{iNum}} </view>
+    </view>
+    <view class="item">
+      <view class="label">预计招收人数：</view>
+      <view class="value">{{iCapacity}} </view>
+    </view>
+    <view class="item">
+      <view class="label">持续时间：</view>
+      <view class="value">{{iDuration}}</view>
+    </view>
+    <view class="item">
+      <view class="label">开始时间：</view>
+      <view class="value">{{iTime}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 2. 管理项目信息 -->
+<view class="item-info-outside-container">
+  <Subtitle title="项目信息更改" icon="view-list" />
+  <view class="textarea-example">
+    <text class="textarea-example__label">1. 招募人数</text>
+    <t-radio-group class="recruitNum-8radio-container" default-value="{{iCapacity}}" borderless t-class="box" bind:change="getInputValue" data-key="capacity">
+      <view class="recruitNum-4radio-container">
+        <t-radio block="{{false}}" label="1" value="1" />
+        <t-radio block="{{false}}" label="2" value="2" />
+        <t-radio block="{{false}}" label="3" value="3" />
+        <t-radio block="{{false}}" label="4" value="4" />
+      </view>
+      <view class="recruitNum-4radio-container">
+        <t-radio block="{{false}}" label="5" value="5" />
+        <t-radio block="{{false}}" label="6" value="6" />
+        <t-radio block="{{false}}" label="7" value="7" />
+        <t-radio block="{{false}}" label="8" value="8" />
+      </view>
+    </t-radio-group>
+  </view>
+  <view class="l" />
+  <t-cell class="mb-16" title="2. 项目持续时间" arrow hover note="{{timeText}}" bind:click="onTitlePicker" />
+  <t-picker visible="{{timeVisible}}" value="{{timeValue}}" data-key="time" title="{{timeTitle}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+    <t-picker-item options="{{times}}"></t-picker-item>
+  </t-picker>
+  <t-cell title="3. 项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" />
+  <!-- 年月日 -->
+  <t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
+</view>
+
+<view class="button">
+  <!-- TODO -->
+  <t-button theme="primary" size="large" bind:tap="submitItemMod">提交修改</t-button>
+</view>
+
+<!-- 3. 管理报名人员 -->
+<view class="manage-students-outside-container">
+  <Subtitle title="管理报名学生" icon="usergroup" />
+  <t-checkbox-group t-class="boxes" borderless bind:change="onChange" defaultValue="{{demoCheckboxMax}}">
+    <block wx:for="{{students}}" wx:for-item="item" wx:for-index="index">
+      <view class="checkbox-info-container">
+        <t-checkbox block="{{false}}" value="checkbox{{index}}" label="" t-class="checkbox" />
+        <view class="sInfo">
+          <view class="avatar">
+            <t-avatar image="{{item.sAvatarUrl}}" size="medium" />
+          </view>
+          <view class="sInfoList">
+            <view class="sInfoItem">
+              <view class="sInfoItem-title">姓名：</view>
+              <view class="sInfoItem-content">{{item.sName}}</view>
+            </view>
+            <view class="sInfoItem">
+              <view class="sInfoItem-title">学校：</view>
+              <view class="sInfoItem-content">{{item.sSchool}}</view>
+            </view>
+          </view>
+          <view class="arrow">
+            <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" />
+          </view>
+        </view>
+      </view>
+    </block>
+  </t-checkbox-group>
+  <view class="button-container">
+    <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="reject">
+      <t-icon class="i" name="usergroup-clear" size="48rpx" color="rgb(256, 256, 256)" />
+      <text class="white-text">|</text>
+      <text class="button-text">拒绝申请</text>
+    </t-button>
+    <t-button class="chat-button-container" theme="primary" size="large" shape="round" bind:tap="accept">
+      <t-icon class="i" name="usergroup-add" size="48rpx" color="rgb(256, 256, 256)" />
+      <text class="white-text">|</text>
+      <text class="button-text">同意申请并正式立项</text>
+    </t-button>
+  </view>
+</view>

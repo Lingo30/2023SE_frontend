@@ -33,6 +33,23 @@
   justify-content: center;
 }
 
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.label {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.value {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
 /* 2. mentor-info */
 
 .mentor-flex-container {
@@ -137,23 +154,6 @@
 
 /* 4. otherItems (zlb) */
 
-.item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 10rpx;
-}
-
-.label {
-  font-size: 24rpx;
-  font-weight: bold;
-}
-
-.value {
-  font-size: 24rpx;
-  margin-left: 10rpx;
-}
-
 .view_tupian_wenzi {
   /* height: 170rpx; */
   display: flex;
@@ -255,6 +255,8 @@
 .other-item-container {
   padding-bottom: 8rpx;
 }
+
+/* 6. buttons */
 
 .button-container {
   display: flex;

@@ -1,5 +1,23 @@
+.t-class-title {
+  font-weight: bold;
+}
+
+text {
+  font-weight: bold;
+}
+
 .textarea-example {
-  padding: 32rpx 32rpx 48rpx;
+  padding: 32rpx 32rpx 0;
+  background-color: #fff;
+}
+
+.textarea-example_2 {
+  padding: 22rpx 32rpx 0;
+  background-color: #fff;
+}
+
+.textarea-example_3 {
+  padding: 16rpx 32rpx 32rpx 40rpx;
   background-color: #fff;
 }
 
@@ -11,7 +29,7 @@
 .textarea-example__label {
   display: block;
   color: rgba(0, 0, 0, 0.9);
-  font-size: 34rpx;
+  /* font-size: 34rpx; */
   line-height: 40rpx;
   padding-bottom: 16rpx;
 }
@@ -37,4 +55,16 @@
 
 .button-example {
   margin: 0 32rpx;
+}
+
+.recruitNum-8radio-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.recruitNum-4radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15rpx 0 15rpx 0;
 }
