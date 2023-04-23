@@ -4,11 +4,23 @@
     "pages/login/index",
     "pages/home/home",
     "pages/items/details/index",
+    "pages/items/browse/0_details/index",
+    "pages/items/browse/1_toBeSelected/index",
+    "pages/items/browse/2_ongoing/index",
+    "pages/items/browse/3_toBeReviewed/index",
+    "pages/items/browse/4_finished/index",
+    "pages/items/manage/0_newintern/newintern",
+    "pages/items/manage/1_recruiting/index",
+    "pages/items/manage/2_ongoing/index",
+    "pages/items/manage/3_toBeReviewed/index",
+    "pages/items/manage/4_finished/index",
+    "pages/items/review/studentReview/index",
+    "pages/items/review/mentorReview/index",
+    "pages/items/404Error/index",
     "pages/usercenter/index",
     "pages/community/index",
     "pages/search/search",
     "pages/thome/thome",
-    "pages/newintern/newintern",
     "pages/usercenter/edit/index",
     "pages/usercenter/project/index",
     "pages/usercenter/favor/index",
@@ -18,7 +30,8 @@
     "pages/proflist/proflist",
     "pages/msg/msg",
     "pages/search/searchres/index",
-    "pages/community/post/index"
+    "pages/community/post/index",
+    "pages/stulist/stulist"
   ],
   "tabBar": {
     "custom": true,
@@ -67,9 +80,7 @@
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
-    "t-divider": "tdesign-miniprogram/divider/divider",
-    "t-fab": "tdesign-miniprogram/fab/fab",
-    "t-result": "tdesign-miniprogram/result/result"
+    "t-rate": "tdesign-miniprogram/rate/rate"
   },
   "window": {
     "backgroundTextStyle": "light",

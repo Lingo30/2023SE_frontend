@@ -1,60 +1,66 @@
 // pages/login/index.js
 import Toast from 'tdesign-miniprogram/toast/index';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     isRegister: 0,
-    userId: "",
-    username: "",
-    password: "",
-    password2: "",
-    checkCode: "",
-    emailValue: "",
-    emailText: "",
-    emails: [{
+    userId: '',
+    username: '',
+    password: '',
+    password2: '',
+    checkCode: '',
+    emailValue: '',
+    emailText: '',
+    emails: [
+      {
         label: '@buaa.edu.cn',
-        value: '@buaa.edu.cn'
+        value: '@buaa.edu.cn',
       },
       {
         label: '@pku.edu.cn',
-        value: '@pku.edu.cn'
-      }, {
+        value: '@pku.edu.cn',
+      },
+      {
         label: '@thu.edu.cn',
-        value: '@thu.edu.cn'
-      }, {
+        value: '@thu.edu.cn',
+      },
+      {
         label: '@ruc.edu.cn',
-        value: '@thu.edu.cn'
-      }
+        value: '@thu.edu.cn',
+      },
     ],
-    universityValue: "",
-    universityText: "",
-    universities: [{
+    universityValue: '',
+    universityText: '',
+    universities: [
+      {
         label: '北京航空航天大学',
-        value: '@buaa.edu.cn'
+        value: '@buaa.edu.cn',
       },
       {
         label: '北京大学',
-        value: '@pku.edu.cn'
-      }, {
+        value: '@pku.edu.cn',
+      },
+      {
         label: '清华大学',
-        value: '@thu.edu.cn'
-      }, {
+        value: '@thu.edu.cn',
+      },
+      {
         label: '中国人民大学',
-        value: '@ruc.edu.cn'
-      }
+        value: '@ruc.edu.cn',
+      },
     ],
-    userTypeValue: "",
-    userTypeText: "",
-    userTypes: [{
+    userTypeValue: '',
+    userTypeText: '',
+    userTypes: [
+      {
         label: '学生',
-        value: 'student'
+        value: 'student',
       },
       {
         label: '导师',
-        value: 'teacher'
+        value: 'teacher',
       },
     ],
   },
@@ -64,22 +70,18 @@ Page({
 
   onPickerChange(e) {
     console.log(e);
-    const {
-      key
-    } = e.currentTarget.dataset;
+    const { key } = e.currentTarget.dataset;
     this.setData({
       [`${key}Visible`]: false,
-      [`${key}Text`]: e.detail.label.join(" "),
-      [`${key}Value`]: e.detail.value.join(" ")
+      [`${key}Text`]: e.detail.label.join(' '),
+      [`${key}Value`]: e.detail.value.join(' '),
     });
-    this[`${key}Text`] = e.detail.label.join(" ");
-    this[`${key}Value`] = e.detail.value.join(" ");
+    this[`${key}Text`] = e.detail.label.join(' ');
+    this[`${key}Value`] = e.detail.value.join(' ');
   },
 
   onPickerCancel(e) {
-    const {
-      key
-    } = e.currentTarget.dataset;
+    const { key } = e.currentTarget.dataset;
     this.setData({
       [`${key}Visible`]: false,
     });
@@ -87,32 +89,30 @@ Page({
 
   onEmailPicker() {
     this.setData({
-      emailVisible: true
+      emailVisible: true,
     });
   },
 
   onUniversityPicker() {
     this.setData({
-      universityVisible: true
+      universityVisible: true,
     });
   },
 
   onUserTypePicker() {
     this.setData({
-      userTypeVisible: true
+      userTypeVisible: true,
     });
   },
 
   onTabsClick(e) {
     this.setData({
-      isRegister: e.detail.value
+      isRegister: e.detail.value,
     });
   },
 
   getInputValue(e) {
-    const {
-      key
-    } = e.currentTarget.dataset;
+    const { key } = e.currentTarget.dataset;
     this[`${key}`] = e.detail.value;
   },
 
@@ -129,18 +129,18 @@ Page({
     } else {
       // console.log(this.userId + this.emailValue + this.password);
       wx.request({
-        url: getApp().globalData.baseUrl + '/login',
+        url: `${getApp().globalData.baseUrl}/login`,
         method: 'post',
         data: {
           userId: this.userId + this.emailValue,
-          password: this.password
+          password: this.password,
         },
         success: (res) => {
           console.log(res);
           if (res.data.result == 1) {
             wx.setStorage({
-              key: "token",
-              data: res.data.token
+              key: 'token',
+              data: res.data.token,
             });
             wx.setStorage({
               key: "userType",
@@ -171,13 +171,21 @@ Page({
               direction: 'column',
             });
           }
-        }
+        },
       });
     }
   },
 
   register() {
-    if (!this.username || !this.userTypeValue || !this.universityValue || !this.userId || !this.password || !this.password2 || !this.checkCode) {
+    if (
+      !this.username ||
+      !this.userTypeValue ||
+      !this.universityValue ||
+      !this.userId ||
+      !this.password ||
+      !this.password2 ||
+      !this.checkCode
+    ) {
       Toast({
         context: this,
         selector: '#t-toast',
@@ -197,7 +205,7 @@ Page({
       });
     } else {
       wx.request({
-        url: getApp().globalData.baseUrl + '/register',
+        url: `${getApp().globalData.baseUrl}/register`,
         method: 'post',
         data: {
           username: this.username,
@@ -205,7 +213,7 @@ Page({
           university: this.universityText,
           userId: this.userId + this.universityValue,
           password: this.password,
-          checkCode: this.checkCode
+          checkCode: this.checkCode,
         },
         success: (res) => {
           if (res.data.result == 1) {
@@ -230,14 +238,14 @@ Page({
               direction: 'column',
             });
           }
-        }
-      })
+        },
+      });
     }
   },
 
   sendCheckCode() {
-    let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
-    let email = this.userId + this.universityValue;
+    const reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+    const email = this.userId + this.universityValue;
     if (!reg.test(email)) {
       Toast({
         context: this,
@@ -250,7 +258,7 @@ Page({
       return;
     }
     wx.request({
-      url: getApp().globalData.baseUrl + '/sendCheckCode',
+      url: `${getApp().globalData.baseUrl}/sendCheckCode`,
       method: 'post',
       data: {
         email: email,
@@ -275,63 +283,47 @@ Page({
             direction: 'column',
           });
         }
-      }
+      },
     });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
-  },
+  onLoad(/*options*/) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
-  },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});

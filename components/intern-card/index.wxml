@@ -1,5 +1,5 @@
 <!--components/intern-card/index.wxml-->
-<view class="view_tupian_wenzi" bindtap="click" id="{{index}}" data-item="{{itemData}}">
+<view class="view_tupian_wenzi" bindtap="click" id="{{index}}" data-item="{{itemData}}" data-ctx="{{ctx}}">
   <!-- 包裹四行文字 -->
   <view class="view_wenzi2">
     <view class="view_wenzileft">
@@ -9,7 +9,7 @@
       {{itemData.alreadynum}}/{{itemData.num}}人
     </view>
     <view class="view_wenziright" wx:if="{{itemData.state != '招募中'}}">
-      {{itemData.state}}
+      <!-- {{itemData.state}} -->
     </view>
   </view>
   <view class="view_wenzi2">

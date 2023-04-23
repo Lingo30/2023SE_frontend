@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "Subtitle": "/pages/items/components/Subtitle/Subtitle",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

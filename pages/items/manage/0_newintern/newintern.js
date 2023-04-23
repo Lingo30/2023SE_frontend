@@ -1,7 +1,6 @@
 // pages/newintern/newintern.js
 import Toast from 'tdesign-miniprogram/toast/index';
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -27,80 +26,73 @@ Page({
     timeText: '',
     timeValue: [],
     timeTitle: '',
-    times: [{
+    times: [
+      {
         label: '1个月',
-        value: '1个月'
+        value: '1个月',
       },
       {
         label: '2个月',
-        value: '2个月'
+        value: '2个月',
       },
       {
         label: '3个月',
-        value: '3个月'
+        value: '3个月',
       },
       {
         label: '4个月',
-        value: '4个月'
+        value: '4个月',
       },
       {
         label: '5个月',
-        value: '5个月'
+        value: '5个月',
       },
       {
         label: '6个月',
-        value: '6个月'
+        value: '6个月',
       },
       {
         label: '7个月',
-        value: '7个月'
+        value: '7个月',
       },
       {
         label: '8个月',
-        value: '8个月'
+        value: '8个月',
       },
       {
         label: '9个月',
-        value: '9个月'
+        value: '9个月',
       },
       {
         label: '10个月',
-        value: '10个月'
+        value: '10个月',
       },
       {
         label: '11个月',
-        value: '11个月'
+        value: '11个月',
       },
       {
         label: '12个月',
-        value: '12个月'
+        value: '12个月',
       },
     ],
   },
   showPicker(e) {
-    const {
-      mode
-    } = e.currentTarget.dataset;
+    const { mode } = e.currentTarget.dataset;
     this.setData({
       mode,
       [`${mode}Visible`]: true,
     });
   },
   hidePicker() {
-    const {
-      mode
-    } = this.data;
+    const { mode } = this.data;
     this.setData({
       [`${mode}Visible`]: false,
     });
   },
   onConfirm(e) {
-    const {
-      value
-    } = e.detail;
-    const {
-      mode
-    } = this.data;
+    const { value } = e.detail;
+    const { mode } = this.data;
 
     // console.log('confim', value);
 
@@ -108,8 +100,8 @@ Page({
       [mode]: value,
       [`${mode}Text`]: value,
     });
-    this["starttime"] = value
-    console.log('starttime', this.starttime)
+    this.starttime = value;
+    console.log('starttime', this.starttime);
     this.hidePicker();
   },
 
@@ -118,26 +110,20 @@ Page({
   },
 
   onPickerChange(e) {
-    const {
-      key
-    } = e.currentTarget.dataset;
-    const {
-      value
-    } = e.detail;
+    const { key } = e.currentTarget.dataset;
+    const { value } = e.detail;
 
     this.setData({
       [`${key}Visible`]: false,
       [`${key}Value`]: value,
-      [`${key}Text`]: value.join(' ')
+      [`${key}Text`]: value.join(' '),
     });
-    this["duration"] = value[0]
+    this.duration = value[0];
     console.log('duration:', this.duration);
   },
 
   onPickerCancel(e) {
-    const {
-      key
-    } = e.currentTarget.dataset;
+    const { key } = e.currentTarget.dataset;
     console.log(e, '取消');
     console.log('picker1 cancel:');
     this.setData({
@@ -148,35 +134,49 @@ Page({
   onTitlePicker() {
     this.setData({
       timeVisible: true,
-      timeTitle: '持续时间'
+      timeTitle: '持续时间',
     });
   },
 
   getInputValue(e) {
-    const {
-      key
-    } = e.currentTarget.dataset;
-    console.log(key, e.detail.value)
+    const { key } = e.currentTarget.dataset;
+    console.log(key, e.detail.value);
     this[`${key}`] = e.detail.value;
   },
 
   getSkills(e) {
-    const {
-      key
-    } = e.currentTarget.dataset;
-    const tmp = e.detail.value.split(',')
-    const list = []
+    const { key } = e.currentTarget.dataset;
+    const tmp = e.detail.value.split(',');
+    const list = [];
     for (let i = 0; i < tmp.length; i++) {
-      list.push(tmp[i])
+      list.push(tmp[i]);
     }
     this[`${key}`] = list;
-    console.log("skills:", this.skills)
+    console.log('skills:', this.skills);
   },
 
   // 提交
-  submit(e) {
-    if (!this.title || !this.content || !this.duration || !this.starttime || !this.capacity || !this.skills || !this.type || !this.brief) {
-      console.log(this.title, this.content, this.duration, this.starttime, this.capacity, this.skills, this.type, this.brief)
+  submit() {
+    if (
+      !this.title ||
+      !this.content ||
+      !this.duration ||
+      !this.starttime ||
+      !this.capacity ||
+      !this.skills ||
+      !this.type ||
+      !this.brief
+    ) {
+      console.log(
+        this.title,
+        this.content,
+        this.duration,
+        this.starttime,
+        this.capacity,
+        this.skills,
+        this.type,
+        this.brief,
+      );
       Toast({
         context: this,
         selector: '#t-toast',
@@ -186,12 +186,12 @@ Page({
         direction: 'column',
       });
     } else {
-      let tagstmp = {}
-      tagstmp["skills"] = this.skills
-      tagstmp["type"] = this.type
-      console.log("tags:", tagstmp)
+      const tagstmp = {};
+      tagstmp.skills = this.skills;
+      tagstmp.type = this.type;
+      console.log('tags:', tagstmp);
       wx.request({
-        url: getApp().globalData.baseUrl + '/newIntern',
+        url: `${getApp().globalData.baseUrl}/newIntern`,
         header: {
           Authorization: wx.getStorageSync('token'),
         },
@@ -203,9 +203,9 @@ Page({
           time: this.starttime,
           capacity: this.capacity,
           tags: tagstmp,
-          brief: this.brief
+          brief: this.brief,
         },
-        success: (res) => {
+        success: () => {
           wx.showToast({
             title: '提交成功',
             icon: 'success',
@@ -217,29 +217,25 @@ Page({
               //     delta: 1
               //   })
               // }, 2000)
-            }
-          })
-        }
-      })
+            },
+          });
+        },
+      });
     }
     wx.redirectTo({
       url: '/pages/thome/thome',
-    })
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
-  },
+  onLoad(/*options*/) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
@@ -249,35 +245,25 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});

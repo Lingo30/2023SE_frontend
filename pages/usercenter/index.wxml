@@ -1,52 +1,51 @@
 <!--pages/usercenter/index.wxml-->
 <t-toast id="t-toast" />
-<scroll-view scroll-y="true" style='height:88vh'>
+<scroll-view scroll-y="true" style="height: 88vh">
   <view class="column">
-    <view class="row card" style="align-items: center;">
-      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx;" />
+    <view class="row card" style="align-items: center">
+      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx" />
       <view class="column">
-        <text class="h1" style="margin-left: 1rem;">{{username}}</text>
-        <view class="row" style="margin-left: 1rem; margin-top: 0.5rem;">
+        <text class="h1" style="margin-left: 1rem">{{username}}</text>
+        <view class="row" style="margin-left: 1rem; margin-top: 0.5rem">
           <t-icon name="layers"></t-icon>
           <text class="tag">{{university}}</text>
         </view>
       </view>
-      <t-button theme="light" icon="edit" content="编辑资料" size="small" shape="round" style="margin-right: 0;" bind:tap="jump2edit"></t-button>
+      <t-button
+        theme="light"
+        icon="edit"
+        content="编辑资料"
+        size="small"
+        shape="round"
+        style="margin-right: 0"
+        bind:tap="jump2edit"
+      ></t-button>
     </view>
-
-    <view class="column card" style="padding: 10rpx;">
+    <view class="column card" style="padding: 10rpx">
       <t-cell title="我的项目" hover arrow leftIcon="view-module" bind:tap="jump2project" />
       <t-cell title="我的收藏" hover arrow leftIcon="heart" bind:tap="jump2favor" />
     </view>
-
-    <view class=" column card" style="padding: 10rpx;">
+    <view class="column card" style="padding: 10rpx">
       <t-cell title="个人简历" leftIcon="file" />
       <t-collapse theme="card" expandMutex expandIcon>
-        <t-collapse-panel header="所在专业" value="{{0}}">
-          {{department}}
-        </t-collapse-panel>
-        <t-collapse-panel header="学业成绩" value="{{1}}">
-          {{grades}}
-        </t-collapse-panel>
-        <t-collapse-panel header="科研经历" value="{{2}}">
-          {{labExperience}}
-        </t-collapse-panel>
-        <t-collapse-panel header="竞赛获奖" value="{{3}}">
-          {{awards}}
-        </t-collapse-panel>
-        <t-collapse-panel header="擅长技能" value="{{4}}">
-          {{skill}}
-        </t-collapse-panel>
+        <t-collapse-panel header="所在专业" value="{{0}}"> {{department}} </t-collapse-panel>
+        <t-collapse-panel header="学业成绩" value="{{1}}"> {{grades}} </t-collapse-panel>
+        <t-collapse-panel header="科研经历" value="{{2}}"> {{labExperience}} </t-collapse-panel>
+        <t-collapse-panel header="竞赛获奖" value="{{3}}"> {{awards}} </t-collapse-panel>
+        <t-collapse-panel header="擅长技能" value="{{4}}"> {{skill}} </t-collapse-panel>
       </t-collapse>
       <t-cell title="查看PDF版简历" hover arrow leftIcon="file-pdf" bind:tap="previewPDF" />
     </view>
-
-    <view class="column card" style="padding: 10rpx;">
+    <view class="column card" style="padding: 10rpx">
       <t-cell title="企业认证" hover arrow leftIcon="fork" bind:tap="jump2company" />
     </view>
-
-    <view class="column" style="padding: 30rpx; align-items: center;">
-      <t-button size="large" content="退出登录" style="width: 100%; background-color: white; color: tomato;" bind:tap="logout">
+    <view class="column" style="padding: 30rpx; align-items: center">
+      <t-button
+        size="large"
+        content="退出登录"
+        style="width: 100%; background-color: white; color: tomato"
+        bind:tap="logout"
+      >
       </t-button>
     </view>
   </view>

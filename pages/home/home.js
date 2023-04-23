@@ -5,7 +5,7 @@ Page({
     page: 1,
     current: "推荐",
     tabList: [{
-      text: "推荐",
+      text: "综合",
       key: 0
     }, {
       text: "学校",
@@ -151,16 +151,29 @@ Page({
         current: this.data.current
       },
       success: (res) => {
-        const internmore = res.data.internlist
-        const internlisttmp = this.data.internlist.concat(internmore)
-        // console.log(internlisttmp)
-        this.setData({
-          internlist: internlisttmp,
-          page: page,
-          pageLoading: false
-        })
+        if (res.data.result == 1) {
+          const internmore = res.data.internlist
+          const internlisttmp = this.data.internlist.concat(internmore)
+          // console.log(internlisttmp)
+          this.setData({
+            internlist: internlisttmp,
+            page: page
+          })
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'warning',
+            direction: 'column',
+          });
+        }
       },
       complete: () => {
+        this.setData({
+          pageLoading: false
+        });
         wx.hideLoading();
       },
     })

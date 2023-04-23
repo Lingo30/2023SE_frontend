@@ -1,0 +1,83 @@
+/* pages/items/review/mentorReview/index.wxss */
+.header {
+  padding: 40rpx;
+  background-color: rgb(30, 72, 189);
+  color: #FFFFFF;
+  font-size: 42rpx;
+  font-weight: bold;
+}
+
+.sInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 50rpx 28rpx 50rpx;
+}
+
+.sInfoList {
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+
+.sInfoItem {
+  display: flex;
+  flex-direction: row;
+  padding: 8rpx;
+}
+
+.sInfoItem .title {
+  font-weight: bold;
+}
+
+.star {
+  background-color: #fff;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32rpx;
+  margin-top: 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.desc {
+  text-align: center;
+  font-size: large;
+  margin-top: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.desc--active {
+  color: #ED7B2F;
+  font-weight: 600;
+}
+
+/* .rate {
+  
+} */
+
+.rate__transparent {
+  background-color: transparent;
+  padding-left: 32rpx;
+  border: 0;
+}
+
+.external-class {
+  height: 324rpx;
+}
+
+
+.input {
+  /* background-color: gray; */
+  padding: 32rpx 40rpx 40rpx 32rpx;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30rpx;
+}

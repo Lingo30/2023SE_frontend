@@ -1,4 +1,5 @@
 // pages/msg/msg.js
+import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   /**
    * 页面的初始数据
@@ -253,16 +254,30 @@ Page({
         page: page
       },
       success: (res) => {
-        const msgmore = res.data.msglist
-        const msglisttmp = this.data.msglist.concat(msgmore)
-        // console.log(internlisttmp)
-        this.setData({
-          msglist: msglisttmp,
-          page: page,
-          pageLoading: false
-        })
+        console.log(res.data)
+        if (res.data.result == 1) {
+          const msgmore = res.data.msglist
+          const msglisttmp = this.data.msglist.concat(msgmore)
+          // console.log(internlisttmp)
+          this.setData({
+            msglist: msglisttmp,
+            page: page
+          })
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'warning',
+            direction: 'column',
+          });
+        }
       },
       complete: () => {
+        this.setData({
+          pageLoading: false
+        });
         wx.hideLoading();
       },
     })

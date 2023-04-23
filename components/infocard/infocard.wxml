@@ -6,7 +6,7 @@
     <view class="name">{{itemData.name}}</view>
     <view class="other-info">
       <t-tag class="school">{{itemData.school}}</t-tag>
-      <t-tag class="major">{{itemData.major}}</t-tag>
+      <!-- <t-tag class="major">{{itemData.major}}</t-tag> -->
     </view>
   </view>
 </view>

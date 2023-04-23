@@ -109,16 +109,29 @@ Page({
         page: page
       },
       success: (res) => {
-        const internmore = res.data.internlist
-        const internlisttmp = this.data.internlist.concat(internmore)
-        // console.log(internlisttmp)
-        this.setData({
-          internlist: internlisttmp,
-          page: page,
-          pageLoading: false
-        })
+        if (res.data.result == 1) {
+          const internmore = res.data.internlist
+          const internlisttmp = this.data.internlist.concat(internmore)
+          // console.log(internlisttmp)
+          this.setData({
+            internlist: internlisttmp,
+            page: page
+          })
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'warning',
+            direction: 'column',
+          });
+        }
       },
       complete: () => {
+        this.setData({
+          pageLoading: false
+        });
         wx.hideLoading();
       },
     })
