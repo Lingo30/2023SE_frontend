@@ -158,9 +158,9 @@ Page({
               theme: 'success',
               direction: 'column',
             });
-            wx.redirectTo({
+            wx.switchTab({
               url: '/pages/home/home',
-            });
+            })
           } else {
             Toast({
               context: this,

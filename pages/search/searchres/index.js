@@ -20,7 +20,6 @@ Page({
   },
 
   onLoad(options) {
-    console.log(options)
     const school = options.school.split(',')
     const skills = options.skills.split(',')
     const type = options.type
@@ -56,6 +55,7 @@ Page({
       pageLoading: true,
     });
 
+
     wx.request({
       url: getApp().globalData.baseUrl + '/searchIntern',
       header: {
@@ -64,13 +64,19 @@ Page({
       method: 'POST',
       data: {
         searchcontent: this.data.content,
-        tags: this.data.searchOp,
+        tags: this.data.searchtags,
         page: this.data.page
       },
       success: (res) => {
-        this.setData({
-          internlist: res.data.internlist
-        })
+        console.log(this.data.searchtags)
+        if (res.data.result == 1) {
+          this.setData({
+            internlist: res.data.internlist
+          })
+        } else {
+
+        }
+
 
       }
     })
@@ -99,7 +105,7 @@ Page({
       method: 'POST',
       data: {
         searchcontent: this.data.content,
-        tags: this.data.searchOp,
+        tags: this.data.searchtags,
         page: page
       },
       success: (res) => {
