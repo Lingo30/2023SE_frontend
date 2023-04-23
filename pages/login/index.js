@@ -13,8 +13,7 @@ Page({
     checkCode: '',
     emailValue: '',
     emailText: '',
-    emails: [
-      {
+    emails: [{
         label: '@buaa.edu.cn',
         value: '@buaa.edu.cn',
       },
@@ -33,8 +32,7 @@ Page({
     ],
     universityValue: '',
     universityText: '',
-    universities: [
-      {
+    universities: [{
         label: '北京航空航天大学',
         value: '@buaa.edu.cn',
       },
@@ -53,8 +51,7 @@ Page({
     ],
     userTypeValue: '',
     userTypeText: '',
-    userTypes: [
-      {
+    userTypes: [{
         label: '学生',
         value: 'student',
       },
@@ -70,7 +67,9 @@ Page({
 
   onPickerChange(e) {
     console.log(e);
-    const { key } = e.currentTarget.dataset;
+    const {
+      key
+    } = e.currentTarget.dataset;
     this.setData({
       [`${key}Visible`]: false,
       [`${key}Text`]: e.detail.label.join(' '),
@@ -81,7 +80,9 @@ Page({
   },
 
   onPickerCancel(e) {
-    const { key } = e.currentTarget.dataset;
+    const {
+      key
+    } = e.currentTarget.dataset;
     this.setData({
       [`${key}Visible`]: false,
     });
@@ -112,7 +113,9 @@ Page({
   },
 
   getInputValue(e) {
-    const { key } = e.currentTarget.dataset;
+    const {
+      key
+    } = e.currentTarget.dataset;
     this[`${key}`] = e.detail.value;
   },
 
@@ -128,6 +131,19 @@ Page({
       });
     } else {
       // console.log(this.userId + this.emailValue + this.password);
+      const reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+      const email = this.userId + this.emailValue;
+      if (!reg.test(email)) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '邮箱格式不符合要求！',
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        return;
+      }
       wx.request({
         url: `${getApp().globalData.baseUrl}/login`,
         method: 'post',
@@ -150,6 +166,29 @@ Page({
               key: "username",
               data: res.data.username
             });
+            if (res.data.userType == "student") {
+              wx.redirectTo({
+                url: '/pages/home/home',
+              })
+            } else if (res.data.userType == "teacher") {
+              wx.redirectTo({
+                url: '/pages/thome/thome',
+              })
+            } else {
+              Toast({
+                context: this,
+                selector: '#t-toast',
+                message: "登录失败！请重新登录",
+                duration: 2500,
+                theme: 'error',
+                direction: 'column',
+              });
+              return
+            }
+            wx.setStorage({
+              key: 'login',
+              data: true,
+            });
             Toast({
               context: this,
               selector: '#t-toast',
@@ -158,9 +197,6 @@ Page({
               theme: 'success',
               direction: 'column',
             });
-            wx.switchTab({
-              url: '/pages/home/home',
-            })
           } else {
             Toast({
               context: this,
@@ -204,6 +240,19 @@ Page({
         direction: 'column',
       });
     } else {
+      const reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+      const email = this.userId + this.universityValue;
+      if (!reg.test(email)) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '邮箱格式不符合要求！',
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        return;
+      }
       wx.request({
         url: `${getApp().globalData.baseUrl}/register`,
         method: 'post',
@@ -290,7 +339,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(/*options*/) {},
+  onLoad( /*options*/ ) {
+    wx.setStorage({
+      key: 'login',
+      data: false,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

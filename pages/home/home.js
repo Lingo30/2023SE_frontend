@@ -2,6 +2,8 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
+    tabbarValue: '/pages/home/home',
+    tabbarList: getApp().globalData.tabbarList1,
     page: 1,
     current: "推荐",
     tabList: [{
@@ -79,8 +81,26 @@ Page({
     tabIndex: 0,
   },
 
+  checkLogin() {
+    if (!getApp().globalData.debugging) {
+      if (!wx.getStorageSync('login')) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "请登录后进入！",
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    }
+  },
+
   onShow() {
-    this.getTabBar().init();
+    this.checkLogin();
     this.init();
   },
 
@@ -242,5 +262,14 @@ Page({
     wx.navigateTo({
       url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
     });
+  },
+
+  onTabbarChange(e) {
+    this.setData({
+      tabbarValue: e.detail.value,
+    });
+    wx.redirectTo({
+      url: e.detail.value,
+    })
   },
 });

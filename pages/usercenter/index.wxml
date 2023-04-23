@@ -11,15 +11,7 @@
           <text class="tag">{{university}}</text>
         </view>
       </view>
-      <t-button
-        theme="light"
-        icon="edit"
-        content="编辑资料"
-        size="small"
-        shape="round"
-        style="margin-right: 0"
-        bind:tap="jump2edit"
-      ></t-button>
+      <t-button theme="light" icon="edit" content="编辑资料" size="small" shape="round" style="margin-right: 0" bind:tap="jump2edit"></t-button>
     </view>
     <view class="column card" style="padding: 10rpx">
       <t-cell title="我的项目" hover arrow leftIcon="view-module" bind:tap="jump2project" />
@@ -40,13 +32,13 @@
       <t-cell title="企业认证" hover arrow leftIcon="fork" bind:tap="jump2company" />
     </view>
     <view class="column" style="padding: 30rpx; align-items: center">
-      <t-button
-        size="large"
-        content="退出登录"
-        style="width: 100%; background-color: white; color: tomato"
-        bind:tap="logout"
-      >
+      <t-button size="large" content="退出登录" style="width: 100%; background-color: white; color: tomato" bind:tap="logout">
       </t-button>
     </view>
   </view>
 </scroll-view>
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+  <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
+    {{item.label}}
+  </t-tab-bar-item>
+</t-tab-bar>

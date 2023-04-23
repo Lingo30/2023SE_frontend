@@ -12,11 +12,16 @@
 
   <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
-      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'t_' + current}}"/>
+      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'t_' + current}}" />
     </block>
   </scroll-view>
-  
-  <t-icon name="add-circle" size="48rpx" data-name="add-circle" class="img" color="rgb(0, 102, 255)" bind:click="addIntern" />
+
+  <!-- <t-icon name="add-circle" size="48rpx" data-name="add-circle" class="img" color="rgb(0, 102, 255)" bind:click="addIntern" /> -->
 
   <t-toast id="t-toast" />
 </view>
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+  <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
+    {{item.label}}
+  </t-tab-bar-item>
+</t-tab-bar>

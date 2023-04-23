@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabbarValue: '/pages/items/manage/0_newintern/newintern',
+    tabbarList: getApp().globalData.tabbarList2,
     mode: '',
     dateVisible: false,
     date: new Date('2021-12-23').getTime(), // 支持时间戳传入
@@ -26,8 +28,7 @@ Page({
     timeText: '',
     timeValue: [],
     timeTitle: '',
-    times: [
-      {
+    times: [{
         label: '1个月',
         value: '1个月',
       },
@@ -78,21 +79,29 @@ Page({
     ],
   },
   showPicker(e) {
-    const { mode } = e.currentTarget.dataset;
+    const {
+      mode
+    } = e.currentTarget.dataset;
     this.setData({
       mode,
       [`${mode}Visible`]: true,
     });
   },
   hidePicker() {
-    const { mode } = this.data;
+    const {
+      mode
+    } = this.data;
     this.setData({
       [`${mode}Visible`]: false,
     });
   },
   onConfirm(e) {
-    const { value } = e.detail;
-    const { mode } = this.data;
+    const {
+      value
+    } = e.detail;
+    const {
+      mode
+    } = this.data;
 
     // console.log('confim', value);
 
@@ -110,8 +119,12 @@ Page({
   },
 
   onPickerChange(e) {
-    const { key } = e.currentTarget.dataset;
-    const { value } = e.detail;
+    const {
+      key
+    } = e.currentTarget.dataset;
+    const {
+      value
+    } = e.detail;
 
     this.setData({
       [`${key}Visible`]: false,
@@ -123,7 +136,9 @@ Page({
   },
 
   onPickerCancel(e) {
-    const { key } = e.currentTarget.dataset;
+    const {
+      key
+    } = e.currentTarget.dataset;
     console.log(e, '取消');
     console.log('picker1 cancel:');
     this.setData({
@@ -139,13 +154,17 @@ Page({
   },
 
   getInputValue(e) {
-    const { key } = e.currentTarget.dataset;
+    const {
+      key
+    } = e.currentTarget.dataset;
     console.log(key, e.detail.value);
     this[`${key}`] = e.detail.value;
   },
 
   getSkills(e) {
-    const { key } = e.currentTarget.dataset;
+    const {
+      key
+    } = e.currentTarget.dataset;
     const tmp = e.detail.value.split(',');
     const list = [];
     for (let i = 0; i < tmp.length; i++) {
@@ -230,7 +249,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(/*options*/) {},
+  onLoad( /*options*/ ) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -240,7 +259,26 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
+  checkLogin() {
+    if (!getApp().globalData.debugging) {
+      if (!wx.getStorageSync('login')) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "请登录后进入！",
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    }
+  },
+  onShow() {
+    this.checkLogin()
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -266,4 +304,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
+  onTabbarChange(e) {
+    this.setData({
+      tabbarValue: e.detail.value,
+    });
+    wx.redirectTo({
+      url: e.detail.value,
+    })
+  },
 });

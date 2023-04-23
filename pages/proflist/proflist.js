@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabbarValue: '/pages/proflist/proflist',
+    tabbarList: getApp().globalData.tabbarList1,
     pageLoading: false,
     content: "",
     page: 1,
@@ -68,8 +70,25 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
+  checkLogin() {
+    if (!getApp().globalData.debugging) {
+      if (!wx.getStorageSync('login')) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "请登录后进入！",
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    }
+  },
   onShow() {
-    // this.getTabBar().init();
+    this.checkLogin();
     this.init();
   },
 
@@ -241,5 +260,13 @@ Page({
     //   },
     // })
     // console.log(this.data.page)
+  },
+  onTabbarChange(e) {
+    this.setData({
+      tabbarValue: e.detail.value,
+    });
+    wx.redirectTo({
+      url: e.detail.value,
+    })
   },
 })

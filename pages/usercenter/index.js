@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabbarValue: '/pages/usercenter/index',
+    tabbarList: getApp().globalData.tabbarList1,
     avatar: 'https://i.postimg.cc/vTSPVvKZ/default-Avatar.png',
     username: "student",
     university: "北京航空航天大学",
@@ -18,7 +20,6 @@ Page({
   },
 
   init() {
-    this.getTabBar().init();
     wx.request({
       url: getApp().globalData.baseUrl + '/user',
       method: 'post',
@@ -145,6 +146,10 @@ Page({
 
   logout() {
     wx.clearStorage();
+    wx.setStorage({
+      key: 'login',
+      data: false,
+    });
     wx.redirectTo({
       url: '/pages/login/index',
     });
@@ -165,7 +170,25 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
+  checkLogin() {
+    if (!getApp().globalData.debugging) {
+      if (!wx.getStorageSync('login')) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "请登录后进入！",
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    }
+  },
   onShow() {
+    this.checkLogin();
     this.init();
   },
 
@@ -202,5 +225,13 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  onTabbarChange(e) {
+    this.setData({
+      tabbarValue: e.detail.value,
+    });
+    wx.redirectTo({
+      url: e.detail.value,
+    })
+  },
 })

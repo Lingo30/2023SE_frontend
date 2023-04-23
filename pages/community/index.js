@@ -1,6 +1,8 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   data: {
+    tabbarValue: '/pages/community/index',
+    tabbarList: getApp().globalData.tabbarList1,
     page: 1,
     pageLoading: false,
     momentList: [],
@@ -28,6 +30,12 @@ Page({
   init() {
     this.isInter = 0;
     this.page = 1;
+    this.momentList = [];
+    this.setData({
+      isInter: 0,
+      page: 1,
+      momentList: []
+    })
     this.load(this.page);
   },
 
@@ -92,12 +100,46 @@ Page({
     });
   },
 
+  checkLogin() {
+    if (!getApp().globalData.debugging) {
+      if (!wx.getStorageSync('login')) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "请登录后进入！",
+          duration: 2500,
+          theme: 'warning',
+          direction: 'column',
+        });
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    }
+  },
+
   onLoad() {
-    this.page = 1;
+    this.checkLogin();
+    this.setData({
+      page: 1,
+      isInter: 0,
+      momentList: []
+    })
+    this.page = 1
+    this.isInter = 0
+    this.momentList = []
   },
 
   onShow() {
-    this.getTabBar().init();
+    this.checkLogin();
     this.init();
+  },
+  onTabbarChange(e) {
+    this.setData({
+      tabbarValue: e.detail.value,
+    });
+    wx.redirectTo({
+      url: e.detail.value,
+    })
   },
 })
