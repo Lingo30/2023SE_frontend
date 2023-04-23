@@ -18,7 +18,7 @@ Page({
     texts: ['不合格', '不合格', '一般', '一般', '良好', '良好', '较为优秀', '优秀', '超出预期', '超出预期'],
     iId: "default",
     sId: "default",
-    sAvatarUrl: "http://114.116.221.67:8000/media/avatar/default.jpg",
+    sAvatarUrl: "https://intth1.2022martu1.cn/media/avatar/default.jpg",
     sName: "李逸卓",
     sSchool: "北京航空航天大学",
     sEmail: "20373493@buaa.edu.cn",
@@ -107,7 +107,7 @@ Page({
           Toast({
             context: this,
             selector: '#t-toast',
-            message: "!success, 上传评价失败",
+            message: "上传评价失败",
             duration: 2500,
             theme: 'error',
             direction: 'column',
@@ -118,7 +118,7 @@ Page({
         Toast({
           context: this,
           selector: '#t-toast',
-          message: "fail, 上传评价失败",
+          message: "上传评价失败",
           duration: 2500,
           theme: 'error',
           direction: 'column',

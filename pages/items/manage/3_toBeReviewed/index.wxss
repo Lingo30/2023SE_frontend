@@ -1,1 +1,133 @@
-/* pages/items/manage/3_toBeReviewed/index.wxss */
+/* pages/items/manage/1_recruiting/index.wxss */
+/* 1. header */
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx;
+  background-color: rgb(30, 72, 189);
+  color: #FFFFFF;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  width: 360rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.sub {
+  font-size: 28rpx;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.label {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.value {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+
+/* 2. 学生详情 */
+.home-button-container {
+  transform: translateX(-10rpx);
+}
+
+.sInfo {
+  transform: translateX(-20rpx);
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30rpx 10rpx 30rpx 0;
+  border-radius: 20rpx;
+  /* 边 */
+  border: 3rpx solid #E0E3DA;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  background-color: #ffffff;
+  padding: 10rpx;
+}
+
+.sInfoList {
+  display: flex;
+  flex-direction: column;
+}
+
+.sInfoItem {
+  display: flex;
+  flex-direction: row;
+  padding: 6rpx;
+  font-size: 30rpx;
+}
+
+.sInfoItem .sInfoItem-title {
+  font-weight: bold;
+}
+
+.boxes {
+  margin-bottom: 20rpx;
+}
+
+.button-and-student-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 3. 已评价的边距 */
+.already-outside-container {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+/* 4. button */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 20rpx;
+  padding-bottom: 40rpx;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 16rpx 16rpx;
+  padding-bottom: 10px;
+}
+
+button .t-button__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.white-text {
+  color: #0052d9;
+}

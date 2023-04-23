@@ -12,133 +12,133 @@ Page({
     "msglist": [{
         "id": 1,
         "name": "老板",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "2022-09-14",
         "content": "谢谢！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       },
       {
         "id": 2,
         "name": "学长",
-        "avatar": "http://114.116.221.67:8000/media/avatar/default.jpg",
+        "avatar": "https://intth1.2022martu1.cn/media/avatar/default.jpg",
         "time": "04-15",
         "content": "麻烦学长了！"
       }

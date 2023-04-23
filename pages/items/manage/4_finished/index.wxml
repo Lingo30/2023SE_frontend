@@ -1,2 +1,69 @@
-<!--pages/items/manage/4_finished/index.wxml-->
-<text>pages/items/manage/4_finished/index.wxml</text>
+<!--pages/items/manage/1_recruiting/index.wxml-->
+<!-- 1. header -->
+<view class="header-container">
+  <view class="left">
+    <view class="title">{{iTitle}}</view>
+    <view class="sub">项目类型：{{iType}}</view>
+  </view>
+  <view class="right">
+    <view class="item">
+      <view class="label">已申请人数：</view>
+      <view class="value"> {{iNum}} </view>
+    </view>
+    <view class="item">
+      <view class="label">预计招收人数：</view>
+      <view class="value">{{iCapacity}} </view>
+    </view>
+    <view class="item">
+      <view class="label">持续时间：</view>
+      <view class="value">{{iDuration}}</view>
+    </view>
+    <view class="item">
+      <view class="label">开始时间：</view>
+      <view class="value">{{iTime}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 2. 项目简介 -->
+<view class="itemInfo-outer-container">
+  <Subtitle title="项目简介" icon="chart" />
+  <view class="info">{{iInfo}}</view>
+</view>
+
+<!-- 3. 参与项目学生 -->
+<view class="manage-students-outside-container">
+  <Subtitle title="参与项目学生" icon="usergroup" />
+  <block wx:for="{{students}}" wx:for-item="item" wx:for-index="index">
+    <view class="sInfo" style="transform: translateX({{index % 2 == 0 ? '' : '28%'}});">
+      <view class="avatar">
+        <t-avatar image="{{item.sAvatarUrl}}" size="medium" />
+      </view>
+      <view class="sInfoList">
+        <view class="sInfoItem">
+          <view class="sInfoItem-title">姓名：</view>
+          <view class="sInfoItem-content">{{item.sName}}</view>
+        </view>
+        <view class="sInfoItem">
+          <view class="sInfoItem-title">学校：</view>
+          <view class="sInfoItem-content">{{item.sSchool}}</view>
+        </view>
+      </view>
+      <view class="arrow">
+        <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" />
+      </view>
+    </view>
+  </block>
+</view>
+
+<!-- 4. button -->
+<view class="button">
+  <t-button class="home-button-container" theme="primary" size="large" shape="round" disabled>
+    <t-icon class="i" name="flag" size="48rpx" color="rgb(256, 256, 256)" />
+    <text class="gray-text">|</text>
+    <text>项目已圆满结束，不可操作</text>
+  </t-button>
+</view>
+
+<!-- 5. Toast -->
+<t-toast id="t-toast" />

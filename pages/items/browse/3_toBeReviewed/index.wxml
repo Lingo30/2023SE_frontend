@@ -1,2 +1,43 @@
-<!--pages/items/browse/3_toBeReviewed/index.wxml-->
-<text>pages/items/browse/3_toBeReviewed/index.wxml</text>
+<!--pages/items/review/mentorReview/index.wxml-->
+<!-- 1. Header -->
+<view class="header">
+  <text>学生评价</text>
+</view>
+
+<!-- 2. 导师信息 -->
+<view class="mentor-outer-container">
+  <Subtitle title="导师简介" icon="user-avatar" />
+  <view class="mentor-flex-container">
+    <view class="avatar">
+      <image class="mentor-image" src="{{tAvatarUrl}}" mode="aspectFill"></image>
+    </view>
+    <view class="mentor-info">
+      <view class="mentor-name">{{tName}}</view>
+      <view class="mentor-title">{{tPosition}}</view>
+      <view class="small-text">{{tInfo}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 3. 等级评定 -->
+<view class="rate">
+  <Subtitle title="等级评定" icon="view-module" />
+  <view class="star">
+    <t-rate default-value="{{value}}" size="36" allowHalf bind:change="onChange" />
+  </view>
+  <view class="desc desc--{{value >= 4 ? 'active' : ''}}">{{texts[value * 2 - 1]}}</view>
+</view>
+
+<!-- 4. 评语 -->
+<view class="remark">
+  <Subtitle title="学生评语" icon="edit" />
+  <view class="input">
+    <t-textarea bind:change="getInputComment" value="{{comment}}" t-class="external-class" placeholder="0-200字" bordered maxlength="200" disableDefaultPadding="{{true}}" indicator />
+  </view>
+</view>
+
+<view class="button">
+  <t-button theme="primary" size="large" bind:tap="submit">提交评价</t-button>
+</view>
+
+<t-toast id="t-toast" />

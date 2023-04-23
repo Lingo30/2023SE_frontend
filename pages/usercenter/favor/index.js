@@ -67,19 +67,19 @@ Page({
         id: 1,
         name: "刘偲",
         school: "北航",
-        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg"
+        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
       },
       {
         id: 2,
         name: "朱军",
         school: "清华",
-        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg"
+        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
       },
       {
         id: 3,
         name: "李崇轩",
         school: "人大",
-        avatar: "http://114.116.221.67:8000/media/avatar/default.jpg"
+        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
       },
     ],
     goodsListLoadStatus: 0,

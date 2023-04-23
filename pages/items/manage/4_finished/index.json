@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "Subtitle": "/pages/items/components/Subtitle/Subtitle",
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
+    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox"
+  }
 }
