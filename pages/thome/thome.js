@@ -82,12 +82,6 @@ Page({
     },
   },
 
-  addIntern(e) {
-    console.log(e);
-    wx.navigateTo({
-      url: '/pages/items/manage/0_newintern/newintern',
-    });
-  },
   checkLogin() {
     if (!getApp().globalData.debugging) {
       if (!wx.getStorageSync('login')) {
@@ -107,8 +101,8 @@ Page({
   },
 
   onShow() {
-    this.checkLogin()
-    this.init()
+    this.checkLogin();
+    this.init();
   },
 
   onLoad() {},
@@ -126,12 +120,11 @@ Page({
   },
 
   loadHomePage() {
+    wx.hideHomeButton();
     wx.stopPullDownRefresh();
-
     this.setData({
       pageLoading: true,
     });
-
     wx.request({
       url: `${getApp().globalData.baseUrl}/getRecommend`,
       header: {

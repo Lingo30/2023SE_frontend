@@ -1,7 +1,26 @@
 import updateManager from './common/updateManager';
 
 App({
-  onLaunch: function () {},
+  onLaunch: function () {
+    const isLogin = wx.getStorageSync('login');
+    const userType = wx.getStorageSync('userType');
+    if (!this.globalData.debugging) {
+      if (!isLogin) {
+        // 跳转到登录页面
+        wx.reLaunch({
+          url: '/pages/login/index'
+        })
+      } else if (userType == "student") {
+        wx.reLaunch({
+          url: '/pages/home/home'
+        })
+      } else if (userType == "teacher") {
+        wx.reLaunch({
+          url: '/pages/thome/thome'
+        })
+      }
+    }
+  },
   onShow: function () {
     updateManager();
   },

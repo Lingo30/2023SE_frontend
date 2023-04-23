@@ -78,6 +78,7 @@ Page({
       },
     ],
   },
+
   showPicker(e) {
     const {
       mode
@@ -87,6 +88,7 @@ Page({
       [`${mode}Visible`]: true,
     });
   },
+
   hidePicker() {
     const {
       mode
@@ -95,6 +97,7 @@ Page({
       [`${mode}Visible`]: false,
     });
   },
+
   onConfirm(e) {
     const {
       value
@@ -109,8 +112,8 @@ Page({
       [mode]: value,
       [`${mode}Text`]: value,
     });
-    this.starttime = value;
-    console.log('starttime', this.starttime);
+    this.data.starttime = value;
+    console.log('starttime', this.data.starttime);
     this.hidePicker();
   },
 
@@ -131,8 +134,8 @@ Page({
       [`${key}Value`]: value,
       [`${key}Text`]: value.join(' '),
     });
-    this.duration = value[0];
-    console.log('duration:', this.duration);
+    this.data.duration = value[0];
+    console.log('duration:', this.data.duration);
   },
 
   onPickerCancel(e) {
@@ -171,43 +174,43 @@ Page({
       list.push(tmp[i]);
     }
     this[`${key}`] = list;
-    console.log('skills:', this.skills);
+    console.log('skills:', this.data.skills);
   },
 
   // 提交
   submit() {
     if (
-      !this.title ||
-      !this.content ||
-      !this.duration ||
-      !this.starttime ||
-      !this.capacity ||
-      !this.skills ||
-      !this.type ||
-      !this.brief
+      !this.data.title ||
+      !this.data.content ||
+      !this.data.duration ||
+      !this.data.starttime ||
+      !this.data.capacity ||
+      !this.data.skills ||
+      !this.data.type ||
+      !this.data.brief
     ) {
       console.log(
-        this.title,
-        this.content,
-        this.duration,
-        this.starttime,
-        this.capacity,
-        this.skills,
-        this.type,
-        this.brief,
+        this.data.title,
+        this.data.content,
+        this.data.duration,
+        this.data.starttime,
+        this.data.capacity,
+        this.data.skills,
+        this.data.type,
+        this.data.brief,
       );
       Toast({
         context: this,
         selector: '#t-toast',
-        message: '提交前请填写完整信息！',
-        duration: 2500,
+        message: '提交前请填写完整信息',
+        duration: 1500,
         theme: 'warning',
         direction: 'column',
       });
     } else {
       const tagstmp = {};
-      tagstmp.skills = this.skills;
-      tagstmp.type = this.type;
+      tagstmp.skills = this.data.skills;
+      tagstmp.type = this.data.type;
       console.log('tags:', tagstmp);
       wx.request({
         url: `${getApp().globalData.baseUrl}/newItem`,
@@ -216,34 +219,43 @@ Page({
         },
         method: 'POST',
         data: {
-          title: this.title,
-          content: this.content,
-          duration: this.duration,
-          time: this.starttime,
-          capacity: this.capacity,
+          title: this.data.title,
+          content: this.data.content,
+          duration: this.data.duration,
+          time: this.data.starttime,
+          capacity: this.data.capacity,
           tags: tagstmp,
-          brief: this.brief,
+          brief: this.data.brief,
         },
-        success: () => {
-          wx.showToast({
-            title: '提交成功',
-            icon: 'success',
-            duration: 2000,
-            success: function () {
-              // 2秒后返回上一页
-              // setTimeout(function () {
-              //   wx.navigateBack({
-              //     delta: 1
-              //   })
-              // }, 2000)
-            },
-          });
-        },
+        success: (res) => {
+          console.log(res.data.result);
+          if (res.data.result == 1) {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: '提交成功！',
+              duration: 1500,
+              theme: 'success',
+              direction: 'column',
+            });
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/thome/thome',
+              })
+            }, 1500);
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: '提交失败，请稍后重试',
+              duration: 2500,
+              theme: 'warning',
+              direction: 'column',
+            });
+          }
+        }
       });
     }
-    wx.redirectTo({
-      url: '/pages/thome/thome',
-    });
   },
 
   /**

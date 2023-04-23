@@ -1,25 +1,19 @@
 /* components/intern-card/index.wxss */
 .view_tupian_wenzi {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: large;
-
-
   /* 圆角 */
   border-radius: 20rpx;
-
   /* 边 */
   border: 3rpx solid #E0E3DA;
   box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
 
   background-color: #ffffff;
   margin: 30rpx;
-
   /* padding使得文字和图片不至于贴着边框 */
   padding: 30rpx;
-
 }
 
 /* 包裹两行文字 */
@@ -58,7 +52,7 @@
   margin-top: 20rpx;
 }
 
-.view_tag t-tag {
+.view_tag .margin-16 {
   margin-right: 20rpx;
   margin-bottom: 20rpx;
 }

@@ -50,7 +50,7 @@
   <t-picker visible="{{timeVisible}}" value="{{timeValue}}" data-key="time" title="{{timeTitle}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
     <t-picker-item options="{{times}}"></t-picker-item>
   </t-picker>
-  <t-cell title="3. 项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" />
+  <t-cell title="3. 项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bind:click="showPicker" class="test" t-class="pannel-item" />
   <!-- 年月日 -->
   <t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
 </view>
@@ -63,10 +63,10 @@
 <!-- 3. 管理报名人员 -->
 <view class="manage-students-outside-container">
   <Subtitle title="管理报名学生" icon="usergroup" />
-  <t-checkbox-group t-class="boxes" borderless bind:change="onChange" defaultValue="{{demoCheckboxMax}}">
+  <t-checkbox-group t-class="boxes" bind:change="check" borderless>
     <block wx:for="{{students}}" wx:for-item="item" wx:for-index="index">
       <view class="checkbox-info-container">
-        <t-checkbox block="{{false}}" value="checkbox{{index}}" label="" t-class="checkbox" />
+        <t-checkbox block="{{false}}" value="{{index}}" label="" t-class="checkbox" />
         <view class="sInfo">
           <view class="avatar">
             <t-avatar image="{{item.sAvatarUrl}}" size="medium" />
@@ -94,10 +94,21 @@
       <text class="white-text">|</text>
       <text class="button-text">拒绝申请</text>
     </t-button>
-    <t-button class="chat-button-container" theme="primary" size="large" shape="round" bind:tap="accept">
+    <t-button class="chat-button-container" theme="primary" size="large" shape="round" data-key="showConfirm" bind:tap="showDialog">
       <t-icon class="i" name="usergroup-add" size="48rpx" color="rgb(256, 256, 256)" />
       <text class="white-text">|</text>
       <text class="button-text">同意申请并正式立项</text>
     </t-button>
   </view>
 </view>
+
+<t-toast id="t-toast" />
+
+<t-dialog
+  visible="{{showConfirm}}"
+  content="当前选择人数小于预计招收人数，确定要正式立项吗？该操作是不可逆转的"
+  confirm-btn="{{ { content: '我要正式立项', variant: 'base', theme: 'danger'} }}"
+  cancel-btn="取消"
+  bind:confirm="accept"
+  bind:cancel="closeDialog"
+/>

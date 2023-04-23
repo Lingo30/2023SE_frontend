@@ -161,3 +161,7 @@ text {
 .white-text {
   color: #0052d9;
 }
+
+.wrapper {
+  margin-bottom: 32rpx;
+}
