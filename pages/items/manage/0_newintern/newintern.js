@@ -162,7 +162,6 @@ Page({
     } = e.currentTarget.dataset;
     console.log(key, e.detail.value);
     this.data[`${key}`] = e.detail.value;
-    // this[`${key}`] = e.detail.value;
   },
 
   getSkills(e) {
@@ -173,12 +172,6 @@ Page({
     this.setData({
       skills: e.detail.value
     })
-    // const tmp = e.detail.value.split(',');
-    // const list = [];
-    // for (let i = 0; i < tmp.length; i++) {
-    //   list.push(tmp[i]);
-    // }
-    // this[`${key}`] = list;
     console.log('skills:', this.data.skills);
   },
 
