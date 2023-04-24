@@ -1,12 +1,12 @@
 <t-toast id="t-toast" />
 <view class="container">
-  <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="loadMore" style='height:600px'>
+  <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="loadMore" style="height: calc(100vh - 180rpx);">
     <block wx:for="{{msglist}}" wx:for-item="item" wx:for-index="index">
       <msgcard itemData="{{item}}" id="{{index}}" />
     </block>
   </scroll-view>
 </view>
-<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx;">
   <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
     {{item.label}}
   </t-tab-bar-item>

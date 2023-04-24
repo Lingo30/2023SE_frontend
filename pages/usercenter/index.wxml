@@ -1,6 +1,6 @@
 <!--pages/usercenter/index.wxml-->
 <t-toast id="t-toast" />
-<scroll-view scroll-y="true" style="height: 88vh">
+<scroll-view scroll-y="true" style="height: calc(100vh - 180rpx);">
   <view class="column">
     <view class="row card" style="align-items: center">
       <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx" />
@@ -37,7 +37,7 @@
     </view>
   </view>
 </scroll-view>
-<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx;">
   <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
     {{item.label}}
   </t-tab-bar-item>

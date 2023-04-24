@@ -9,14 +9,14 @@
   </view>
 </view>
 <view class="home-page-container">
-  <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
+  <scroll-view scroll-y="true" style="height: calc(100vh - 280rpx);" bindscrolltolower="loadMore">
     <block wx:for="{{showlist}}" wx:for-item="item" wx:for-index="index">
       <infocard itemData="{{item}}" id="{{index}}" />
     </block>
   </scroll-view>
   <t-toast id="t-toast" />
 </view>
-<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx;">
   <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
     {{item.label}}
   </t-tab-bar-item>
