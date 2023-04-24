@@ -55,7 +55,6 @@ Page({
       pageLoading: true,
     });
 
-
     wx.request({
       url: getApp().globalData.baseUrl + '/searchIntern',
       header: {
@@ -63,7 +62,7 @@ Page({
       },
       method: 'POST',
       data: {
-        searchcontent: this.data.content,
+        searchcontent: this.data.searchcontent,
         tags: this.data.searchtags,
         page: this.data.page
       },
