@@ -69,8 +69,6 @@ Page({
     console.log("in onLoad() function");
     this.data.iId = options.iId;
     console.log("iId=", this.data.iId);
-    // TODO TODO：记得删掉下面这行！！！
-    this.data.iId = '32';
     // 2. 加载项目相关信息 [iId => iInfos]
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemShortInfo',
@@ -140,6 +138,55 @@ Page({
     wx.navigateTo({
       url: '/pages/items/review/mentorReview/index?sId=' + this.data.students_yet[index].sId + '&iId=' + this.data.iId
     });
+  },
+
+  commentOver() {
+    if (this.data.students_yet.length == 0) {
+      wx.request({
+        url: getApp().globalData.baseUrl + '/reviewAllStudents',
+        method: 'post',
+        data: {
+          iId: this.data.iId
+        },
+        success: (res) => {
+          if (res.data.success) {
+            console.log("success!!!");
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: "项目评价全部完成",
+              duration: 1000,
+              theme: 'success',
+              direction: 'column',
+            });
+            setTimeout(() => {
+              wx.navigateBack();
+            }, 1000);
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: "确认失败，请稍后重试",
+              duration: 1500,
+              theme: 'error',
+              direction: 'column',
+            });
+            setTimeout(() => {
+              wx.navigateBack();
+            }, 1500);
+          }
+        }
+      })
+    } else {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "仍有学生未评价",
+        duration: 1500,
+        theme: 'error',
+        direction: 'column',
+      });
+    }
   }
 
 });
