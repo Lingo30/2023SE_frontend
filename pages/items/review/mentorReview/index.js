@@ -17,7 +17,7 @@ Page({
     value: 4,
     texts: ['不合格', '不合格', '一般', '一般', '良好', '良好', '较为优秀', '优秀', '超出预期', '超出预期'],
     iId: "default",
-    sId: "default",
+    sId: "2",
     sAvatarUrl: "https://intth1.2022martu1.cn/media/avatar/default.jpg",
     sName: "李逸卓",
     sSchool: "北京航空航天大学",
@@ -82,28 +82,49 @@ Page({
 
   // 5. 按钮上传事件绑定
   submit() {
-    // 先上传, Toast
-    wx.request({
-      url: getApp().globalData.baseUrl + '/uploadMentorReview',
-      method: 'POST',
-      data: {
-        iId: this.data.iId,
-        sId: this.data.sId,
-        stars: this.data.value * 2,
-        comment: this.data.comment
-      },
-      success: (res) => {
-        if (res.data.success) {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: "上传评价成功",
-            duration: 2500,
-            theme: 'check-circle-filled',
-            direction: 'column',
-          });
-          wx.navigateBack();
-        }  else {
+    if (this.data.comment.length < 50) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "字数小于50，请写够字数后再上传",
+        duration: 2500,
+        theme: 'error',
+        direction: 'column',
+      });
+    } else {
+      // 先上传, Toast
+      wx.request({
+        url: getApp().globalData.baseUrl + '/uploadMentorReview',
+        method: 'POST',
+        data: {
+          iId: this.data.iId,
+          sId: this.data.sId,
+          stars: this.data.value * 2,
+          comment: this.data.comment
+        },
+        success: (res) => {
+          if (res.data.success) {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: "上传评价成功",
+              duration: 2500,
+              theme: 'check-circle-filled',
+              direction: 'column',
+            });
+            wx.navigateBack();
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: "上传评价失败",
+              duration: 2500,
+              theme: 'error',
+              direction: 'column',
+            });
+          }
+        },
+        fail: () => {
           Toast({
             context: this,
             selector: '#t-toast',
@@ -113,19 +134,8 @@ Page({
             direction: 'column',
           });
         }
-      },
-      fail: () => {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: "上传评价失败",
-          duration: 2500,
-          theme: 'error',
-          direction: 'column',
-        });
-      }
-    })
-    wx.navigateBack();
+      })
+    }
   },
 
   /**
