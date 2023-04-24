@@ -116,6 +116,8 @@ Page({
   },
 
   init() {
+    this.page = 1;
+    this.current = "招募中";
     this.loadHomePage();
   },
 
@@ -132,8 +134,8 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.page,
-        current: this.current,
+        page: this.data.page,
+        current: this.data.current,
       },
       success: (res) => {
         this.setData({
@@ -166,7 +168,7 @@ Page({
       method: 'POST',
       data: {
         page: page,
-        current: this.current,
+        current: this.data.current,
       },
       success: (res) => {
         if (res.data.result == 1) {

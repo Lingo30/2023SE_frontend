@@ -18,70 +18,8 @@ Page({
         key: 2,
       }
     ],
-    internlist: [{
-        id: 1,
-        title: '计算机视觉实习',
-        content: '传统目标检测，无人驾驶',
-        num: 3,
-        alreadynum: 1,
-        tags: ['3个月', '线下', 'CV', 'python'],
-        tname: '刘偲教授',
-        school: '北京航空航天大学',
-        state: '招募中',
-      },
-      {
-        id: 2,
-        title: '计算机视觉实习',
-        content: '对于diffusion model infer阶段算法加速',
-        num: 1,
-        alreadynum: 0,
-        tags: ['5个月', '线上', 'CV', 'python'],
-        tname: '朱军教授',
-        school: '清华大学',
-        state: '招募中',
-      },
-      {
-        id: 3,
-        title: '计算机视觉实习',
-        content: '传统目标检测，无人驾驶',
-        num: 3,
-        alreadynum: 1,
-        tags: ['3个月', '线下', 'CV', 'python'],
-        tname: '刘偲教授',
-        school: '北京航空航天大学',
-        state: '招募中',
-      },
-      {
-        id: 4,
-        title: '计算机视觉实习',
-        content: '传统目标检测，无人驾驶',
-        num: 1,
-        alreadynum: 1,
-        tags: ['3个月', '线下', 'CV', 'python'],
-        tname: '刘偲教授',
-        school: '北京航空航天大学',
-        state: '待评价',
-      },
-    ],
-    proflist: [{
-        id: 1,
-        name: "刘偲",
-        school: "北航",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-      {
-        id: 2,
-        name: "朱军",
-        school: "清华",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-      {
-        id: 3,
-        name: "李崇轩",
-        school: "人大",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-    ],
+    internlist: [],
+    proflist: [],
     goodsListLoadStatus: 0,
     pageLoading: false,
     autoplay: true,
@@ -96,7 +34,7 @@ Page({
   },
 
   onShow() {
-    this.getTabBar().init();
+    // this.getTabBar().init();
   },
 
   onLoad() {
@@ -112,6 +50,7 @@ Page({
   },
 
   init() {
+    this.page = 1
     this.loadHomePage();
   },
 
@@ -129,9 +68,10 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.page,
+        page: this.data.page,
       },
       success: (res) => {
+        console.log(res)
         this.setData({
           internlist: res.data.internlist,
         });

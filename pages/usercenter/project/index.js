@@ -4,9 +4,9 @@ Page({
   data: {
     imgSrcs: [],
     page: 1,
-    current: '报名中',
+    current: '审核中',
     tabList: [{
-        text: '报名中',
+        text: '审核中',
         key: 0,
       },
       {
@@ -81,7 +81,7 @@ Page({
   },
 
   onShow() {
-    this.getTabBar().init();
+    // this.getTabBar().init();
   },
 
   onLoad() {
@@ -97,6 +97,8 @@ Page({
   },
 
   init() {
+    this.page = 1;
+    this.current = "审核中"
     this.loadHomePage();
   },
 
@@ -114,8 +116,8 @@ Page({
       },
       method: 'POST',
       data: {
-        page: this.page,
-        current: this.current,
+        page: this.data.page,
+        current: this.data.current,
       },
       success: (res) => {
         this.setData({
