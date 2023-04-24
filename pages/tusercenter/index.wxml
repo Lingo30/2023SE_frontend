@@ -1,7 +1,43 @@
 <!--pages/tusercenter/index.wxml-->
-<text>pages/tusercenter/index.wxml</text>
+<t-toast id="t-toast" />
+<scroll-view scroll-y="true" style="height: calc(100vh - 180rpx);">
+  <view class="column">
+    <view class="row card" style="align-items: center">
+      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx" />
+      <view class="column">
+        <text class="h1" style="margin-left: 1rem">{{username}}</text>
+        <view class="column">
+          <view class="row" style="margin-left: 1rem; margin-top: 0.5rem">
+            <t-icon name="user-circle"></t-icon>
+            <text class="tag">{{title}}</text>
+          </view>
+          <view class="row" style="margin-left: 1rem; margin-top: 0.5rem">
+            <t-icon name="layers"></t-icon>
+            <text class="tag">{{university}}</text>
+          </view>
+        </view>
 
-<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+      </view>
+      <t-button theme="light" icon="edit" content="编辑资料" size="small" shape="round" style="margin-right: 0" bind:tap="jump2edit"></t-button>
+    </view>
+    <view class="column card" style="padding: 10rpx">
+      <t-cell title="个人简历" leftIcon="file" />
+      <t-collapse theme="card" expandMutex expandIcon>
+        <t-collapse-panel header="专业方向" value="{{0}}"> {{department}} </t-collapse-panel>
+        <t-collapse-panel header="教育经历" value="{{1}}"> {{education}} </t-collapse-panel>
+        <t-collapse-panel header="科研项目" value="{{2}}"> {{labExperience}} </t-collapse-panel>
+        <t-collapse-panel header="发表论文" value="{{3}}"> {{articles}} </t-collapse-panel>
+        <t-collapse-panel header="个人主页" value="{{4}}"> {{selfHome}} </t-collapse-panel>
+      </t-collapse>
+      <t-cell title="查看PDF版简历" hover arrow leftIcon="file-pdf" bind:tap="previewPDF" />
+    </view>
+    <view class="column" style="padding: 30rpx; align-items: center">
+      <t-button size="large" content="退出登录" style="width: 100%; background-color: white; color: tomato" bind:tap="logout">
+      </t-button>
+    </view>
+  </view>
+</scroll-view>
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx;">
   <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
     {{item.label}}
   </t-tab-bar-item>

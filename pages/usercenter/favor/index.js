@@ -14,12 +14,13 @@ Page({
         key: 1,
       },
       {
-        text: '社区',
+        text: '帖子',
         key: 2,
       }
     ],
     internlist: [],
     proflist: [],
+    momentList: [],
     goodsListLoadStatus: 0,
     pageLoading: false,
     autoplay: true,
@@ -83,6 +84,10 @@ Page({
   },
 
   loadMore() {
+    if (this.data.current == "帖子") {
+      loadMoreMoments()
+      return
+    }
     console.log(this.data.pageLoading);
     if (this.data.pageLoading) {
       return;
@@ -168,8 +173,6 @@ Page({
           wx.hideLoading();
         },
       });
-    } else {
-
     }
     console.log(this.data.page);
   },
@@ -215,6 +218,62 @@ Page({
           });
         },
       });
+    } else if (this.data.current == "帖子") {
+      this.loadMoments(1)
     }
+  },
+
+  jump2mDetail(e) {
+    wx.navigateTo({
+      url: '/pages/community/detail/index?momentId=' + e.currentTarget.dataset.id,
+    })
+  },
+
+  loadMoreMoments() {
+    this.data.page = this.data.page + 1;
+    this.loadMoments(this.data.page);
+  },
+
+  loadMoments(p) {
+    this.setData({
+      pageLoading: true
+    });
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getLikeMoments',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      method: 'POST',
+      data: {
+        page: p,
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          let momentMore = res.data.momentList
+          let momentTmp = this.data.momentList.concat(momentMore)
+          this.setData({
+            momentList: momentTmp,
+          })
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.msg,
+            duration: 2500,
+            theme: 'warning',
+            direction: 'column',
+          });
+        }
+      },
+      complete: () => {
+        this.setData({
+          pageLoading: false
+        });
+        wx.hideLoading();
+      },
+    });
   },
 });

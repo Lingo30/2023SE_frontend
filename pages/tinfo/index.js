@@ -1,34 +1,39 @@
-// pages/usercenter/index.js
+// pages/tinfo/index.js
 import Toast from 'tdesign-miniprogram/toast/index';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    tabbarValue: '/pages/usercenter/index',
-    tabbarList: getApp().globalData.tabbarList1,
     avatar: 'https://i.postimg.cc/vTSPVvKZ/default-Avatar.png',
+    userId: "",
     username: "student",
     university: "北京航空航天大学",
     department: "计算机科学与技术",
-    grades: "default",
+    title: "",
+    email: "",
+    education: "default",
     labExperience: "default",
-    awards: "default",
-    skill: "default",
+    articles: "default",
+    selfHome: "default",
     pdf: "",
+    following: 0,
   },
 
   init() {
+    wx.setNavigationBarTitle({
+      title: '导师信息',
+    })
+    wx.hideHomeButton();
     wx.request({
-      url: getApp().globalData.baseUrl + '/user',
+      url: getApp().globalData.baseUrl + '/tuser',
       method: 'post',
       header: {
         Authorization: wx.getStorageSync('token'),
       },
       data: {
-        useId: false,
-        id: ""
+        useId: true,
+        id: this.data.userId
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -37,10 +42,13 @@ Page({
             username: res.data.username,
             university: res.data.university,
             department: res.data.department,
-            grades: res.data.grades,
+            title: res.data.title,
+            email: res.data.email,
+            education: res.data.education,
             labExperience: res.data.labExperience,
-            awards: res.data.awards,
-            skill: res.data.skill,
+            articles: res.data.articles,
+            selfHome: res.data.selfHome,
+            following: res.data.following
           });
         } else {
           Toast({
@@ -56,27 +64,9 @@ Page({
     })
   },
 
-  jump2edit() {
-    wx.navigateTo({
-      url: '/pages/usercenter/edit/index',
-    });
-  },
-
   jump2project() {
     wx.navigateTo({
-      url: '/pages/usercenter/project/index',
-    });
-  },
-
-  jump2favor() {
-    wx.navigateTo({
-      url: '/pages/usercenter/favor/index',
-    });
-  },
-
-  jump2company() {
-    wx.navigateTo({
-      url: '/pages/usercenter/company/index',
+      url: '/pages/otherinternlist/profseestu/index?tId=' + this.data.userId,
     });
   },
 
@@ -88,8 +78,8 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       data: {
-        useId: false,
-        id: ""
+        useId: true,
+        id: this.data.userId
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -145,21 +135,16 @@ Page({
     });
   },
 
-  logout() {
-    wx.clearStorage();
-    wx.setStorage({
-      key: 'login',
-      data: false,
-    });
-    wx.redirectTo({
-      url: '/pages/login/index',
-    });
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setData({
+      userId: options.tId
+    })
+    this.data.userId = options.tId
+    this.init()
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -171,25 +156,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  checkLogin() {
-    if (!getApp().globalData.debugging) {
-      if (!wx.getStorageSync('login')) {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: "请登录后进入！",
-          duration: 2500,
-          theme: 'warning',
-          direction: 'column',
-        });
-        wx.redirectTo({
-          url: '/pages/login/index',
-        })
-      }
-    }
-  },
   onShow() {
-    this.checkLogin();
     this.init();
   },
 
@@ -227,12 +194,45 @@ Page({
   onShareAppMessage() {
 
   },
-  onTabbarChange(e) {
-    this.setData({
-      tabbarValue: e.detail.value,
-    });
-    wx.redirectTo({
-      url: e.detail.value,
+
+  follow() {
+    wx.request({
+      url: getApp().globalData.baseUrl + '/user/follow',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        userId: this.data.userId
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          if (this.following == 1) {
+            this.setData({
+              following: 0
+            })
+            this.following = 0;
+          } else {
+            this.setData({
+              following: 1
+            })
+            this.following = 1
+          }
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "收藏失败！",
+            duration: 2500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      }
     })
+  },
+
+  jump2chat() {
+    // todo
   },
 })

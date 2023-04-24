@@ -7,7 +7,7 @@ Page({
     imgSrcs: [],
     page: 1,
     current: '招募中',
-    userId:'',
+    userId: '',
     tabList: [{
         text: '招募中',
         key: 0,
@@ -99,9 +99,9 @@ Page({
   },
 
   onLoad(options) {
-    const sId = options.sId
+    const tId = options.tId
     this.setData({
-      userId: sId
+      userId: tId
     })
   },
 
@@ -134,7 +134,7 @@ Page({
       data: {
         page: this.data.page,
         current: this.data.current,
-        userId:this.data.userId
+        userId: this.data.userId
       },
       success: (res) => {
         this.setData({
@@ -168,7 +168,7 @@ Page({
       data: {
         page: page,
         current: this.data.current,
-        userId:this.data.userId
+        userId: this.data.userId
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -237,7 +237,7 @@ Page({
       data: {
         page: this.data.page,
         current: this.data.current,
-        userId:this.data.userId
+        userId: this.data.userId
       },
       success: (res) => {
         this.setData({

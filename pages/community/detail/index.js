@@ -96,7 +96,7 @@ Page({
           Toast({
             context: this,
             selector: '#t-toast',
-            message: "操作失败！",
+            message: "收藏失败！",
             duration: 2500,
             theme: 'error',
             direction: 'column',

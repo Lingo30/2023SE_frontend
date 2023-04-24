@@ -156,7 +156,7 @@ Page({
               theme: 'success',
               direction: 'column',
             });
-            wx.switchTab({
+            wx.redirectTo({
               url: '/pages/usercenter/index',
             });
           } else {

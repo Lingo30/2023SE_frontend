@@ -19,6 +19,7 @@
     "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
     "intern-card": "/components/intern-card/index",
     "t-fab": "tdesign-miniprogram/fab/fab",
-    "infocard": "/components/infocard/infocard"
+    "infocard": "/components/infocard/infocard",
+    "moment": "/pages/community/components/moment/index"
   }
 }

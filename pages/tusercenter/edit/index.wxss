@@ -1,5 +1,4 @@
-/* pages/tusercenter/index.wxss */
-/* pages/usercenter/index.wxss */
+/* pages/tusercenter/edit/index.wxss */
 page {
   background-color: #f5f5f5;
 }

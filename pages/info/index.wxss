@@ -1,5 +1,4 @@
-/* pages/tusercenter/index.wxss */
-/* pages/usercenter/index.wxss */
+/* pages/info/index.wxss */
 page {
   background-color: #f5f5f5;
 }
@@ -35,4 +34,11 @@ page {
 .tag {
   font-size: small;
   color: gray;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 16rpx 16rpx;
+  padding-bottom: 10px;
 }

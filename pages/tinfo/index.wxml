@@ -1,0 +1,57 @@
+<!--pages/tinfo/index.wxml-->
+<t-toast id="t-toast" />
+<scroll-view scroll-y="true" style='height:100vh'>
+  <view class="column card">
+    <view class="row" style="justify-content: center;">
+      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx;" />
+    </view>
+
+    <t-cell title="姓名" hover note="{{username}}" />
+    <t-cell title="院校" hover note="{{university}}" />
+    <t-cell title="专业" hover note="{{department}}" />
+    <t-cell title="职称" hover note="{{title}}" />
+    <t-cell title="邮箱" hover note="{{email}}" />
+  </view>
+
+  <view class="column card" style="padding: 10rpx">
+    <t-cell title="指导项目" hover arrow leftIcon="view-module" bind:tap="jump2project" />
+  </view>
+
+  <view class=" column card" style="padding: 10rpx;">
+    <t-cell title="个人简历" leftIcon="file" />
+
+    <t-collapse theme="card" expandMutex expandIcon>
+      <t-collapse-panel header="教育经历" value="{{0}}"> {{education}} </t-collapse-panel>
+      <t-collapse-panel header="科研项目" value="{{1}}"> {{labExperience}} </t-collapse-panel>
+      <t-collapse-panel header="发表论文" value="{{2}}"> {{articles}} </t-collapse-panel>
+      <t-collapse-panel header="个人主页" value="{{3}}"> {{selfHome}} </t-collapse-panel>
+    </t-collapse>
+
+    <t-cell title="查看PDF版简历" hover arrow leftIcon="file-pdf" bind:tap="previewPDF" />
+  </view>
+
+  <view class="row" style="padding: 30rpx; align-items: center;">
+
+    <t-button class="row" theme="primary" size="large" style="margin-bottom: 50rpx;" shape="round" bind:tap="follow" wx:if="{{following == 0}}">
+      <view class="row" style="align-items: center;">
+        <t-icon class="i" name="star" size="48rpx" color="rgb(256, 256, 256)" />
+        <text class="button-text" style="margin-left: 15rpx;">收藏</text>
+      </view>
+    </t-button>
+
+    <t-button class="row" theme="primary" size="large" style="margin-bottom: 50rpx;" shape="round" bind:tap="follow" wx:if="{{following == 1}}">
+      <view class="row" style="align-items: center;">
+        <t-icon class="i" name="star-filled" size="48rpx" color="rgb(256, 256, 256)" />
+        <text class="button-text" style="margin-left: 15rpx;">已收藏</text>
+      </view>
+    </t-button>
+
+    <t-button class="row" theme="primary" size="large" style="margin-bottom: 50rpx;" shape="round" bind:tap="jump2chat">
+      <view class="row" style="align-items: center;">
+        <t-icon class="i" name="chat" size="48rpx" color="rgb(256, 256, 256)" />
+        <text class="button-text" style="margin-left: 15rpx;">发消息</text>
+      </view>
+    </t-button>
+  </view>
+
+</scroll-view>

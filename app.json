@@ -34,7 +34,10 @@
     "pages/stulist/stulist",
     "pages/tusercenter/index",
     "pages/otherinternlist/profseestu/index",
-    "pages/otherinternlist/stuseeprof/index"
+    "pages/otherinternlist/stuseeprof/index",
+    "pages/tusercenter/edit/index",
+    "pages/info/index",
+    "pages/tinfo/index"
   ],
   "requiredPrivateInfos": [
     "chooseAddress"

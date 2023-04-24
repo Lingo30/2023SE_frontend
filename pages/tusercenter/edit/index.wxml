@@ -1,0 +1,40 @@
+<!--pages/tusercenter/edit/index.wxml-->
+<t-toast id="t-toast" />
+<scroll-view scroll-y="true" style='height:100vh'>
+  <view class="column card">
+    <view class="row" style="justify-content: center;">
+      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx;" bind:tap="uploadAvatar" hover />
+      <t-icon name="edit" bind:tap="uploadAvatar" hover></t-icon>
+    </view>
+    <t-input label="姓名" data-key="username" value="{{username}}" bindchange="getInputValue" clearable> </t-input>
+
+    <t-cell title="所在专业" arrow hover note="{{departmentText}}" bind:click="onDepartmentPicker" />
+    <t-picker visible="{{departmentVisible}}" data-key="department" title="选择所在专业" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+      <t-picker-item options="{{departments}}" />
+    </t-picker>
+
+    <t-input label="职称" data-key="title" value="{{title}}" bindchange="getInputValue" clearable> </t-input>
+  </view>
+
+  <view class=" column card" style="padding: 10rpx;">
+    <t-cell title="个人简历" leftIcon="file" />
+
+    <t-textarea label="教育经历" disableDefaultPadding="{{true}}" autosize data-key="education" value="{{education}}" bindchange="getInputValue" />
+
+    <t-textarea label="科研项目" disableDefaultPadding="{{true}}" autosize data-key="labExperience" value="{{labExperience}}" bindchange="getInputValue" />
+
+    <t-textarea label="发表论文" disableDefaultPadding="{{true}}" autosize data-key="articles" value="{{articles}}" bindchange="getInputValue" />
+
+    <t-textarea label="个人主页" disableDefaultPadding=" {{true}}" autosize data-key="selfHome" value="{{selfHome}}" bindchange="getInputValue" />
+  </view>
+
+  <view class=" column card" style="padding: 10rpx;">
+    <t-cell title="上传PDF版简历" leftIcon="file-pdf" arrow hover bind:tap="uploadPDF" />
+  </view>
+
+  <view class="column" style="padding: 30rpx; align-items: center;">
+    <t-button size="large" content="完成编辑" theme="primary" style="width: 100%;" bind:tap="finishEdit">
+    </t-button>
+  </view>
+
+</scroll-view>

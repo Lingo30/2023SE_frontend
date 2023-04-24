@@ -1,4 +1,4 @@
-// pages/usercenter/edit/index.js
+// pages/tusercenter/edit/index.js
 import Toast from 'tdesign-miniprogram/toast/index';
 Page({
 
@@ -7,11 +7,14 @@ Page({
    */
   data: {
     avatar: "https://i.postimg.cc/vTSPVvKZ/default-Avatar.png",
-    username: "student",
-    grades: "default",
+    username: "teacher",
+    title: "教授",
+    university: "北京航空航天大学",
+    department: "计算机科学与技术",
+    education: "default",
     labExperience: "default",
-    awards: "default",
-    skill: "default",
+    articles: "default",
+    selfHome: "default",
     departmentValue: "计算机科学与技术",
     departmentText: "计算机科学与技术",
     departments: [{
@@ -84,7 +87,7 @@ Page({
     })
     wx.hideHomeButton();
     wx.request({
-      url: getApp().globalData.baseUrl + '/user',
+      url: getApp().globalData.baseUrl + '/tuser',
       method: 'post',
       header: {
         Authorization: wx.getStorageSync('token'),
@@ -100,10 +103,11 @@ Page({
             username: res.data.username,
             departmentText: res.data.department,
             departmentValue: res.data.department,
-            grades: res.data.grades,
+            title: res.data.title,
+            education: res.data.education,
             labExperience: res.data.labExperience,
-            awards: res.data.awards,
-            skill: res.data.skill,
+            articles: res.data.articles,
+            selfHome: res.data.selfHome,
           });
         } else {
           Toast({
@@ -115,7 +119,7 @@ Page({
             direction: 'column',
           });
           wx.redirectTo({
-            url: '/pages/usercenter/index',
+            url: '/pages/tusercenter/index',
           });
         }
       }
@@ -223,18 +227,19 @@ Page({
 
   finishEdit() {
     wx.request({
-      url: getApp().globalData.baseUrl + '/user/edit',
+      url: getApp().globalData.baseUrl + '/tuser/edit',
       method: 'post',
       header: {
         Authorization: wx.getStorageSync('token'),
       },
       data: {
-        username: this.username,
-        department: this.departmentValue,
-        grades: this.grades,
-        labExperience: this.labExperience,
-        awards: this.awards,
-        skill: this.skill
+        username: this.data.username,
+        department: this.data.departmentValue,
+        title: this.data.title,
+        education: this.data.education,
+        labExperience: this.data.labExperience,
+        articles: this.data.articles,
+        selfHome: this.data.selfHome
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -247,7 +252,7 @@ Page({
             direction: 'column',
           });
           wx.redirectTo({
-            url: '/pages/usercenter/index',
+            url: '/pages/tusercenter/index',
           })
         } else {
           Toast({

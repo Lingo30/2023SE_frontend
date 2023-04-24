@@ -1,0 +1,41 @@
+<!--pages/info/index.wxml-->
+<t-toast id="t-toast" />
+<scroll-view scroll-y="true" style='height:100vh'>
+  <view class="column card">
+    <view class="row" style="justify-content: center;">
+      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx;" />
+    </view>
+
+    <t-cell title="姓名" hover note="{{username}}" />
+    <t-cell title="院校" hover note="{{university}}" />
+    <t-cell title="专业" hover note="{{department}}" />
+    <t-cell title="邮箱" hover note="{{email}}" />
+  </view>
+
+  <view class="column card" style="padding: 10rpx">
+    <t-cell title="参与项目" hover arrow leftIcon="view-module" bind:tap="jump2project" />
+  </view>
+
+  <view class=" column card" style="padding: 10rpx;">
+    <t-cell title="个人简历" leftIcon="file" />
+
+    <t-collapse theme="card" expandMutex expandIcon>
+      <t-collapse-panel header="学业成绩" value="{{0}}"> {{grades}} </t-collapse-panel>
+      <t-collapse-panel header="科研经历" value="{{1}}"> {{labExperience}} </t-collapse-panel>
+      <t-collapse-panel header="竞赛获奖" value="{{2}}"> {{awards}} </t-collapse-panel>
+      <t-collapse-panel header="擅长技能" value="{{3}}"> {{skill}} </t-collapse-panel>
+    </t-collapse>
+
+    <t-cell title="查看PDF版简历" hover arrow leftIcon="file-pdf" bind:tap="previewPDF" />
+  </view>
+
+  <view class="column" style="padding: 30rpx; align-items: center;">
+    <t-button class="row" theme="primary" size="large" style="margin-bottom: 50rpx;" shape="round" bind:tap="jump2chat">
+      <view class="row" style="align-items: center;">
+        <t-icon class="i" name="chat" size="48rpx" color="rgb(256, 256, 256)" />
+        <text class="button-text" style="margin-left: 15rpx;">发消息</text>
+      </view>
+    </t-button>
+  </view>
+
+</scroll-view>
