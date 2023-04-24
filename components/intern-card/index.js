@@ -41,7 +41,7 @@ Component({
         (ctx == "t_待结项") ? "manage/2_ongoing" :
         (ctx == "t_待评价") ? "manage/3_toBeReviewed" :
         (ctx == "t_已完成") ? "manage/4_finished" :
-        (ctx == "s_报名中") ? "browse/1_toBeSelected" :
+        (ctx == "s_审核中") ? "browse/1_toBeSelected" :
         (ctx == "s_待结项") ? "browse/2_ongoing" :
         (ctx == "s_待评价") ? "browse/3_toBeReviewed" :
         (ctx == "s_已完成") ? "browse/4_finished" : "404Error"

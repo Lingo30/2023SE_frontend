@@ -13,29 +13,7 @@ Page({
     iTime: "2023-12-31",
     iDuration: "7个月",
     iType: "线上",
-    students: [{
-        sId: "1",
-        sName: "string1",
-        sAvatarUrl: "string1",
-        sSchool: "北京航空航天大学"
-      },
-      {
-        sId: "2",
-        sName: "string2",
-        sAvatarUrl: "string2",
-        sSchool: "string2"
-      }, {
-        sId: "3",
-        sName: "string1",
-        sAvatarUrl: "string1",
-        sSchool: "北京航空航天大学"
-      }, {
-        sId: "4",
-        sName: "string1",
-        sAvatarUrl: "string1",
-        sSchool: "北京航空航天大学"
-      }
-    ],
+    students: [],
     checkList: [],
     // 复用zlb
     mode: '',
@@ -213,6 +191,7 @@ Page({
   onLoad(options) {
     console.log("in onLoad() function");
     this.data.iId = options.iId;
+    console.log(options);
     console.log("iId=", this.data.iId);
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemShortInfo',
@@ -244,7 +223,9 @@ Page({
             theme: 'error',
             direction: 'column',
           });
-          wx.navigateBack();
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         }
       },
       fail: () => {
@@ -281,7 +262,9 @@ Page({
             theme: 'error',
             direction: 'column',
           });
-          wx.navigateBack();
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         }
       },
       fail: () => {
@@ -293,7 +276,9 @@ Page({
           theme: 'error',
           direction: 'column',
         });
-        wx.navigateBack();
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
       }
     });
   },

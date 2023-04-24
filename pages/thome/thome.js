@@ -242,6 +242,7 @@ Page({
         this.setData({
           internlist: res.data.internlist,
         });
+        // console.log(res.data.internlist)
       },
     });
   },
