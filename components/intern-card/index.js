@@ -33,6 +33,7 @@ Component({
       // 组件的点击事件逻辑代码
       // console.log(e.currentTarget.dataset.item)
       let id = e.currentTarget.dataset.item.id
+      console.log("iId=", JSON.stringify(id));
       let ctx = e.currentTarget.dataset.ctx
       // console.log("itemId=", id)
       // console.log("ctx=", ctx)

@@ -30,7 +30,7 @@
   <Subtitle title="待评价学生" icon="usergroup" />
   <block wx:for="{{students_yet}}" wx:for-item="item" wx:for-index="index">
     <view class="button-and-student-container">
-      <t-button class="home-button-container" theme="primary" size="medium" shape="round" bind:tap="comment">评价</t-button>
+      <t-button class="home-button-container" theme="primary" size="medium" shape="round" bind:tap="comment" data-index='{{index}}'>评价</t-button>
       <view class="sInfo">
         <view class="avatar">
           <t-avatar image="{{item.sAvatarUrl}}" size="medium" />
@@ -83,7 +83,7 @@
 
 <!-- 4. button -->
 <view class="button">
-  <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="apply">
+  <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="commentOver">
     <t-icon class="i" name="tips" size="48rpx" color="rgb(256, 256, 256)" />
     <text class="white-text">|</text>
     <text class="button-text">已完成全部评价 (需导师手动确认)</text>
