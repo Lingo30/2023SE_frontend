@@ -1,12 +1,8 @@
-// pages/items/review/mentorReview/index.js
+// pages/items/browse/toBeReviewed/index.js
 
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
-  // 该页面传入数据：
-  // token, sId
-  // 在onLoad()函数中提取变量
-
 
   /**
    * 页面的初始数据
@@ -46,36 +42,24 @@ Page({
 
   // 4. 页面加载获取信息
   onLoad(options) {
-    // 获取sId, iId
+    // 1. 获取iId
     this.setData({
-      sId: options.sId,
       iId: options.iId
     })
-    // 后端查询学生基本信息
+    // 2. 获得导师信息 tId => tInfos
     wx.request({
-      url: getApp().globalData.baseUrl + '/getSInfo',
+      url: getApp().globalData.baseUrl + '/iId2tInfos',
       method: 'POST',
       data: {
-        sId: this.data.sId
+        iId: this.data.iId
       },
       success: (res) => {
         this.setData({
-          sAvatarUrl: res.data.sAvatarUrl,
-          sName: res.data.sName,
-          sSchool: res.data.sSchool,
-          sEmail: res.data.sEmail
+          tId: res.data.tId,
+          tName: res.data.tName,
+          tPosition: res.data.tPosition,
+          tInfo: res.data.tInfo
         })
-      },
-      fail: () => {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: "加载学生信息失败",
-          duration: 2500,
-          theme: 'error',
-          direction: 'column',
-        });
-        wx.navigateBack();
       }
     })
   },
@@ -97,7 +81,7 @@ Page({
             context: this,
             selector: '#t-toast',
             message: "上传评价成功",
-            duration: 2500,
+            duration: 1500,
             theme: 'check-circle-filled',
             direction: 'column',
           });
@@ -107,7 +91,7 @@ Page({
             context: this,
             selector: '#t-toast',
             message: "上传评价失败",
-            duration: 2500,
+            duration: 1500,
             theme: 'error',
             direction: 'column',
           });
@@ -118,47 +102,12 @@ Page({
           context: this,
           selector: '#t-toast',
           message: "上传评价失败",
-          duration: 2500,
+          duration: 1500,
           theme: 'error',
           direction: 'column',
         });
       }
-    })
-    wx.navigateBack();
-  },
+    });
+  }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
 });

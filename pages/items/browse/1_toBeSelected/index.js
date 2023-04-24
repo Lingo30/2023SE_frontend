@@ -14,7 +14,7 @@ Page({
     iPlace: "default",
     iDuration: 'n个月',
     tInfo: 'default',
-    // item_info: 365
+    tAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
     iTime: 'YYYY年M月D日',
     iType: '线上',
     iInfo: 'default',
@@ -64,7 +64,7 @@ Page({
           iCapacity: res.data.iCapacity,
           iDuration: res.data.iDuration,
           iPlace: res.data.iPlace,
-          // TODO: 其实应该新增一个tAvatar，但是我太懒了
+          tAvatarUrl: res.data.tAvatarUrl,
           tName: res.data.tName,
           tPosition: res.data.tPosition,
           tInfo: res.data.tInfo,

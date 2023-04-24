@@ -58,7 +58,7 @@
 
 <!-- 4. button -->
 <view class="button">
-  <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="apply">
+  <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="end">
     <t-icon class="i" name="flag" size="48rpx" color="rgb(256, 256, 256)" />
     <text class="white-text">|</text>
     <text class="button-text">项目已完成，立即结项</text>

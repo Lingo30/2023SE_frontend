@@ -14,7 +14,7 @@ Page({
     iPlace: "default",
     iDuration: 'n个月',
     tInfo: 'default',
-    // item_info: 365
+    tAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
     iTime: 'YYYY年M月D日',
     iType: '线上',
     iInfo: 'default',
@@ -68,7 +68,7 @@ Page({
           iCapacity: res.data.iCapacity,
           iDuration: res.data.iDuration,
           iPlace: res.data.iPlace,
-          // TODO: 其实应该新增一个tAvatar，但是我太懒了
+          tAvatarUrl: res.data.tAvatarUrl,
           tName: res.data.tName,
           tPosition: res.data.tPosition,
           tInfo: res.data.tInfo,
@@ -134,54 +134,30 @@ Page({
 
   // 4. 导师详情函数
   jump2Mentor() {
-    wx.navigateTo({
-      /* 导师详情页url */
-      url: 'TODO_url' + '?iId=' + this.data.iId
-    })
-  },
-
-  // 5. 申请项目页面
-  apply() {
-    // 5-1. request
+    const tId = '1';
     wx.request({
-      url: getApp().globalData.baseUrl + '/apply',
-      method: 'post',
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
+      url: getApp().globalData.baseUrl + '/getTId',
       data: {
         iId: this.data.iId
       },
       success: (res) => {
-        if (res.data.success) {
-          console.log("Succeed in applying!!!");
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: '申请成功！',
-            duration: 1000,
-            icon: 'check-circle',
-            direction: 'column',
-          });
-          setTimeout(() => {
-            // TODO: 这里应该跳转至带选中页面
-            wx.navigateBack();
-          }, 1000);
-          // 5-2. 跳转
-
-        } else {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: "申请失败，请稍后重试",
-            duration: 2500,
-            theme: 'error',
-            direction: 'column',
-          });
-        }
+        tId = res.data.tId;
       }
     })
+    wx.navigateTo({
+      /* 导师详情页url */
+      url: 'TODO_url' + '?tId=' + tId
+    })
+  },
 
+  // 5. 学生详情函数
+  jump2Student(e) {
+    const index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      /* 学生详情页url */
+      url: 'TODO_url' + '?sId=' + this.data.students[index].sId
+    })
   },
 
   // 6. 沟通跳转
@@ -229,48 +205,6 @@ Page({
         });
       }
     });
-  },
+  }
 
-  // 7. 其他项目跳转
-  jump2Item(e) {
-    let targetIId = (this.data.internlist)[e.currentTarget.id].iId;
-    wx.navigateTo({
-      url: '/pages/items/browse/0_details/index?iId=' + targetIId,
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
 });
