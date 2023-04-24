@@ -4,7 +4,7 @@
 <view class="home-page-header">
   <view class="search" bind:tap="navToSearchPage">
     <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="北航校内实习" leftIcon="" disabled>
-      <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
+      <t-icon slot="left-icon" name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>
   <!-- <view class="swiper-wrap">
