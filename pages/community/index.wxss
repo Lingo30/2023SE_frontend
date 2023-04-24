@@ -29,10 +29,6 @@ page {
   float: right;
   color: #0052D9;
   position: fixed;
-  bottom: 200rpx;
-  right: 20rpx;
-  width: 80rpx;
-  height: 80rpx;
-  margin-bottom: 12vh;
-  margin-right: 5vw;
+  bottom: 300rpx;
+  right: 10%;
 }

@@ -72,7 +72,7 @@ Page({
         page: this.data.page,
       },
       success: (res) => {
-        console.log(res)
+        // console.log(res)
         this.setData({
           internlist: res.data.internlist,
         });
@@ -85,10 +85,10 @@ Page({
 
   loadMore() {
     if (this.data.current == "帖子") {
-      loadMoreMoments()
+      this.loadMoreMoments()
       return
     }
-    console.log(this.data.pageLoading);
+    // console.log(this.data.pageLoading);
     if (this.data.pageLoading) {
       return;
     }
@@ -174,18 +174,18 @@ Page({
         },
       });
     }
-    console.log(this.data.page);
+    // console.log(this.data.page);
   },
 
   tabChangeHandle(e) {
-    console.log(e.detail);
+    // console.log(e.detail);
     this.setData({
       page: 1,
     });
     this.setData({
       current: e.detail.label,
     });
-    console.log(this.data.page, this.data.current);
+    // console.log(this.data.page, this.data.current);
     if (this.data.current == "项目") {
       wx.request({
         url: `${getApp().globalData.baseUrl}/getLikeProj`,
@@ -219,6 +219,10 @@ Page({
         },
       });
     } else if (this.data.current == "帖子") {
+      this.data.momentList = []
+      this.setData({
+        momentList: []
+      })
       this.loadMoments(1)
     }
   },
@@ -257,6 +261,7 @@ Page({
           this.setData({
             momentList: momentTmp,
           })
+          // console.log(this.data.momentList)
         } else {
           Toast({
             context: this,

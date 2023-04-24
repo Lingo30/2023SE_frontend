@@ -66,7 +66,7 @@ Page({
 
   jump2project() {
     wx.navigateTo({
-      url: '/pages/otherinternlist/profseestu/index?tId=' + this.data.userId,
+      url: '/pages/otherinternlist/stuseeprof/index?tId=' + this.data.userId,
     });
   },
 

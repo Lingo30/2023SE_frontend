@@ -10,14 +10,14 @@
     </t-tabs>
   </view>
 
-  <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
+  <scroll-view scroll-y="true" style='height:95vh' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='项目'}}">
       <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'t_' + current}}" />
     </block>
     <block wx:for="{{proflist}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='导师'}}">
       <infocard itemData="{{item}}" id="{{index}}" />
     </block>
-    <block wx:for="{{momentlist}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='帖子'}}">
+    <block wx:for="{{momentList}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='帖子'}}">
       <moment item="{{item}}" id="{{index}}" bindtap="jump2mDetail" data-id="{{item.momentId}}" />
     </block>
   </scroll-view>

@@ -12,7 +12,7 @@
     <moment item="{{item}}" id="{{index}}" bindtap="jump2Detail" data-id="{{item.momentId}}" />
   </block>
 </scroll-view>
-<t-fab icon="edit" bind:click="jump2post" class="fab"></t-fab>
+<t-button icon="edit" bind:click="jump2post" theme="primary" shape="round" size="large" class="fab"></t-button>
 <t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx;">
   <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
     {{item.label}}
