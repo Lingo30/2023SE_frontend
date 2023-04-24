@@ -137,8 +137,9 @@ Page({
         userId: this.data.userId
       },
       success: (res) => {
+        console.log(res)
         this.setData({
-          internlist: res.data.internlist,
+          internlist: res.data.projectList,
         });
       },
     });
@@ -172,7 +173,7 @@ Page({
       },
       success: (res) => {
         if (res.data.result == 1) {
-          const internmore = res.data.internlist
+          const internmore = res.data.projectList
           const internlisttmp = this.data.internlist.concat(internmore)
           // console.log(internlisttmp)
           this.setData({
@@ -241,7 +242,7 @@ Page({
       },
       success: (res) => {
         this.setData({
-          internlist: res.data.internlist,
+          internlist: res.data.projectList,
         });
         // console.log(res.data.internlist)
       },

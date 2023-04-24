@@ -7,6 +7,14 @@ Component({
     itemData: {
       type: Object,
       value: {}
+    },
+    id: {
+      type: String,
+      value: ""
+    },
+    ctx: {
+      type: String,
+      value: "home"
     }
   },
 
@@ -23,12 +31,16 @@ Component({
   methods: {
     click(e) {
       // 组件的点击事件逻辑代码
-      // console.log(e.currentTarget.dataset.item)
+      console.log(e.currentTarget.dataset)
       let id = e.currentTarget.dataset.item.id
+      let ctx = e.currentTarget.dataset.ctx
       console.log(id)
-      // wx.navigateTo({
-      //   url: '/pages/destination/destination?id=' + JSON.stringify(id)
-      // })
+      let pageName = (ctx == "stu") ? "info" : "tinfo"
+      console.log(pageName)
+      let idname = (ctx == "stu") ? "sId" : "tId"
+      wx.navigateTo({
+        url: '/pages/' + pageName + '/index?' + idname + '=' + JSON.stringify(id)
+      })
     }
   }
 })

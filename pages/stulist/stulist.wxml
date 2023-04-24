@@ -11,7 +11,7 @@
 <view class="home-page-container">
   <scroll-view scroll-y="true" style="height: calc(100vh - 280rpx);" bindscrolltolower="loadMore">
     <block wx:for="{{showlist}}" wx:for-item="item" wx:for-index="index">
-      <infocard itemData="{{item}}" id="{{index}}" />
+      <infocard itemData="{{item}}" id="{{item.id}}" ctx="stu"/>
     </block>
   </scroll-view>
   <t-toast id="t-toast" />

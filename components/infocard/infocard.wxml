@@ -1,4 +1,4 @@
-<view class="card" bindtap="click" data-item="{{itemData}}">
+<view class="card" bindtap="click" data-item="{{itemData}}" data-ctx="{{ctx}}" >
   <view class="avatar">
     <t-avatar image="{{itemData.avatar}}" size="80rpx" />
   </view>

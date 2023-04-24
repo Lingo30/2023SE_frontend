@@ -15,7 +15,7 @@
       <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'t_' + current}}" />
     </block>
     <block wx:for="{{proflist}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='导师'}}">
-      <infocard itemData="{{item}}" id="{{index}}" />
+      <infocard itemData="{{item}}" id="{{index}}" ctx="prof" />
     </block>
     <block wx:for="{{momentList}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='帖子'}}">
       <moment item="{{item}}" id="{{index}}" bindtap="jump2mDetail" data-id="{{item.momentId}}" />

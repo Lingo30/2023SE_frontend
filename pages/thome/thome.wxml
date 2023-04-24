@@ -14,7 +14,7 @@
   <!-- 2. 项目列表 -->
   <scroll-view scroll-y="true" style='height:600px' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
-      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{'t_' + current}}" />
+      <intern-card itemData="{{item}}" id="{{item.id}}" ctx="{{'t_' + current}}" />
     </block>
   </scroll-view>
 
