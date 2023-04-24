@@ -3,7 +3,7 @@
   <t-input label="项目标题" placeholder="最大输入10个字符" maxlength="{{10}}" data-key="title" clearable bindchange="getInputValue"></t-input>
   <t-input label="项目简介" placeholder="最大输入20个字符" maxlength="{{20}}" data-key="brief" clearable bindchange="getInputValue">
   </t-input>
-  <t-input label="所需技能" placeholder="不同技能用逗号分隔" data-key="skills" clearable bindchange="getSkills">
+  <t-input label="所需技能" placeholder="" data-key="skills" clearable bindchange="getSkills">
   </t-input>
 
   <!-- 人数 -->

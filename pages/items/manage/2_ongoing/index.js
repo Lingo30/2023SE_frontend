@@ -74,7 +74,9 @@ Page({
             theme: 'error',
             direction: 'column',
           });
-          wx.navigateBack();
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         }
       },
       fail: () => {
@@ -86,7 +88,9 @@ Page({
           theme: 'error',
           direction: 'column',
         });
-        wx.navigateBack();
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
       }
     });
     wx.request({
@@ -111,7 +115,9 @@ Page({
             theme: 'error',
             direction: 'column',
           });
-          wx.navigateBack();
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         }
       },
       fail: () => {
@@ -123,7 +129,9 @@ Page({
           theme: 'error',
           direction: 'column',
         });
-        wx.navigateBack();
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
       }
     });
   },
@@ -158,7 +166,9 @@ Page({
             theme: 'error',
             direction: 'column',
           });
-          wx.navigateBack();
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         }
       },
       fail: () => {
@@ -170,7 +180,9 @@ Page({
           theme: 'error',
           direction: 'column',
         });
-        wx.navigateBack();
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
       }
     });
   }

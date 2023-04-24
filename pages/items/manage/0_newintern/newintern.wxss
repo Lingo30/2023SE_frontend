@@ -56,7 +56,7 @@ text {
 
 .button-example {
   margin: 0 32rpx;
-  padding-bottom: 200rpx;
+  padding-bottom: 20rpx;
 }
 
 .recruitNum-8radio-container {
