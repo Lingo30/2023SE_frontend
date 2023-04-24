@@ -128,7 +128,7 @@ Page({
       pageLoading: true,
     });
     wx.request({
-      url: `${getApp().globalData.baseUrl}/getRecommend`,
+      url: `${getApp().globalData.baseUrl}/getDrProject`,
       header: {
         Authorization: wx.getStorageSync('token'),
       },
@@ -161,7 +161,7 @@ Page({
       title: '加载中',
     });
     wx.request({
-      url: `${getApp().globalData.baseUrl}/getRecommend`,
+      url: `${getApp().globalData.baseUrl}/getDrProject`,
       header: {
         Authorization: wx.getStorageSync('token'),
       },
@@ -229,14 +229,14 @@ Page({
     });
     console.log(this.data.page, this.data.current);
     wx.request({
-      url: `${getApp().globalData.baseUrl}/getRecommend`,
+      url: `${getApp().globalData.baseUrl}/getDrProject`,
       header: {
         Authorization: wx.getStorageSync('token'),
       },
       method: 'POST',
       data: {
-        page: this.page,
-        current: this.current,
+        page: this.data.page,
+        current: this.data.current,
       },
       success: (res) => {
         this.setData({
