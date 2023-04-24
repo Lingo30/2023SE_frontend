@@ -1,0 +1,16 @@
+<view style="text-align: center; color: #b9b9b9" wx:if="{{pageLoading}}">
+  <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
+</view>
+<view class="home-page-container">
+  <scroll-view scroll-y="true" style='height:95vh' bindscrolltolower="loadMore">
+    <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
+      <intern-card itemData="{{item}}" id="{{index}}" ctx="s_已完成" />
+    </block>
+  </scroll-view>
+  <t-toast id="t-toast" />
+</view>
+<!-- <t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}">
+  <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
+    {{item.label}}
+  </t-tab-bar-item>
+</t-tab-bar> -->

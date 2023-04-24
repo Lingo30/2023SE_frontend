@@ -32,7 +32,9 @@
     "pages/search/searchres/index",
     "pages/community/post/index",
     "pages/stulist/stulist",
-    "pages/tusercenter/index"
+    "pages/tusercenter/index",
+    "pages/otherinternlist/profseestu/index",
+    "pages/otherinternlist/stuseeprof/index"
   ],
   "requiredPrivateInfos": [
     "chooseAddress"
