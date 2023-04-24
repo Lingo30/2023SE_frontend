@@ -2,7 +2,7 @@
 <t-input label="项目标题" placeholder="最大输入10个字符" maxlength="{{10}}" data-key="title" clearable bindchange="getInputValue"></t-input>
 <t-input label="项目简介" placeholder="最大输入20个字符" maxlength="{{20}}" data-key="brief" clearable bindchange="getInputValue">
 </t-input>
-<t-input label="所需技能" placeholder="不同技能用逗号分隔" data-key="skills" clearable bindchange="getSkills">
+<t-input label="所需技能" placeholder="" data-key="skills" clearable bindchange="getSkills">
 </t-input>
 
 <!-- 人数 -->
@@ -28,10 +28,10 @@
 <!-- type -->
 <view class="textarea-example_2">
   <text class="textarea-example__label">项目形式</text>
-    <t-radio-group default-value="0" borderless t-class="box" bind:change="getInputValue" data-key="type">
-      <t-radio block="{{false}}" label="线上" value="线上" />
-      <t-radio block="{{false}}" label="线下" value="线下" />
-    </t-radio-group>
+  <t-radio-group default-value="0" borderless t-class="box" bind:change="getInputValue" data-key="type">
+    <t-radio block="{{false}}" label="线上" value="线上" />
+    <t-radio block="{{false}}" label="线下" value="线下" />
+  </t-radio-group>
 </view>
 <t-divider />
 
@@ -58,4 +58,3 @@
     {{item.label}}
   </t-tab-bar-item>
 </t-tab-bar>
-
