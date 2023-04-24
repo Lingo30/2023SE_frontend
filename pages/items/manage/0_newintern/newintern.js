@@ -21,7 +21,7 @@ Page({
     starttime: '',
     capacity: '',
     duration: '',
-    skills: [],
+    skills: '',
     type: '',
 
     // 持续时间
@@ -161,24 +161,30 @@ Page({
       key
     } = e.currentTarget.dataset;
     console.log(key, e.detail.value);
-    this[`${key}`] = e.detail.value;
+    this.data[`${key}`] = e.detail.value;
+    // this[`${key}`] = e.detail.value;
   },
 
   getSkills(e) {
     const {
       key
     } = e.currentTarget.dataset;
-    const tmp = e.detail.value.split(',');
-    const list = [];
-    for (let i = 0; i < tmp.length; i++) {
-      list.push(tmp[i]);
-    }
-    this[`${key}`] = list;
+    // console.log(key)
+    this.setData({
+      skills: e.detail.value
+    })
+    // const tmp = e.detail.value.split(',');
+    // const list = [];
+    // for (let i = 0; i < tmp.length; i++) {
+    //   list.push(tmp[i]);
+    // }
+    // this[`${key}`] = list;
     console.log('skills:', this.data.skills);
   },
 
   // 提交
   submit() {
+    console.log(this.data)
     if (
       !this.data.title ||
       !this.data.content ||
