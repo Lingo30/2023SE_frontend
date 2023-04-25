@@ -15,6 +15,10 @@ Component({
     ctx: {
       type: String,
       value: "home"
+    },
+    sId: {
+      type: String,
+      value: "default"
     }
   },
 
@@ -34,6 +38,7 @@ Component({
       // console.log(e.currentTarget.dataset.item)
       let id = e.currentTarget.dataset.item.id
       let ctx = e.currentTarget.dataset.ctx
+      let sId = e.currentTarget.dataset.sid
       let pageName = (ctx == "home") ? "browse/0_details" :
         (ctx == "t_招募中") ? "manage/1_recruiting" :
         (ctx == "t_待结项") ? "manage/2_ongoing" :
@@ -46,7 +51,7 @@ Component({
         (ctx == "项目") ? "browse/0_details" : "404Error";
       console.log("跳转至项目详情前：pageName=", pageName, ", iId=", JSON.stringify(id))
       wx.navigateTo({
-        url: '/pages/items/' + pageName + '/index?iId=' + JSON.stringify(id)
+        url: '/pages/items/' + pageName + '/index?iId=' + JSON.stringify(id) + "&sId=" + sId
       })
     }
   }

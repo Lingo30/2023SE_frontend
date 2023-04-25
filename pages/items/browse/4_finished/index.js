@@ -4,6 +4,7 @@ import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   // 1. 全部数据
   data: {
+    sId: '1',
     iId: "1",
     i_tLiked: false,
     iTitle: "计算机视觉图像去雾元学习MAMLReptileSGD自然语言处理",
@@ -51,7 +52,9 @@ Page({
     // 2-1. 获取项目id
     console.log("in onLoad() function");
     this.data.iId = options.iId;
+    this.data.sId = options.sId;
     console.log("iId=", this.data.iId);
+    console.log("sId=", this.data.sId);
     // 查询项目信息
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemInfo',
@@ -121,7 +124,8 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       data: {
-        iId: this.data.iId
+        iId: this.data.iId,
+        sId: this.data.sId
       },
       success: (res) => {
         if (typeof res.data.stars === 'undefined') {
