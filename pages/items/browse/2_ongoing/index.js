@@ -162,7 +162,7 @@ Page({
 
   // 4. 导师详情函数
   jump2Mentor() {
-    const tId = '1';
+    let tId = '1';
     wx.request({
       url: getApp().globalData.baseUrl + '/getTId',
       method: "post",

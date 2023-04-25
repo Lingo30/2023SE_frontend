@@ -102,34 +102,6 @@ Page({
         }
       }
     });
-    // 3. 加载两个学生数组
-    wx.request({
-      url: getApp().globalData.baseUrl + '/iId2alreadyANDyet',
-      data: {
-        iId: this.data.iId
-      },
-      method: 'post',
-      success: (res) => {
-        if (res.data.success) {
-          this.setData({
-            students_yet: res.data.yet,
-            students_already: res.data.already
-          });
-        } else {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: "加载评价学生数据失败",
-            duration: 1500,
-            theme: 'error',
-            direction: 'column',
-          });
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
-        }
-      }
-    });
   },
 
   comment(e) {
@@ -206,5 +178,36 @@ Page({
       url: '/pages/info/index' + '?sId=' + this.data.students_yet[index].sId
     })
   },
+
+  onShow() {
+    // 3. 加载两个学生数组
+    wx.request({
+      url: getApp().globalData.baseUrl + '/iId2alreadyANDyet',
+      data: {
+        iId: this.data.iId
+      },
+      method: 'post',
+      success: (res) => {
+        if (res.data.success) {
+          this.setData({
+            students_yet: res.data.yet,
+            students_already: res.data.already
+          });
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "加载评价学生数据失败",
+            duration: 1500,
+            theme: 'error',
+            direction: 'column',
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        }
+      }
+    });
+  }
 
 });

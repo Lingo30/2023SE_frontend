@@ -477,7 +477,54 @@ Page({
         dialogKey: key
       });
     } else {
-      this.accept();
+      const sIds = this.data.checkList.map(i => this.data.students[i].sId);
+      wx.request({
+        url: getApp().globalData.baseUrl + '/startTheMFIntern',
+        method: 'post',
+        data: {
+          iId: this.data.iId,
+          sIds: sIds
+        },
+        success: (res) => {
+          if (res.data.success) {
+            console.log("success!!!");
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: "已成功立项！",
+              duration: 1000,
+              theme: 'success',
+              direction: 'column',
+            });
+            setTimeout(() => {
+              // TODO: 这里应该跳转至带选中页面
+              wx.navigateTo({
+                url: '/pages/thome/thome'
+              });
+            }, 1000);
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: "立项失败",
+              duration: 1500,
+              theme: 'error',
+              direction: 'column',
+            });
+            wx.navigateBack();
+          }
+        },
+        fail: () => {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "立项失败",
+            duration: 1500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      });
     }
   },
 
