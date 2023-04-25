@@ -120,6 +120,7 @@ Page({
     const tId = '1';
     wx.request({
       url: getApp().globalData.baseUrl + '/getTId',
+      method: "post",
       data: {
         iId: this.data.iId
       },
