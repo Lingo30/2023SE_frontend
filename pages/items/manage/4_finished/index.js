@@ -56,6 +56,7 @@ Page({
     console.log("in onLoad() function");
     this.data.iId = options.iId;
     console.log("iId=", this.data.iId);
+    // 获取项目简单信息
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemShortInfo',
       method: 'post',
@@ -99,6 +100,7 @@ Page({
         wx.navigateBack();
       }
     });
+    // 获取项目学生列表
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemStudents',
       method: 'post',
@@ -134,6 +136,32 @@ Page({
           direction: 'column',
         });
         wx.navigateBack();
+      }
+    });
+    // 获取项目评论列表
+    wx.request({
+      url: getApp().globalData.baseUrl + "/getReviewMentor",
+      method: "post",
+      data: {
+        iId: this.data.iId
+      },
+      success: (res) => {
+        if (typeof res.data.reviews === undefined) {
+          this.data.noReview = true;
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "评论信息加载失败",
+            duration: 1000,
+            theme: 'error',
+            direction: 'column',
+          });
+        } else {
+          this.setData({
+            reviews: res.data.reviews,
+            noReview: (res.data.reviews.length == 0)
+          })
+        }
       }
     });
   },

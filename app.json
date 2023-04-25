@@ -14,7 +14,6 @@
     "pages/items/manage/2_ongoing/index",
     "pages/items/manage/3_toBeReviewed/index",
     "pages/items/manage/4_finished/index",
-    "pages/items/review/studentReview/index",
     "pages/items/review/mentorReview/index",
     "pages/items/404Error/index",
     "pages/usercenter/index",
