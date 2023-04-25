@@ -31,8 +31,8 @@ Page({
       },
       method: 'POST',
       success: (res) => {
-        this.hasInterAuthority = res.data.result;
-        this.interEmail = res.data.email;
+        this.data.hasInterAuthority = res.data.result;
+        this.data.interEmail = res.data.email;
         this.setData({
           hasInterAuthority: res.data.result,
           interEmail: res.data.email

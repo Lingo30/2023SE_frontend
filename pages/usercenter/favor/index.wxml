@@ -12,7 +12,7 @@
 
   <scroll-view scroll-y="true" style='height:95vh' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='项目'}}">
-      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{current}}"/>
+      <intern-card itemData="{{item}}" id="{{index}}" ctx="{{current}}" />
     </block>
     <block wx:for="{{proflist}}" wx:for-item="item" wx:for-index="index" wx:if="{{current=='导师'}}">
       <infocard itemData="{{item}}" id="{{index}}" ctx="prof" />

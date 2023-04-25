@@ -63,6 +63,7 @@
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
+    "t-result": "tdesign-miniprogram/result/result",
     "t-tab-bar-item": "tdesign-miniprogram/tab-bar-item/tab-bar-item"
   },
   "window": {

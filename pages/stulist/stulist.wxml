@@ -4,14 +4,14 @@
 <view class="home-page-header" style="margin-bottom: 20rpx;">
   <view class="search">
     <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="北航" value="{{content}}" leftIcon="" bind:change="changeContent" bind:submit="getStulist">
-      <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
+      <t-icon slot="left-icon" name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>
 </view>
 <view class="home-page-container">
   <scroll-view scroll-y="true" style="height: calc(100vh - 280rpx);" bindscrolltolower="loadMore">
     <block wx:for="{{showlist}}" wx:for-item="item" wx:for-index="index">
-      <infocard itemData="{{item}}" id="{{item.id}}" ctx="stu"/>
+      <infocard itemData="{{item}}" id="{{item.id}}" ctx="stu" />
     </block>
   </scroll-view>
   <t-toast id="t-toast" />

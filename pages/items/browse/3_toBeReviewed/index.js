@@ -58,7 +58,8 @@ Page({
           tId: res.data.tId,
           tName: res.data.tName,
           tPosition: res.data.tPosition,
-          tInfo: res.data.tInfo
+          tInfo: res.data.tInfo,
+          tAvatarUrl: res.data.tAvatar
         })
       }
     })

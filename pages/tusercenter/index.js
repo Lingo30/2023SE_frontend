@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabbarValue: '/pages/usercenter/index',
+    tabbarValue: '/pages/tusercenter/index',
     tabbarList: getApp().globalData.tabbarList2,
     avatar: 'https://i.postimg.cc/vTSPVvKZ/default-Avatar.png',
     username: "teacher",

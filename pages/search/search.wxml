@@ -1,7 +1,7 @@
 <!--pages/search/search.wxml-->
 <view class="search-page">
   <t-search t-class-input-container="t-class__input-container" t-class-input="t-search__input" value="{{content}}" leftIcon="" placeholder="北航校内实习" bind:submit="handleSubmit" bind:change="changeContent" focus>
-    <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
+    <t-icon slot="left-icon" name="search" size="40rpx" color="#bbb" />
   </t-search>
 
   <!-- <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">

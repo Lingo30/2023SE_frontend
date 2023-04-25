@@ -148,13 +148,14 @@ Page({
         },
         success: (res) => {
           if (res.data.result == 1) {
-            const proflistmore = res.data.proflist
+            const proflistmore = res.data.internlist
             const proflisttmp = this.data.proflist.concat(proflistmore)
             // console.log(internlisttmp)
             this.setData({
               proflist: proflisttmp,
               page: page
             })
+            // console.log(proflisttmp)
           } else {
             Toast({
               context: this,
@@ -213,8 +214,9 @@ Page({
           page: this.page,
         },
         success: (res) => {
+          // console.log(res.data)
           this.setData({
-            proflist: res.data.proflist,
+            proflist: res.data.internlist,
           });
         },
       });
