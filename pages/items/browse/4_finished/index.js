@@ -52,6 +52,7 @@ Page({
     console.log("in onLoad() function");
     this.data.iId = options.iId;
     console.log("iId=", this.data.iId);
+    // 查询项目信息
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemInfo',
       method: 'post',
@@ -83,6 +84,7 @@ Page({
         console.log(this.data.internlist);
       }
     });
+    // 查询学生列表
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemStudents',
       method: 'post',
@@ -111,13 +113,43 @@ Page({
         }
       }
     });
+    // 查询导师评价
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getReviewStudent',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        iId: this.data.iId
+      },
+      success: (res) => {
+        if (typeof res.data.stars === 'undefined') {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "评论加载失败",
+            duration: 1000,
+            theme: 'error',
+            direction: 'column',
+          });
+        } else {
+          this.setData({
+            comment: res.data.comment,
+            stars: res.data.stars
+          });
+          console.log(this.data.comment);
+          console.log(this.data.stars);
+        }
+      }
+    });
   },
 
 
 
   // 4. 导师详情函数
   jump2Mentor() {
-    const tId = '1';
+    let tId = '1';
     wx.request({
       url: getApp().globalData.baseUrl + '/getTId',
       method: "post",
@@ -130,7 +162,7 @@ Page({
     })
     wx.navigateTo({
       /* 导师详情页url */
-      url: '/pages/tinfo/index' + '?tId=' + this.data.tId
+      url: '/pages/tinfo/index' + '?tId=' + tId
     })
   },
 
