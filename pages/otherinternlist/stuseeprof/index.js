@@ -99,10 +99,10 @@ Page({
   },
 
   onLoad(options) {
-    const tId = options.tId
+    const tId = options.tId;
     this.setData({
       userId: tId
-    })
+    });
   },
 
   onReachBottom() {

@@ -3,15 +3,6 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
-  // 该页面传入数据：
-  // token, sId
-  // 在onLoad()函数中提取变量
-
-
-  /**
-   * 页面的初始数据
-   */
-
   // 1. 数据域
   data: {
     value: 4,
@@ -108,18 +99,13 @@ Page({
               context: this,
               selector: '#t-toast',
               message: "上传评价成功",
-              duration: 2500,
+              duration: 1500,
               theme: 'check-circle-filled',
               direction: 'column',
             });
-            // TODO: 尝试一下刷新页面的写法
-            // 获取当前页面栈深度
-            // const pages = getCurrentPages();
-            // const delta = pages.length - 1;
-            // wx.navigateBack({
-            //   delta: delta
-            // });
-            wx.navigateBack();
+            setTimeout(() => {
+              wx.navigateBack();
+            }, 1500);
           } else {
             Toast({
               context: this,
