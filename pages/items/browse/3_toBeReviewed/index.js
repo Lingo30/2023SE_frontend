@@ -67,6 +67,7 @@ Page({
   // 5. 按钮上传事件绑定
   submit() {
     // 先上传, Toast
+
     wx.request({
       url: getApp().globalData.baseUrl + '/uploadStudentReview',
       method: 'POST',
@@ -74,6 +75,9 @@ Page({
         iId: this.data.iId,
         mainStars: this.data.value * 2,
         comment: this.data.comment
+      },
+      header: {
+        Authorization: wx.getStorageSync('token')
       },
       success: (res) => {
         if (res.data.success) {
@@ -85,7 +89,9 @@ Page({
             theme: 'check-circle-filled',
             direction: 'column',
           });
-          wx.navigateBack();
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         } else {
           Toast({
             context: this,

@@ -74,20 +74,30 @@
         </view>
       </view>
       <view class="arrow">
-        <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" data-index="{{index}}"/>
+        <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" data-index="{{index}}" />
       </view>
     </view>
   </block>
 </view>
 
-<!-- 5. 底边栏：Home | 收藏 | 立即沟通 (三个按钮)-->
+<!-- 5. 导师评价 -->
+<view class="reviews-container">
+  <Subtitle title="导师评价" icon="thumb-up" />
+  <view class="review-container">
+    <view class="inner-container star-container">
+      <view class="review-title">等级评分：</view>
+      <t-rate value="{{stars / 2}}" size="20" allowHalf />
+    </view>
+    <view class="inner-container comment-container">
+      <view class="review-title">导师寄语：</view>
+      <view class="comment">{{comment}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 6. 底边栏：Home | 收藏 | 立即沟通 (三个按钮)-->
 <view class="button-container">
-  <t-button class="star-button-container" theme="primary" size="large" shape="round" bind:tap="star">
-    <t-icon class="i" name="{{i_tLiked ? 'star-filled' : 'star'}}" size="48rpx" color="rgb(256, 256, 256)" />
-    <text class="white-text">|</text>
-    <text class="button-text">{{i_tLiked? "已收藏" : "收藏"}}</text>
-  </t-button>
-  <t-button class="home-button-container" theme="primary" size="large" shape="round" disabled>
+  <t-button block class="home-button-container" theme="primary" size="large" shape="round" disabled>
     <t-icon class="i" name="tips" size="48rpx" color="rgb(256, 256, 256)" />
     <text class="gray-text">|</text>
     <text class="button-text">项目已圆满结束</text>

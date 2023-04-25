@@ -115,12 +115,12 @@
 }
 
 
-.button-container {
+/* .button-container {
   display: flex;
   justify-content: space-between;
   margin: 0 16rpx 16rpx;
   padding-bottom: 10px;
-}
+} */
 
 button .t-button__content {
   display: flex;

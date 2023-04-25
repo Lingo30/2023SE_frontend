@@ -42,7 +42,8 @@ Component({
         (ctx == "s_审核中") ? "browse/1_toBeSelected" :
         (ctx == "s_待结项") ? "browse/2_ongoing" :
         (ctx == "s_待评价") ? "browse/3_toBeReviewed" :
-        (ctx == "s_已完成") ? "browse/4_finished" : "404Error"
+        (ctx == "s_已完成") ? "browse/4_finished" :
+        (ctx == "项目") ? "browse/0_details" : "404Error";
       console.log("跳转至项目详情前：pageName=", pageName, ", iId=", JSON.stringify(id))
       wx.navigateTo({
         url: '/pages/items/' + pageName + '/index?iId=' + JSON.stringify(id)

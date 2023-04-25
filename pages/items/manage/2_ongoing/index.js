@@ -119,19 +119,6 @@ Page({
             wx.navigateBack();
           }, 1500);
         }
-      },
-      fail: () => {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: "信息加载失败",
-          duration: 1500,
-          theme: 'error',
-          direction: 'column',
-        });
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
       }
     });
   },

@@ -41,7 +41,9 @@ Page({
         sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       },
-    ]
+    ],
+    stars: 10,
+    comment: "该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。"
   },
 
   // 2. 生命周期函数---onLoad
@@ -80,46 +82,38 @@ Page({
         });
         console.log(this.data.internlist);
       }
-    })
-  },
-
-  // 3. 收藏函数
-  star() {
-    console.log(this.data.iId);
+    });
     wx.request({
-      url: getApp().globalData.baseUrl + '/likeOrUnlike',
+      url: getApp().globalData.baseUrl + '/getItemStudents',
       method: 'post',
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
       data: {
         iId: this.data.iId
       },
       success: (res) => {
         if (res.data.success) {
+          console.log("success!!!");
+          console.log(res);
           this.setData({
-            i_tLiked: !this.data.i_tLiked
-          });
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: this.data.i_tLiked ? '收藏操作成功' : '取消收藏成功',
-            icon: this.data.i_tLiked ? 'star-filled' : 'star',
-            direction: 'column',
+            students: res.data.students
           });
         } else {
           Toast({
             context: this,
             selector: '#t-toast',
-            message: "收藏操作失败！",
-            duration: 2500,
+            message: "信息加载失败",
+            duration: 1500,
             theme: 'error',
             direction: 'column',
           });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
         }
       }
-    })
+    });
   },
+
+
 
   // 4. 导师详情函数
   jump2Mentor() {

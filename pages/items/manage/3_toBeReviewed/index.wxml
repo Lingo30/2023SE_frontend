@@ -83,7 +83,7 @@
 
 <!-- 4. button -->
 <view class="button">
-  <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="commentOver">
+  <t-button block class="home-button-container" theme="primary" size="large" shape="round" bind:tap="commentOver">
     <t-icon class="i" name="tips" size="48rpx" color="rgb(256, 256, 256)" />
     <text class="white-text">|</text>
     <text class="button-text">已完成全部评价 (需导师手动确认)</text>

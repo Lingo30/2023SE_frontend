@@ -35,6 +35,16 @@ Page({
         sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       }
+    ],
+    noReview: false,
+    reviews: [{
+        stars: 8,
+        comment: "This is my review."
+      },
+      {
+        stars: 9,
+        comment: "This is my review2.This is my review2.This is my review2.This is my review2.This is my review2.This is my review2."
+      }
     ]
   },
 

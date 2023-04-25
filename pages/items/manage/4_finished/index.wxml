@@ -56,7 +56,25 @@
   </block>
 </view>
 
-<!-- 4. button -->
+<!-- 4. 学生评价列表 -->
+<view class="reviews-container">
+  <Subtitle title="学生评价" icon="thumb-up" />
+  <view class="no-review-alert" wx:if="{{noReview}}">暂时还没有学生评论哦~~~</view>
+  <block wx:for="{{reviews}}" wx:for-item="item">
+    <view class="review-container">
+      <view class="inner-container star-container">
+        <view class="review-title">等级评分：</view>
+        <t-rate value="{{item.stars / 2}}" size="20" allowHalf />
+      </view>
+      <view class="inner-container comment-container">
+        <view class="review-title">学生评语：</view>
+        <view class="comment">{{item.comment}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<!-- 5. button -->
 <view class="button">
   <t-button class="home-button-container" theme="primary" size="large" shape="round" disabled>
     <t-icon class="i" name="flag" size="48rpx" color="rgb(256, 256, 256)" />
@@ -65,5 +83,5 @@
   </t-button>
 </view>
 
-<!-- 5. Toast -->
+<!-- 6. Toast -->
 <t-toast id="t-toast" />

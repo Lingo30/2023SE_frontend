@@ -184,6 +184,45 @@
   font-weight: bold;
 }
 
+/* 5. 导师评价 */
+
+.review-container {
+  border-radius: 20rpx;
+  /* 边 */
+  border: 3rpx solid #E0E3DA;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  background-color: #ffffff;
+  padding: 10rpx;
+  margin: 30rpx 24rpx 50rpx 24rpx;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: end;
+  padding: 10rpx 0 10rpx 0;
+}
+
+.comment-container {
+  align-items: baseline;
+}
+
+.star-container {
+  align-items: center;
+}
+
+.review-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  width: 24%;
+  margin-left: 20rpx;
+}
+
+.comment {
+  font-size: 30rpx;
+  width: 70%;
+}
+
+/* 6. 按钮 */
 .button-container {
   display: flex;
   justify-content: space-between;

@@ -91,7 +91,35 @@ Page({
         });
         wx.navigateBack();
       }
-    })
+    });
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getItemStudents',
+      method: 'post',
+      data: {
+        iId: this.data.iId
+      },
+      success: (res) => {
+        if (res.data.success) {
+          console.log("success!!!");
+          console.log(res);
+          this.setData({
+            students: res.data.students
+          });
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "信息加载失败",
+            duration: 1500,
+            theme: 'error',
+            direction: 'column',
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        }
+      }
+    });
   },
 
   // 3. 收藏函数
