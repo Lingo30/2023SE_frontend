@@ -32,7 +32,7 @@
       <view class="mentor-title">{{tPosition}}</view>
       <view class="small-text">{{tInfo}}</view>
     </view>
-    <t-icon name="chevron-right" size="80rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Mentor" />
+    <!-- <t-icon name="chevron-right" size="80rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Mentor" /> -->
   </view>
 </view>
 
@@ -56,7 +56,7 @@
 </view>
 
 <!-- 4. 组内成员 -->
-<view class="other-item-container">
+<!-- <view class="other-item-container">
   <Subtitle title="组内成员" icon="usergroup" />
   <block wx:for="{{students}}" wx:for-item="item" wx:for-index="index">
     <view class="sInfo" style="transform: translateX({{index % 2 == 0 ? '' : '28%'}});">
@@ -78,7 +78,7 @@
       </view>
     </view>
   </block>
-</view>
+</view> -->
 
 <!-- 5. 导师评价 -->
 <view class="reviews-container">

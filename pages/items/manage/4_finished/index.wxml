@@ -49,9 +49,9 @@
           <view class="sInfoItem-content">{{item.sSchool}}</view>
         </view>
       </view>
-      <view class="arrow">
+      <!-- <view class="arrow">
         <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" data-index="{{index}}"/>
-      </view>
+      </view> -->
     </view>
   </block>
 </view>

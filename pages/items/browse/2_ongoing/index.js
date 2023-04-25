@@ -162,7 +162,6 @@ Page({
 
   // 4. 导师详情函数
   jump2Mentor() {
-    let tId = '1';
     wx.request({
       url: getApp().globalData.baseUrl + '/getTId',
       method: "post",
@@ -170,12 +169,11 @@ Page({
         iId: this.data.iId
       },
       success: (res) => {
-        tId = res.data.tId;
+        wx.navigateTo({
+          /* 导师详情页url */
+          url: '/pages/tinfo/index' + '?tId=' + res.data.tId
+        })
       }
-    })
-    wx.navigateTo({
-      /* 导师详情页url */
-      url: '/pages/tinfo/index' + '?tId=' + this.data.tId
     })
   },
 
