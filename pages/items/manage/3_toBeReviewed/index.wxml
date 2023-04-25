@@ -46,7 +46,7 @@
           </view>
         </view>
         <view class="arrow">
-          <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" />
+          <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2StudentYet" data-index="{{index}}"/>
         </view>
       </view>
     </view>
@@ -74,7 +74,7 @@
           </view>
         </view>
         <view class="arrow">
-          <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" />
+          <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2StudentAlready" data-index="{{index}}"/>
         </view>
       </view>
     </view>

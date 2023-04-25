@@ -33,10 +33,7 @@ Component({
       // 组件的点击事件逻辑代码
       // console.log(e.currentTarget.dataset.item)
       let id = e.currentTarget.dataset.item.id
-      console.log("iId=", JSON.stringify(id));
       let ctx = e.currentTarget.dataset.ctx
-      // console.log("itemId=", id)
-      // console.log("ctx=", ctx)
       let pageName = (ctx == "home") ? "browse/0_details" :
         (ctx == "t_招募中") ? "manage/1_recruiting" :
         (ctx == "t_待结项") ? "manage/2_ongoing" :
@@ -46,7 +43,7 @@ Component({
         (ctx == "s_待结项") ? "browse/2_ongoing" :
         (ctx == "s_待评价") ? "browse/3_toBeReviewed" :
         (ctx == "s_已完成") ? "browse/4_finished" : "404Error"
-      console.log("pageName=", pageName)
+      console.log("跳转至项目详情前：pageName=", pageName, ", iId=", JSON.stringify(id))
       wx.navigateTo({
         url: '/pages/items/' + pageName + '/index?iId=' + JSON.stringify(id)
       })

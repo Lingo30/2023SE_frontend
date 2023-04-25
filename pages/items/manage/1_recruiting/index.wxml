@@ -82,7 +82,7 @@
             </view>
           </view>
           <view class="arrow">
-            <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" />
+            <t-icon name="chevron-right" size="60rpx" data-name="user-avatar" color="rgb(30, 72, 189)" bind:tap="jump2Student" data-index="{{index}}" />
           </view>
         </view>
       </view>
@@ -104,11 +104,4 @@
 
 <t-toast id="t-toast" />
 
-<t-dialog
-  visible="{{showConfirm}}"
-  content="当前选择人数小于预计招收人数，确定要正式立项吗？该操作是不可逆转的"
-  confirm-btn="{{ { content: '我要正式立项', variant: 'base', theme: 'danger'} }}"
-  cancel-btn="取消"
-  bind:confirm="accept"
-  bind:cancel="closeDialog"
-/>
+<t-dialog visible="{{showConfirm}}" content="当前选择人数小于预计招收人数，确定要正式立项吗？该操作是不可逆转的" confirm-btn="{{ { content: '我要正式立项', variant: 'base', theme: 'danger'} }}" cancel-btn="取消" bind:confirm="accept" bind:cancel="closeDialog" />

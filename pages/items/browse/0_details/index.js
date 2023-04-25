@@ -6,6 +6,7 @@ Page({
   data: {
     tAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
     iId: "1",
+    tId: '1',
     i_tLiked: false,
     iTitle: "计算机视觉图像去雾元学习MAMLReptileSGD自然语言处理",
     tName: "default",
@@ -48,6 +49,21 @@ Page({
     this.data.iId = options.iId;
     console.log("iId=", this.data.iId);
     wx.request({
+      url: getApp().globalData.baseUrl + '/getTId',
+      method: 'post',
+      data: {
+        iId: this.data.iId
+      },
+      success: (res) => {
+        console.log("success!!!");
+        console.log(res);
+        this.setData({
+          tId: res.data.tId
+        });
+        console.log(this.data.internlist);
+      }
+    })
+    wx.request({
       url: getApp().globalData.baseUrl + '/getItemInfo',
       method: 'post',
       header: {
@@ -76,17 +92,6 @@ Page({
           internlist: res.data.otherItems
         });
         console.log(this.data.internlist);
-      },
-      fail: () => {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: "信息加载失败",
-          duration: 2500,
-          theme: 'error',
-          direction: 'column',
-        });
-        wx.navigateBack();
       }
     })
   },
@@ -133,7 +138,7 @@ Page({
   jump2Mentor() {
     wx.navigateTo({
       /* 导师详情页url */
-      url: 'TODO_url' + '?iId=' + this.data.iId
+      url: '/pages/tinfo/index' + '?tId=' + this.data.tId
     })
   },
 

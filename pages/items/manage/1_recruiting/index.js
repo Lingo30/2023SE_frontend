@@ -491,4 +491,13 @@ Page({
     });
   },
 
+  jump2Student(e) {
+    const index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      /* 学生详情页url */
+      url: '/pages/info/index' + '?sId=' + this.data.students[index].sId
+    })
+  },
+
 });

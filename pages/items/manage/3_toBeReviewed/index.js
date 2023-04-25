@@ -16,46 +16,46 @@ Page({
     students_yet: [{
         sId: "1",
         sName: "string1",
-        sAvatarUrl: "string1",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       },
       {
         sId: "2",
         sName: "string2",
-        sAvatarUrl: "string2",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "string2"
       }, {
         sId: "3",
         sName: "string1",
-        sAvatarUrl: "string1",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       }, {
         sId: "4",
         sName: "string1",
-        sAvatarUrl: "string1",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       }
     ],
     students_already: [{
-        sId: "1",
+        sId: "5",
         sName: "string1",
-        sAvatarUrl: "string1",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       },
       {
-        sId: "2",
+        sId: "6",
         sName: "string2",
-        sAvatarUrl: "string2",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "string2"
       }, {
-        sId: "3",
+        sId: "7",
         sName: "string1",
-        sAvatarUrl: "string1",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       }, {
-        sId: "4",
+        sId: "8",
         sName: "string1",
-        sAvatarUrl: "string1",
+        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
         sSchool: "北京航空航天大学"
       }
     ]
@@ -187,6 +187,24 @@ Page({
         direction: 'column',
       });
     }
-  }
+  },
+
+  jump2StudentAlready(e) {
+    const index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      /* 学生详情页url */
+      url: '/pages/info/index' + '?sId=' + this.data.students_already[index].sId
+    })
+  },
+
+  jump2StudentYet(e) {
+    const index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      /* 学生详情页url */
+      url: '/pages/info/index' + '?sId=' + this.data.students_yet[index].sId
+    })
+  },
 
 });

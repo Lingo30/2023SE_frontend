@@ -9,6 +9,7 @@ Page({
     iTitle: "计算机视觉图像去雾元学习MAMLReptileSGD自然语言处理",
     tName: "default",
     tPosition: "default",
+    tId: '1',
     iNum: null,
     iCapacity: null,
     iPlace: "default",
@@ -46,6 +47,21 @@ Page({
     console.log("in onLoad() function");
     this.data.iId = options.iId;
     console.log("iId=", this.data.iId);
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getTId',
+      method: 'post',
+      data: {
+        iId: this.data.iId
+      },
+      success: (res) => {
+        console.log("success!!!");
+        console.log(res);
+        this.setData({
+          tId: res.data.tId
+        });
+        console.log(this.data.internlist);
+      }
+    })
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemInfo',
       method: 'post',
@@ -132,7 +148,7 @@ Page({
   jump2Mentor() {
     wx.navigateTo({
       /* 导师详情页url */
-      url: 'TODO_url' + '?iId=' + this.data.iId
+      url: '/pages/tinfo/index' + '?tId=' + this.data.tId
     })
   },
 
@@ -191,38 +207,4 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
 });
