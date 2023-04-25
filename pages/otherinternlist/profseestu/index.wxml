@@ -4,7 +4,7 @@
 <view class="home-page-container">
   <scroll-view scroll-y="true" style='height:1300rpx' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
-      <intern-card itemData="{{item}}" id="{{index}}" ctx="s_已完成" />
+      <intern-card itemData="{{item}}" id="{{index}}" ctx="s_已完成" sId="{{userId}}"/>
     </block>
   </scroll-view>
   <t-toast id="t-toast" />

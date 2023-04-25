@@ -1,5 +1,5 @@
 <!--components/intern-card/index.wxml-->
-<view class="view_tupian_wenzi" bindtap="click" id="{{index}}" data-item="{{itemData}}" data-ctx="{{ctx}}">
+<view class="view_tupian_wenzi" bindtap="click" id="{{index}}" data-item="{{itemData}}" data-ctx="{{ctx}}" data-sid="{{sId}}">
   <!-- 包裹四行文字 -->
   <view class="view_wenzi2">
     <view class="view_wenzileft">
