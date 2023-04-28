@@ -36,7 +36,8 @@
     "pages/otherinternlist/stuseeprof/index",
     "pages/tusercenter/edit/index",
     "pages/info/index",
-    "pages/tinfo/index"
+    "pages/tinfo/index",
+    "pages/skills/index"
   ],
   "requiredPrivateInfos": [
     "chooseAddress"

@@ -1,0 +1,36 @@
+<!--pages/skills/index.wxml-->
+<view style="height: 85vh;">
+  <scroll-view style="height: 100%;" scroll-y>
+    <!-- 1. 头部："技能列表(可多选)" -->
+    <view class="header">
+      <view class="header-big">技能列表</view>
+      <view class="header-small">提示：可<text style="font-weight: bolder;">多选</text></view>
+    </view>
+    <!-- 2. 技能列表 -->
+    <view class="skill-list">
+      <block wx:for="{{skillsList}}" wx:key="index" wx:for-index="setIndex">
+        <Subtitle title="{{skillCats[setIndex]}}" icon="{{skillIcons[setIndex]}}" />
+        <view class="skills-container">
+          <view wx:for="{{skillsList[setIndex]}}" wx:key="id" wx:for-item="skill" wx:for-index="skillIndex" class="skill">
+            {{skill.name}}
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
+<view class="fixed-bottom">
+  <!-- 3. 已选技能 -->
+  <view class="fixed-flex-container">
+    <view class="already-container">
+      <view style="font-weight: bold;">已选技能：</view>
+      <text wx:for="{{alreadyNames}}" wx:for-item="item">{{item}}; </text>
+    </view>
+    <!-- 4. 确定按钮 -->
+    <view class="button">
+      <t-button block theme="primary" size="large" bind:tap="submit">提交</t-button>
+    </view>
+  </view>
+</view>
+
+<t-toast id="t-toast" />
