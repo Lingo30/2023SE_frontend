@@ -40,7 +40,7 @@ App({
         icon: 'tips'
       },
       {
-        tabbarValue: '/pages/msg/msg',
+        tabbarValue: '/pages/test/index',
         label: '消息',
         icon: 'notification'
       },

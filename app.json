@@ -37,7 +37,8 @@
     "pages/tusercenter/edit/index",
     "pages/info/index",
     "pages/tinfo/index",
-    "pages/skills/index"
+    "pages/skills/index",
+    "pages/test/index"
   ],
   "requiredPrivateInfos": [
     "chooseAddress"
