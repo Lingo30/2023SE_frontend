@@ -11,7 +11,7 @@
       <block wx:for="{{skillsList}}" wx:key="index" wx:for-index="setIndex">
         <Subtitle title="{{skillCats[setIndex]}}" icon="{{skillIcons[setIndex]}}" />
         <view class="skills-container">
-          <view wx:for="{{skillsList[setIndex]}}" wx:key="id" wx:for-item="skill" wx:for-index="skillIndex" class="skill">
+          <view wx:for="{{skillsList[setIndex]}}" wx:key="id" wx:for-item="skill" wx:for-index="skillIndex" class="{{id2selected[skill.id]? 'skill-activate' : 'skill'}}" bind:tap="select" data-skill="{{skill}}">
             {{skill.name}}
           </view>
         </view>
@@ -24,7 +24,11 @@
   <view class="fixed-flex-container">
     <view class="already-container">
       <view style="font-weight: bold;">已选技能：</view>
-      <text wx:for="{{alreadyNames}}" wx:for-item="item">{{item}}; </text>
+      <view>
+        <scroll-view scroll-y style="position: fixed; height: 42rpx;">
+          <text style="position: relative;" wx:for="{{alreadyNames}}" wx:for-item="item">{{item}}; </text>
+        </scroll-view>
+      </view>
     </view>
     <!-- 4. 确定按钮 -->
     <view class="button">
