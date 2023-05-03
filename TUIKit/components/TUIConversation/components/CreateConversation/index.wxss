@@ -4,7 +4,7 @@
   background-color: #F4F5F9;
 }
 
-.tui-navigatorbar{
+.tui-navigatorbar {
   position: absolute;
   top: 0;
   width: 750rpx;
@@ -12,12 +12,12 @@
   background-color: #006EFF;
 }
 
-.tui-navigatorbar-back{
-   position: absolute;
-    width: 60rpx;
-    height: 60rpx;
-    left: 24rpx;
-    bottom: 15rpx;
+.tui-navigatorbar-back {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  left: 24rpx;
+  bottom: 15rpx;
 }
 
 .conversation-title {
@@ -40,14 +40,16 @@
   width: 750rpx;
   background-color: #006EFF;
 }
+
 .tui-showID {
-    padding-left: 80rpx;
-    ine-height: 40rpx;
-    font-size: 28rpx;
-    color: white;
-    height: 50rpx;
-    padding-top: 18rpx;
+  padding-left: 80rpx;
+  ine-height: 40rpx;
+  font-size: 28rpx;
+  color: white;
+  height: 50rpx;
+  padding-top: 18rpx;
 }
+
 .tui-search-bar {
   display: flex;
   flex-wrap: nowrap;
@@ -125,7 +127,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 100rpx;
+  bottom: 170rpx;
   width: 670rpx;
   height: 96rpx;
   background: #006EFF;
