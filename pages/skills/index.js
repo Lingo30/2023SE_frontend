@@ -144,13 +144,28 @@ Page({
       "8": true
     },
     alreadyNames: ["医学", "NLP", "机器学习", "元学习", "FPGA"],
+
+    // 缓存读写
     alreadyIds: ["1", "3", "5", "6", "8"]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad() {
+    // 1. wx.request获取需求列表 (1)[skillsList]，可以先跳过
+
+    // 2. 缓存中读 skillsToPass.alreadyIds ==> (2)[alreadyIds]
+    //            skillsToPass.alreadyNames ==> (3)[alreadyNames]
+    //            skillsToPass.id2selected ==> (4)[id2selected]
+    let s2p = getApp().globalData.skillsToPass;
+    console.log(s2p);
+    this.setData({
+      alreadyIds: s2p.skillIds,
+      alreadyNames: s2p.skillNames,
+      id2selected: s2p.id2selected
+    });
+  },
 
   select(e) {
     let skill = e.currentTarget.dataset.skill;
@@ -160,11 +175,12 @@ Page({
       let deleteIndex = this.data.alreadyIds.indexOf(skill.id);
       this.data.alreadyIds.splice(deleteIndex, 1);
       this.data.alreadyNames.splice(deleteIndex, 1);
+      this.data.id2selected[skill.id] = false;
     } else {
       this.data.alreadyIds.push(skill.id);
       this.data.alreadyNames.push(skill.name);
+      this.data.id2selected[skill.id] = true;
     }
-    this.data.id2selected[skill.id] = !currSelected;
     // 触发页面更新
     this.setData({
       id2selected: this.data.id2selected,
@@ -175,6 +191,14 @@ Page({
 
   submit() {
     console.log("submit!!!");
+    // 1. 写入缓存
+    getApp().globalData.skillsToPass = {
+      skillIds: this.data.alreadyIds,
+      skillNames: this.data.alreadyNames,
+      id2selected: this.data.id2selected
+    };
+    // 2. 转回前一页面
+    wx.navigateBack();
   }
 
 })

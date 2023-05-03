@@ -21,7 +21,8 @@ Page({
     starttime: '',
     capacity: '',
     duration: '',
-    skills: '',
+    skills: [],
+    numOfSkills: 0,
     type: '',
 
     // 持续时间
@@ -260,7 +261,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad( /*options*/ ) {},
+  onLoad() {
+      // TODO: 清空skillsToPass缓存
+      getApp().globalData.skillsToPass = {
+        skillIds: [],
+        skillNames: [],
+        id2selected: {}
+      };
+      console.log(getApp().globalData.skillsToPass);
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -287,34 +296,19 @@ Page({
       }
     }
   },
+
   onShow() {
-    this.checkLogin()
+    this.checkLogin();
+    // TODO: 从缓存中读取skillsToPass
+    const getSkills = getApp().globalData.skillsToPass.skillIds;
+    console.log(getSkills.length);
+    this.setData({
+      skills: getSkills,
+      numOfSkills: getSkills.length
+    });
+    console.log(this.data.skills);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
   onTabbarChange(e) {
     this.setData({
       tabbarValue: e.detail.value,
@@ -323,4 +317,10 @@ Page({
       url: e.detail.value,
     })
   },
+
+  jump2skills() {
+    wx.navigateTo({
+      url: '/pages/skills/index'
+    });
+  }
 });

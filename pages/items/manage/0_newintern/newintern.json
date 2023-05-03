@@ -15,6 +15,7 @@
     "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
     "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
     "t-button": "tdesign-miniprogram/button/button",
-    "t-divider": "tdesign-miniprogram/divider/divider"
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-badge": "tdesign-miniprogram/badge/badge"
   }
 }

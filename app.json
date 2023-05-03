@@ -3,7 +3,6 @@
   "pages": [
     "pages/login/index",
     "pages/home/home",
-    "pages/items/details/index",
     "pages/items/browse/0_details/index",
     "pages/items/browse/1_toBeSelected/index",
     "pages/items/browse/2_ongoing/index",

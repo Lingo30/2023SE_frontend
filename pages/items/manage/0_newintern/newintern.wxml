@@ -3,9 +3,9 @@
   <t-input label="项目标题" placeholder="最大输入10个字符" maxlength="{{10}}" data-key="title" clearable bindchange="getInputValue"></t-input>
   <t-input label="项目简介" placeholder="最大输入20个字符" maxlength="{{20}}" data-key="brief" clearable bindchange="getInputValue">
   </t-input>
-  <t-input label="所需技能" placeholder="技能间请用空格分割" data-key="skills" clearable bindchange="getSkills">
-  </t-input>
-
+  <t-cell title="所需技能" arrow hover bind:click="jump2skills" t-class-title="cell-title">
+    <t-badge count="{{numOfSkills}}" slot="note" />
+  </t-cell>
   <!-- 人数 -->
   <view class="textarea-example">
     <text class="textarea-example__label">招募人数</text>
@@ -36,12 +36,12 @@
   </view>
   <t-divider />
 
-  <t-cell class="mb-16" title="项目持续时间" arrow hover note="{{timeText}}" bind:click="onTitlePicker" />
+  <t-cell class="mb-16" title="项目持续时间" arrow hover note="{{timeText}}" bind:click="onTitlePicker" t-class-title="cell-title" />
   <t-picker visible="{{timeVisible}}" value="{{timeValue}}" data-key="time" title="{{timeTitle}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
     <t-picker-item options="{{times}}"></t-picker-item>
   </t-picker>
 
-  <t-cell title="项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" />
+  <t-cell title="项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" t-class-title="cell-title" />
   <!-- 年月日 -->
   <t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
 

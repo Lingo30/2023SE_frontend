@@ -81,6 +81,7 @@ App({
         icon: 'user'
       },
     ],
+    skillsToPass: null
   },
 
 });

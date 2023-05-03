@@ -47,6 +47,10 @@ text {
   margin-bottom: 32rpx;
 }
 
+.cell-title {
+  font-weight: bold;
+}
+
 .box {
   padding: 32rpx;
   display: flex;
