@@ -1,10 +1,22 @@
 // pages/login/index.js
 import Toast from 'tdesign-miniprogram/toast/index';
+import TIM from 'tim-wx-sdk';
+import TIMUploadPlugin from 'tim-upload-plugin';
+import TIMProfanityFilterPlugin from 'tim-profanity-filter-plugin';
+import {
+  genTestUserSig
+} from '../../debug/GenerateTestUserSig';
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    config: {
+      userID: '', //User ID
+      SDKAPPID: 1400807644, // Your SDKAppID
+      SECRETKEY: 'cbb4a6665a6cff26f55674d6c232d78c29a5cb9fdbe477df9c61cab8a04822c8', // Your secretKey
+      EXPIRETIME: 604800,
+    },
     isRegister: 0,
     userId: '',
     username: '',
@@ -153,6 +165,29 @@ Page({
         },
         success: (res) => {
           console.log(res);
+          this.setData({
+            "config.userID": res.data.username
+          })
+          const userSig = genTestUserSig(this.data.config).userSig
+          wx.$chat_SDKAppID = this.data.config.SDKAPPID;
+          wx.$chat_userID = this.data.config.userID;
+          wx.$chat_userSig = userSig;
+          wx.$TUIKitTIM = TIM;
+          wx.$TUIKit.registerPlugin({
+            'tim-upload-plugin': TIMUploadPlugin
+          });
+          wx.$TUIKit.registerPlugin({
+            'tim-profanity-filter-plugin': TIMProfanityFilterPlugin
+          });
+          wx.$TUIKit.login({
+            userID: this.data.config.userID,
+            userSig
+          });
+          wx.setStorage({
+            key: 'currentUserID',
+            data: [],
+          });
+          wx.$TUIKit.on(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
           if (res.data.result == 1) {
             wx.setStorage({
               key: 'token',
@@ -253,6 +288,19 @@ Page({
         });
         return;
       }
+      // 向IM创建用户
+      wx.request({
+        url: 'https://console.tim.qq.com/v4/im_open_login_svc/account_import?sdkappid=1400807644&identifier=administrator&usersig=eJwtzEsLgkAUBeD-MltDrjrjC1oYRYseUFaDS2PGuJivcTAp*u*ZujzfOZwPuexjs5OKhMQ2gSzGjEKWGjMcORUFlthqlepKzYNW5GldoyChRQF88FxKp0b2NSo5OGPMBoBJNRZ-c33H8llAnfkFH8P-YRPxvFpH4kgtmZ3Ea8WN65k-gy42*m1TvXfyljT3THvJknx-V4I1Mw__&random=99999999&contenttype=json',
+        method: 'POST',
+        data: {
+          UserID: this.username,
+          Nick: this.username,
+          FaceUrl: ""
+        },
+        success: (res) => {
+          console.log("yes")
+        }
+      })
       wx.request({
         url: `${getApp().globalData.baseUrl}/register`,
         method: 'post',
@@ -344,6 +392,9 @@ Page({
       key: 'login',
       data: false,
     });
+    wx.$TUIKit = TIM.create({
+      SDKAppID: this.data.config.SDKAPPID
+    })
   },
 
   /**
@@ -380,4 +431,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
+
+  // onUnload() {
+  //   console.log(wx.$TUIKit)
+  //   wx.$TUIKit.off(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
+  // },
+  onSDKReady() {}
+
 });

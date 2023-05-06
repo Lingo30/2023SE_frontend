@@ -36,8 +36,25 @@
     "pages/tusercenter/edit/index",
     "pages/info/index",
     "pages/tinfo/index",
-    "pages/skills/index",
-    "pages/test/index"
+    "pages/skills/index"
+  ],
+  "subPackages": [
+    {
+      "root": "TUI-conversationlist",
+      "name": "TUI-conversationlist",
+      "pages": [
+        "pages/index"
+      ],
+      "independent": false
+    },
+    {
+      "root": "TUI-openchat",
+      "name": "TUI-openchat",
+      "pages": [
+        "pages/index"
+      ],
+      "independent": false
+    }
   ],
   "requiredPrivateInfos": [
     "chooseAddress"

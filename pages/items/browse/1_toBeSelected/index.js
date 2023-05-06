@@ -173,7 +173,7 @@ Page({
           // 5-2. 跳转
           wx.navigateTo({
             // TODO: 沟通页面url
-            url: 'TODO-url' + '?tId' + res.data.tId
+            url: '/TUI-openchat/pages/index' + '?tId' + res.data.tId
           });
         } else {
           Toast({
