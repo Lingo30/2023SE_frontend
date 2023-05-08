@@ -31,10 +31,16 @@ Component({
       wx.$TUIKit.getUserProfile({
         userIDList: [this.properties.placeholdervalue],
       }).then((imRes) => {
+        console.log(imRes)
         if (imRes.data.length > 0) {
           this.setData({
             searchUser: imRes.data[0],
           });
+          this.data.searchUser.isChoose = true;
+          this.setData({
+            searchUser: this.data.searchUser,
+          });
+          this.bindConfirmInvite();
         } else {
           // wx.showToast({
           //   title: '用户不存在',
@@ -55,6 +61,7 @@ Component({
     },
     // 确认邀请
     bindConfirmInvite() {
+      console.log(this.data.searchUser)
       if (this.data.searchUser.isChoose) {
         wx.aegis.reportEvent({
           name: 'conversationType',

@@ -171,6 +171,10 @@ Page({
             direction: 'column',
           });
           // 5-2. 跳转
+          wx.setStorage({
+            key: 'teachername',
+            data: res.data.tId
+          })
           wx.navigateTo({
             // TODO: 沟通页面url
             url: '/TUI-openchat/pages/index' + '?tId' + res.data.tId
