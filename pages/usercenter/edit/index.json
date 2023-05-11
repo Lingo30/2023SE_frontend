@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "t-badge": "tdesign-miniprogram/badge/badge"
+  }
 }
