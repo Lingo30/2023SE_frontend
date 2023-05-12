@@ -208,11 +208,11 @@ Page({
           // 5-2. 跳转
           wx.setStorage({
             key: 'teachername',
-            data: res.data.tId
+            data: res.data.tName
           })
           wx.navigateTo({
             // TODO: 沟通页面url
-            url: '/TUI-openchat/pages/index' + '?tId' + res.data.tId
+            url: '/TUI-openchat/pages/index' + '?tId=' + res.data.userEmail
           });
         } else {
           Toast({

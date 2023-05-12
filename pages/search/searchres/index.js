@@ -67,7 +67,7 @@ Page({
         page: this.data.page
       },
       success: (res) => {
-        console.log(this.data.searchtags)
+        console.log(res.data.internlist)
         if (res.data.result == 1) {
           this.setData({
             internlist: res.data.internlist
@@ -111,7 +111,7 @@ Page({
         if (res.data.result == 1) {
           const internmore = res.data.internlist
           const internlisttmp = this.data.internlist.concat(internmore)
-          // console.log(internlisttmp)
+          console.log(internlisttmp)
           this.setData({
             internlist: internlisttmp,
             page: page

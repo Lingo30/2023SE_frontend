@@ -100,7 +100,7 @@ App({
         icon: 'add'
       },
       {
-        tabbarValue: '/pages/msg/msg',
+        tabbarValue: '/TUI-conversationlist/pages/index',
         label: '消息',
         icon: 'notification'
       },

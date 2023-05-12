@@ -213,7 +213,7 @@ Page({
           })
           wx.navigateTo({
             // TODO: 沟通页面url
-            url: '/TUI-openchat/pages/index' + '?tId' + res.data.tId
+            url: '/TUI-openchat/pages/index' + '?tId=' + res.data.userEmail
           });
         } else {
           Toast({

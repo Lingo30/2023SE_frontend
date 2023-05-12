@@ -146,6 +146,21 @@ Page({
           },
           success: (res2) => {
             let res2json = JSON.parse(res2.data);
+            console.log(res2json)
+            wx.request({
+              url: 'https://console.tim.qq.com/v4/profile/portrait_set?sdkappid=1400807644&identifier=administrator&usersig=eJwtzNEKgjAYBeB32XXIr07dhC6UbswIo4i6VDb1L7QxR4uid8-Uy-Odw-mQ0*7oPKUmMfEcIKspo5C9wRonLkWHPQ5Gl*ahl8Eg7qVSKEjsUgAGUUjp3MiXQi1HD4LAA4BZDXZ-C5nvRxQ4X16wGf9vdlvsr7ZubePxnDJenJNUcpdlyYbnl0NUVezdZtAoWJPvD0uqM*4_&random=99999999&contenttype=json',
+              method: 'POST',
+              data: {
+                From_Account: res2json.userEmail,
+                ProfileItem: [{
+                  "Tag": "Tag_Profile_IM_Image",
+                  "Value": res2json.avaurl
+                }]
+              },
+              success: (res) => {
+                console.log("向IM导入头像成功")
+              }
+            })
             if (res2json.result == 1) {
               Toast({
                 context: this,
@@ -243,6 +258,21 @@ Page({
       },
       success: (res) => {
         if (res.data.result == 1) {
+          console.log(this.data.username)
+          wx.request({
+            url: 'https://console.tim.qq.com/v4/profile/portrait_set?sdkappid=1400807644&identifier=administrator&usersig=eJwtzNEKgjAYBeB32XXIr07dhC6UbswIo4i6VDb1L7QxR4uid8-Uy-Odw-mQ0*7oPKUmMfEcIKspo5C9wRonLkWHPQ5Gl*ahl8Eg7qVSKEjsUgAGUUjp3MiXQi1HD4LAA4BZDXZ-C5nvRxQ4X16wGf9vdlvsr7ZubePxnDJenJNUcpdlyYbnl0NUVezdZtAoWJPvD0uqM*4_&random=99999999&contenttype=json',
+            method: 'POST',
+            data: {
+              From_Account: res.data.userEmail,
+              ProfileItem: [{
+                "Tag": "Tag_Profile_IM_Nick",
+                "Value": this.data.username
+              }]
+            },
+            success: (res) => {
+              console.log("修改昵称成功")
+            }
+          })
           Toast({
             context: this,
             selector: '#t-toast',

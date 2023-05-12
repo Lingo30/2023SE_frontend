@@ -2,7 +2,7 @@ Page({
   data: {
     tid: '',
     tabbarValue: '/TUI-conversationlist/pages/index',
-    tabbarList: getApp().globalData.tabbarList1,
+    tabbarList: ''
   },
   checkLogin() {
     if (!getApp().globalData.debugging) {
@@ -57,18 +57,29 @@ Page({
 
 
   onLoad(options) {
+    const tid = options.tId
+    console.log(tid)
+    this.setData({
+      tid: tid
+    })
     const TUIKit = this.selectComponent('#TUIKit');
     TUIKit.init();
-    const tid = options.tId
+
     // this.setData({
-    //   tid: tid
+    //   tid: '123'
     // })
-    this.setData({
-      tid: '123'
-    })
   },
   onUnload() {
-    console.log(wx.$TUIKit)
+    console.log(1)
     wx.$TUIKit.off(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
+    // wx.reLaunch({
+    //   url: this.data.backpath,
+    // })
   },
+  onHide() {
+    // console.log(1)
+    // wx.reLaunch({
+    //   url: this.data.backpath,
+    // })
+  }
 });

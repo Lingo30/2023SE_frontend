@@ -1,7 +1,7 @@
 Page({
   data: {
-    tabbarValue: '',
-    tabbarList: [],
+    tabbarValue: '/TUI-conversationlist/pages/index',
+    tabbarList: '',
   },
   checkLogin() {
     if (!getApp().globalData.debugging) {

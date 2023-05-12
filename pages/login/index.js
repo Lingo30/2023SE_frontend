@@ -164,9 +164,9 @@ Page({
           password: this.password,
         },
         success: (res) => {
-          console.log(res);
+          console.log(this.userId + this.emailValue);
           this.setData({
-            "config.userID": res.data.username
+            "config.userID": this.userId + this.emailValue
           })
           const userSig = genTestUserSig(this.data.config).userSig
           wx.$chat_SDKAppID = this.data.config.SDKAPPID;
@@ -293,7 +293,7 @@ Page({
         url: 'https://console.tim.qq.com/v4/im_open_login_svc/account_import?sdkappid=1400807644&identifier=administrator&usersig=eJwtzEsLgkAUBeD-MltDrjrjC1oYRYseUFaDS2PGuJivcTAp*u*ZujzfOZwPuexjs5OKhMQ2gSzGjEKWGjMcORUFlthqlepKzYNW5GldoyChRQF88FxKp0b2NSo5OGPMBoBJNRZ-c33H8llAnfkFH8P-YRPxvFpH4kgtmZ3Ea8WN65k-gy42*m1TvXfyljT3THvJknx-V4I1Mw__&random=99999999&contenttype=json',
         method: 'POST',
         data: {
-          UserID: this.username,
+          UserID: this.userId + this.universityValue,
           Nick: this.username,
           FaceUrl: ""
         },
