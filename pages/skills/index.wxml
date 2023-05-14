@@ -23,9 +23,9 @@
   <!-- 3. 已选技能 -->
   <view class="fixed-flex-container">
     <view class="already-container">
-      <view style="font-weight: bold;">已选技能：</view>
+      <view style="font-weight: bold;">已选技能：(可上下滚动查看)</view>
       <view>
-        <scroll-view scroll-y style="position: fixed; height: 42rpx;">
+        <scroll-view scroll-y style="position: fixed; height: 42rpx; width: 90%;">
           <text style="position: relative;" wx:for="{{alreadyNames}}" wx:for-item="item">{{item}}; </text>
         </scroll-view>
       </view>

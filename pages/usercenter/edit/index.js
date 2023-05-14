@@ -11,9 +11,11 @@ Page({
     grades: "default",
     labExperience: "default",
     awards: "default",
-    skill: "default",
+    skills: [],
+    numOfSkills: 0,
     departmentValue: "计算机科学与技术",
     departmentText: "计算机科学与技术",
+    // static
     departments: [{
       label: "计算机科学与技术",
       value: "计算机科学与技术"
@@ -103,7 +105,7 @@ Page({
             grades: res.data.grades,
             labExperience: res.data.labExperience,
             awards: res.data.awards,
-            skill: res.data.skill,
+            skills: res.data.skills,
           });
         } else {
           Toast({
@@ -250,7 +252,7 @@ Page({
         grades: this.grades,
         labExperience: this.labExperience,
         awards: this.awards,
-        skill: this.skill
+        skills: this.skills
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -295,8 +297,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    this.init();
+  onLoad() {
+    // TODO: 清空skillsToPass缓存
+    getApp().globalData.skillsToPass = {
+      skillIds: [],
+      skillNames: [],
+      id2selected: {}
+    };
+    console.log(getApp().globalData.skillsToPass);
   },
 
   /**
@@ -313,38 +321,9 @@ Page({
     this.init();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  jump2skills() {
+    wx.navigateTo({
+      url: '/pages/skills/index'
+    });
   }
 })

@@ -23,7 +23,13 @@
 
     <t-textarea label="竞赛获奖" disableDefaultPadding="{{true}}" autosize data-key="awards" value="{{awards}}" bindchange="getInputValue" />
 
-    <t-textarea label="擅长技能" disableDefaultPadding="{{true}}" autosize data-key="skill" value="{{skill}}" bindchange="getInputValue" />
+    <!-- <t-textarea label="擅长技能" disableDefaultPadding="{{true}}" autosize data-key="skill" value="{{skill}}" bindchange="getInputValue" /> -->
+  </view>
+
+  <view class=" column card" style="padding: 10rpx;">
+    <t-cell title="技能" leftIcon="root-list" arrow hover bind:click="jump2skills">
+      <t-badge count="{{numOfSkills}}" slot="note" />
+    </t-cell>
   </view>
 
   <view class=" column card" style="padding: 10rpx;">
