@@ -36,7 +36,8 @@
     "pages/tusercenter/edit/index",
     "pages/info/index",
     "pages/tinfo/index",
-    "pages/skills/index"
+    "pages/skills/index",
+    "pages/sysNotification/index"
   ],
   "subPackages": [
     {

@@ -6,8 +6,20 @@
       <view class="conversation-title">消息</view>
     </view>
     <view class="conversation-list-area">
-
       <scroll-view class="scoll-view" scroll-y="true">
+        <t-notice-bar visible="{{true}}" prefixIcon="mobile-vibrate" content="有新的系统通知，请及时查看" theme="info"></t-notice-bar>
+        <t-notice-bar visible="{{true}}" prefixIcon="check-circle-filled" content="暂无新的系统通知" theme="success"></t-notice-bar>
+        <view class="system-notice-container" bind:tap="jump2system">
+          <view class="system-icon" style="margin: 28rpx;">
+            <t-icon name="notification-filled" size="27px" color="white" />
+          </view>
+          <view class="system-text">
+            <view class="big-text" style="font-weight: bold; font-size: 38rpx; margin-bottom: 8rpx; color: white">系统通知</view>
+            <view class="small-text" style="color: white;">阮利老师已通过你对“元学习算...</view>
+          </view>
+          <view class="time" style="margin-left: 150rpx; color: white;">刚刚</view>
+        </view>
+
         <ConversationItem wx:for="{{conversationList}}" wx:key="index" id="{{item.conversationID}}" data-type="{{item.type}}" conversation="{{item}}" bindtap="handleRoute" statusList="{{statusList}}" bind:transCheckID="transCheckID" charge="{{transChenckID===item.conversationID}}">
         </ConversationItem>
       </scroll-view>

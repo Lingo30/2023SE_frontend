@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "TUIKit": "../TUIKit/index"
+    "TUIKit": "../TUIKit/index",
+    "t-icon": "../components/icon/icon",
+    "t-notice-bar": "../components/notice-bar/notice-bar"
   },
   "navigationStyle": "custom"
 }

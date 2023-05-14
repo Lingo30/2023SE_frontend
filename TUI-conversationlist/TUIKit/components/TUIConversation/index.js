@@ -284,5 +284,10 @@ Component({
       //   }
       // })
     },
+    jump2system() {
+      wx.navigateTo({
+        url: '/pages/sysNotification/index',
+      });
+    }
   },
 });

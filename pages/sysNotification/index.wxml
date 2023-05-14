@@ -1,0 +1,14 @@
+<!--pages/sysNotification/index.wxml-->
+<view class="header">
+  <t-icon name="notification" size="50rpx" color="white" />
+  <view class="header-big">系统通知</view>
+</view>
+<scroll-view style="height: 90vh;" scroll-y="true" scroll-into-view="{{'item' + lastId}}">
+  <view class="note-card" wx:for="{{arr}}" wx:key="index" id="{{'item' + index}}">
+    <view class=time">
+      <t-divider content="{{item.time}}" />
+    </view>
+    <view class="text">{{item.text}}</view>
+  </view>
+
+</scroll-view>
