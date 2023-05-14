@@ -61,6 +61,6 @@ Page({
   },
   onUnload() {
     console.log(wx.$TUIKit)
-    wx.$TUIKit.off(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
+    // wx.$TUIKit.off(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
   },
 });

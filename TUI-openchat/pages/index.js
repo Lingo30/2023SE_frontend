@@ -71,7 +71,7 @@ Page({
   },
   onUnload() {
     console.log(1)
-    wx.$TUIKit.off(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
+    // wx.$TUIKit.off(wx.$TUIKitTIM.EVENT.SDK_READY, this.onSDKReady, this);
     // wx.reLaunch({
     //   url: this.data.backpath,
     // })

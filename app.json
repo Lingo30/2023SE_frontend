@@ -60,7 +60,6 @@
     "chooseAddress"
   ],
   "usingComponents": {
-    "t-row": "tdesign-miniprogram/row/row",
     "t-col": "tdesign-miniprogram/col/col",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
