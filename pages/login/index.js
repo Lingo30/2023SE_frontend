@@ -311,6 +311,8 @@ Page({
           userId: this.userId + this.universityValue,
           password: this.password,
           checkCode: this.checkCode,
+          time: new Date(),
+          text: "欢迎您注册【Lab直聘】，快去主页逛逛，挑选心仪的项目与导师，开启一段难忘的科研之旅吧！"
         },
         success: (res) => {
           if (res.data.result == 1) {

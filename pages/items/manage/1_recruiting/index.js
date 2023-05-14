@@ -350,12 +350,42 @@ Page({
   reject() {
     // request + 刷新当前页
     const sIds = this.data.checkList.map(i => this.data.students[i].sId);
+    let tName = "default";
+    // 获取导师姓名
+    wx.request({
+      url: getApp().globalData.baseUrl + '/tuser',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        useId: false,
+        id: ""
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          tName = res.data.username;
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "加载失败！",
+            duration: 2500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      }
+    })
+    // 调用 '/reject' 接口
     wx.request({
       url: getApp().globalData.baseUrl + '/reject',
       method: 'post',
       data: {
         iId: this.data.iId,
-        sIds: sIds
+        sIds: sIds,
+        time: new Date(),
+        text: "很遗憾地通知您，您没有通过【" + tName + "】老师【" + this.data.iTitle + "】项目的审核，请尝试报名其他项目，不要灰心，再接再厉！"
       },
       success: (res) => {
         // TODO
@@ -407,12 +437,42 @@ Page({
     // request + 跳回上一页
     this.closeDialog();
     const sIds = this.data.checkList.map(i => this.data.students[i].sId);
+    let tName = "default";
+    // 获取导师姓名
+    wx.request({
+      url: getApp().globalData.baseUrl + '/tuser',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        useId: false,
+        id: ""
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          tName = res.data.username;
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "加载失败！",
+            duration: 2500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      }
+    })
+    // 调用 '/startTheMFIntern' 接口
     wx.request({
       url: getApp().globalData.baseUrl + '/startTheMFIntern',
       method: 'post',
       data: {
         iId: this.data.iId,
-        sIds: sIds
+        sIds: sIds,
+        time: new Date(),
+        text: "恭喜您！您已经通过【" + tName + "】老师【" + this.data.iTitle + "】项目的审核，项目已经正式立项，请联系导师开始研究吧！"
       },
       success: (res) => {
         if (res.data.success) {
@@ -426,7 +486,6 @@ Page({
             direction: 'column',
           });
           setTimeout(() => {
-            // TODO: 这里应该跳转至带选中页面
             wx.navigateTo({
               url: '/pages/thome/thome'
             });
