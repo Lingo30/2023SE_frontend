@@ -48,6 +48,10 @@ Component({
     showJoinGroup: false,
     handleChangeStatus: false,
     storageList: [],
+    // diy-systemNotification
+    newIncome: false,
+    time: "刚刚",
+    brief: "【阮利】老师已通过你对“元"
   },
   lifetimes: {
     attached() {},
@@ -78,6 +82,25 @@ Component({
       }, () => {
         if (!wx.getStorageSync('storageList').includes('showOnlineStatus')) {
           this.handleChangeStatus();
+        }
+      });
+      // 系统通知：/getBriefNotification 接口调用
+      wx.request({
+        url: getApp().globalData.baseUrl + '/getBriefNotification',
+        header: {
+          Authorization: wx.getStorageSync('token'),
+        },
+        method: 'POST',
+        success: (res) => {
+          if (typeof res.data.newIncome !== 'undefined') {
+            this.setData({
+              newIncome: res.data.newIncome,
+              time: res.data.time,
+              brief: res.data.brief
+            });
+          } else {
+            console.log("系统通知(/getBriefNotification)加载有误！！！");
+          }
         }
       });
     },
@@ -265,25 +288,7 @@ Component({
         this.subscribeOnlineStatus(userIDList);
       }
     },
-
-    learnMore() {
-      // if (app?.globalData?.reportType !== constant.OPERATING_ENVIRONMENT) return;
-      // wx.navigateTo({
-      //   url: '/pages/TUI-User-Center/webview/webview?url=https://cloud.tencent.com/product/im',
-      // });
-      // wx.request({
-      //   url: 'https://console.tim.qq.com/v4/im_open_login_svc/account_import?sdkappid=1400807644&identifier=administrator&usersig=eJwtzEsLgkAUBeD-MltDrjrjC1oYRYseUFaDS2PGuJivcTAp*u*ZujzfOZwPuexjs5OKhMQ2gSzGjEKWGjMcORUFlthqlepKzYNW5GldoyChRQF88FxKp0b2NSo5OGPMBoBJNRZ-c33H8llAnfkFH8P-YRPxvFpH4kgtmZ3Ea8WN65k-gy42*m1TvXfyljT3THvJknx-V4I1Mw__&random=99999999&contenttype=json',
-      //   method: 'POST',
-      //   data: {
-      //     UserID: "zlb",
-      //     Nick: "zlb",
-      //     FaceUrl: "https://smms.app/image/uUp3esBbTIJZ5E9"
-      //   },
-      //   success: (res) => {
-      //     console.log("yes")
-      //   }
-      // })
-    },
+    learnMore() {},
     jump2system() {
       wx.navigateTo({
         url: '/pages/sysNotification/index',

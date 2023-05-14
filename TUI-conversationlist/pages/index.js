@@ -43,6 +43,8 @@ Page({
         url: '/pages/login/index',
       })
     }
+    const TUIKit = this.selectComponent('#TUIKit');
+    TUIKit.init();
   },
   onTabbarChange(e) {
     this.setData({
@@ -56,8 +58,6 @@ Page({
 
 
   onLoad() {
-    const TUIKit = this.selectComponent('#TUIKit');
-    TUIKit.init();
   },
   onUnload() {
     console.log(wx.$TUIKit)
