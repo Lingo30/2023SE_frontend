@@ -97,6 +97,9 @@ Page({
     }
     wx.request({
       url: getApp().globalData.baseUrl + '/sendCheckCode',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       method: 'post',
       data: {
         email: email,

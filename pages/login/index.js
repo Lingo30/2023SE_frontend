@@ -159,6 +159,9 @@ Page({
       wx.request({
         url: `${getApp().globalData.baseUrl}/login`,
         method: 'post',
+        header: {
+          Authorization: wx.getStorageSync('token'),
+        },
         data: {
           userId: this.userId + this.emailValue,
           password: this.password,
@@ -304,6 +307,9 @@ Page({
       wx.request({
         url: `${getApp().globalData.baseUrl}/register`,
         method: 'post',
+        header: {
+          Authorization: wx.getStorageSync('token'),
+        },
         data: {
           username: this.username,
           userType: this.userTypeValue,
@@ -359,6 +365,9 @@ Page({
     wx.request({
       url: `${getApp().globalData.baseUrl}/sendCheckCode`,
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         email: email,
       },

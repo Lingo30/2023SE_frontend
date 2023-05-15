@@ -54,6 +54,9 @@ Page({
       data: {
         iId: this.data.iId
       },
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       success: (res) => {
         console.log("success!!!");
         console.log(res);
@@ -195,6 +198,9 @@ Page({
       method: 'post',
       data: {
         iId: this.data.iId
+      },
+      header: {
+        Authorization: wx.getStorageSync('token'),
       },
       success: (res) => {
         if (res.data.success) {

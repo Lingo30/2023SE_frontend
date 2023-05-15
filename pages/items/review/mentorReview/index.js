@@ -46,6 +46,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/getSInfo',
       method: 'POST',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         sId: this.data.sId
       },
@@ -87,6 +90,9 @@ Page({
       wx.request({
         url: getApp().globalData.baseUrl + '/uploadMentorReview',
         method: 'POST',
+        header: {
+          Authorization: wx.getStorageSync('token'),
+        },
         data: {
           iId: this.data.iId,
           sId: this.data.sId,

@@ -60,6 +60,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemShortInfo',
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId
       },
@@ -104,6 +107,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemStudents',
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId
       },
@@ -142,6 +148,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + "/getReviewMentor",
       method: "post",
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId
       },

@@ -199,6 +199,9 @@ Page({
       data: {
         iId: this.data.iId
       },
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       success: (res) => {
         if (res.data.success) {
           console.log("success!!!");
@@ -243,6 +246,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemApplicants',
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId
       },
@@ -381,6 +387,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/reject',
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId,
         sIds: sIds,
@@ -468,6 +477,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/startTheMFIntern',
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId,
         sIds: sIds,
@@ -540,6 +552,9 @@ Page({
       wx.request({
         url: getApp().globalData.baseUrl + '/startTheMFIntern',
         method: 'post',
+        header: {
+          Authorization: wx.getStorageSync('token'),
+        },
         data: {
           iId: this.data.iId,
           sIds: sIds

@@ -53,6 +53,9 @@ Page({
       data: {
         iId: this.data.iId
       },
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       success: (res) => {
         this.setData({
           tId: res.data.tId,

@@ -98,6 +98,9 @@ Page({
       data: {
         iId: this.data.iId
       },
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       success: (res) => {
         if (res.data.success) {
           console.log("success!!!");
@@ -168,6 +171,9 @@ Page({
       data: {
         iId: this.data.iId
       },
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       success: (res) => {
         wx.navigateTo({
           /* 导师详情页url */
@@ -194,6 +200,9 @@ Page({
       method: 'post',
       data: {
         iId: this.data.iId
+      },
+      header: {
+        Authorization: wx.getStorageSync('token'),
       },
       success: (res) => {
         if (res.data.success) {

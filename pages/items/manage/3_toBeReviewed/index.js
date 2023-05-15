@@ -73,6 +73,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemShortInfo',
       method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId
       },
@@ -117,6 +120,9 @@ Page({
       wx.request({
         url: getApp().globalData.baseUrl + '/reviewAllStudents',
         method: 'post',
+        header: {
+          Authorization: wx.getStorageSync('token'),
+        },
         data: {
           iId: this.data.iId
         },
@@ -183,6 +189,9 @@ Page({
     // 3. 加载两个学生数组
     wx.request({
       url: getApp().globalData.baseUrl + '/iId2alreadyANDyet',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
       data: {
         iId: this.data.iId
       },
