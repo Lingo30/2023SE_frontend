@@ -95,8 +95,7 @@ Component({
           if (typeof res.data.newIncome !== 'undefined') {
             this.setData({
               newIncome: res.data.newIncome,
-              time: res.data.time,
-              brief: res.data.brief
+              time: res.data.time
             });
           } else {
             console.log("系统通知(/getBriefNotification)加载有误！！！");
