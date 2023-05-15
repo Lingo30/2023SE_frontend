@@ -50,7 +50,7 @@ Component({
     storageList: [],
     // diy-systemNotification
     newIncome: true,
-    time: "刚刚",
+    time: "2023/12/31",
     brief: "【阮利】老师已通过你对“元"
   },
   lifetimes: {

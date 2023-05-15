@@ -9,7 +9,7 @@
       <scroll-view class="scoll-view" scroll-y="true">
         <t-notice-bar visible="{{newIncome}}" prefixIcon="mobile-vibrate" content="有新的系统通知，请及时查看" theme="info"/>
         <t-notice-bar visible="{{!newIncome}}" prefixIcon="check-circle-filled" content="暂无新的系统通知" theme="success"/>
-        <view class="system-notice-container" bind:tap="jump2system" style="background-color: {{newIncome ? 'rgb(30, 72, 189)' : 'green'}};">
+        <view class="system-notice-container" bind:tap="jump2system" style="background-color: {{newIncome ? 'rgb(30, 72, 189)' : 'rgb(43, 164, 113)'}};">
           <view class="system-icon" style="margin: 28rpx;">
             <t-icon name="{{newIncome ? 'notification-filled' : 'notification'}}" size="27px" color="white" />
           </view>
