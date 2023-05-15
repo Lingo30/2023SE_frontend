@@ -14,10 +14,10 @@
       <view class="TUI-sendMessage-btn">
         <image class="TUI-icon" bindtap="handleEmoji" src="../../../../static/assets/face-emoji.svg" />
       </view>
-      <view wx:if="{{!sendMessageBtn}}" bindtap="handleExtensions" class="TUI-sendMessage-btn">
+      <!-- <view wx:if="{{!sendMessageBtn}}" bindtap="handleExtensions" class="TUI-sendMessage-btn">
         <image class="TUI-icon" src="../../../../static/assets/more.svg" />
-      </view>
-      <view wx:else class="TUI-sendMessage-btn" bindtap="sendTextMessage">
+      </view> -->
+      <view class="TUI-sendMessage-btn" bindtap="sendTextMessage">
         发送
       </view>
     </view>
