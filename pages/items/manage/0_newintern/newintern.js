@@ -262,23 +262,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-      // TODO: 清空skillsToPass缓存
-      getApp().globalData.skillsToPass = {
-        skillIds: [],
-        skillNames: [],
-        id2selected: {}
-      };
-      console.log(getApp().globalData.skillsToPass);
+    getApp().globalData.skillsToPass = {
+      skillIds: [],
+      skillNames: [],
+      id2selected: {}
+    };
+    console.log(getApp().globalData.skillsToPass);
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   checkLogin() {
     if (!getApp().globalData.debugging) {
       if (!wx.getStorageSync('login')) {

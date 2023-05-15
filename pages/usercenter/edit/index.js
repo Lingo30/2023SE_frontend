@@ -11,7 +11,8 @@ Page({
     grades: "default",
     labExperience: "default",
     awards: "default",
-    skills: [],
+    skillIds: [],
+    skillNames: [],
     numOfSkills: 0,
     departmentValue: "计算机科学与技术",
     departmentText: "计算机科学与技术",
@@ -80,7 +81,8 @@ Page({
     this[`${key}`] = e.detail.value;
   },
 
-  init() {
+  onLoad() {
+    console.log("onLoad() start");
     wx.setNavigationBarTitle({
       title: '编辑资料',
     })
@@ -97,6 +99,7 @@ Page({
       },
       success: (res) => {
         if (res.data.result == 1) {
+          console.log("res=", res);
           this.setData({
             avatar: res.data.avatar,
             username: res.data.username,
@@ -105,7 +108,9 @@ Page({
             grades: res.data.grades,
             labExperience: res.data.labExperience,
             awards: res.data.awards,
-            skills: res.data.skills,
+            skillIds: res.data.skillIds,
+            skillNames: res.data.skillNames,
+            numOfSkills: res.data.skillIds.length
           });
         } else {
           Toast({
@@ -121,7 +126,28 @@ Page({
           });
         }
       }
-    })
+    });
+    // 初始化skillsToPass缓存
+    getApp().globalData.skillsToPass = {
+      skillIds: this.data.skillIds,
+      skillNames: this.data.skillNames,
+      id2selected: this.data.skillIds.reduce((acc, cur) => {
+        acc[cur] = true;
+        return acc;
+      }, {})
+    };
+    console.log("onLoad() over");
+  },
+
+  onShow() {
+    console.log("onShow() start");
+    console.log(getApp().globalData.skillsToPass);
+    this.setData({
+      skillIds: getApp().globalData.skillsToPass.skillIds,
+      skillNames: getApp().globalData.skillsToPass.skillNames,
+      numOfSkills: getApp().globalData.skillsToPass.skillIds.length
+    });
+    console.log("onShow() over");
   },
 
   uploadAvatar() {
@@ -247,14 +273,15 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       data: {
-        username: this.username,
-        department: this.departmentValue,
-        grades: this.grades,
-        labExperience: this.labExperience,
-        awards: this.awards,
-        skills: this.skills
+        username: this.data.username,
+        department: this.data.departmentValue,
+        grades: this.data.grades,
+        labExperience: this.data.labExperience,
+        awards: this.data.awards,
+        skillIds: this.data.skillIds
       },
       success: (res) => {
+        console.log("/user/edit: res = ", res);
         if (res.data.result == 1) {
           wx.request({
             url: 'https://console.tim.qq.com/v4/profile/portrait_set?sdkappid=1400807644&identifier=administrator&usersig=eJwtzNEKgjAYBeB32XXIr07dhC6UbswIo4i6VDb1L7QxR4uid8-Uy-Odw-mQ0*7oPKUmMfEcIKspo5C9wRonLkWHPQ5Gl*ahl8Eg7qVSKEjsUgAGUUjp3MiXQi1HD4LAA4BZDXZ-C5nvRxQ4X16wGf9vdlvsr7ZubePxnDJenJNUcpdlyYbnl0NUVezdZtAoWJPvD0uqM*4_&random=99999999&contenttype=json',
@@ -293,32 +320,6 @@ Page({
         }
       }
     })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
-    // TODO: 清空skillsToPass缓存
-    getApp().globalData.skillsToPass = {
-      skillIds: [],
-      skillNames: [],
-      id2selected: {}
-    };
-    console.log(getApp().globalData.skillsToPass);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    this.init();
   },
 
   jump2skills() {

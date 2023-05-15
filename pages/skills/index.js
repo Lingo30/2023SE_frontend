@@ -154,7 +154,16 @@ Page({
    */
   onLoad() {
     // 1. wx.request获取需求列表 (1)[skillsList]，可以先跳过
-
+    wx.request({
+      url: getApp().globalData.baseUrl + "/getSkillSet",
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      success: (res) => {
+        console.log(res.data);
+      }
+    })
     // 2. 缓存中读 skillsToPass.alreadyIds ==> (2)[alreadyIds]
     //            skillsToPass.alreadyNames ==> (3)[alreadyNames]
     //            skillsToPass.id2selected ==> (4)[id2selected]
@@ -165,6 +174,7 @@ Page({
       alreadyNames: s2p.skillNames,
       id2selected: s2p.id2selected
     });
+
   },
 
   select(e) {
