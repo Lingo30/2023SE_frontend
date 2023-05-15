@@ -161,7 +161,14 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       success: (res) => {
-        console.log(res.data);
+        this.data.skillsList = [];
+        this.data.skillsList.push(res.data["专业知识"]);
+        this.data.skillsList.push(res.data["编程语言"]);
+        this.data.skillsList.push(res.data["掌握工具"]);
+        this.data.skillsList.push(res.data["其他技能"]);
+        this.setData({
+          skillsList: this.data.skillsList
+        });
       }
     })
     // 2. 缓存中读 skillsToPass.alreadyIds ==> (2)[alreadyIds]
