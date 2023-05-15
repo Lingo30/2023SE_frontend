@@ -49,7 +49,7 @@ Component({
     handleChangeStatus: false,
     storageList: [],
     // diy-systemNotification
-    newIncome: false,
+    newIncome: true,
     time: "刚刚",
     brief: "【阮利】老师已通过你对“元"
   },
@@ -290,6 +290,9 @@ Component({
     },
     learnMore() {},
     jump2system() {
+      this.setData({
+        newIncome: false
+      });
       wx.navigateTo({
         url: '/pages/sysNotification/index',
       });

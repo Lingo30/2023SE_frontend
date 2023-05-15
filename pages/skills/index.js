@@ -168,13 +168,13 @@ Page({
     //            skillsToPass.alreadyNames ==> (3)[alreadyNames]
     //            skillsToPass.id2selected ==> (4)[id2selected]
     let s2p = getApp().globalData.skillsToPass;
-    console.log(s2p);
+    console.log("s2p = ", s2p);
+    // 注意：要浅拷贝
     this.setData({
-      alreadyIds: s2p.skillIds,
-      alreadyNames: s2p.skillNames,
-      id2selected: s2p.id2selected
+      alreadyIds: s2p.skillIds.slice(),
+      alreadyNames: s2p.skillNames.slice(),
+      id2selected: Object.assign({}, s2p.id2selected)
     });
-
   },
 
   select(e) {

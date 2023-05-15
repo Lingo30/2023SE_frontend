@@ -100,6 +100,9 @@ Page({
       success: (res) => {
         if (res.data.result == 1) {
           console.log("res=", res);
+          this.data.skillIds = res.data.skillIds.slice();
+          this.data.skillNames = res.data.skillNames.slice();
+          this.data.numOfSkills = res.data.skillIds.length;
           this.setData({
             avatar: res.data.avatar,
             username: res.data.username,
@@ -108,10 +111,8 @@ Page({
             grades: res.data.grades,
             labExperience: res.data.labExperience,
             awards: res.data.awards,
-            skillIds: res.data.skillIds,
-            skillNames: res.data.skillNames,
             numOfSkills: res.data.skillIds.length
-          });
+          })
         } else {
           Toast({
             context: this,
@@ -128,14 +129,15 @@ Page({
       }
     });
     // 初始化skillsToPass缓存
-    getApp().globalData.skillsToPass = {
-      skillIds: this.data.skillIds,
-      skillNames: this.data.skillNames,
-      id2selected: this.data.skillIds.reduce((acc, cur) => {
-        acc[cur] = true;
-        return acc;
-      }, {})
-    };
+    console.log("Before skillsToPass: this.data = ", this.data);
+    const s2p = getApp().globalData.skillsToPass;
+    s2p.skillIds = this.data.skillIds.slice();
+    s2p.skillNames = this.data.skillNames.slice();
+    s2p.id2selected = this.data.skillIds.reduce((acc, cur) => {
+      acc[cur] = true;
+      return acc;
+    }, {});
+    console.log("edit onLoad(): getApp().globalData.skillsToPass = ", s2p);
     console.log("onLoad() over");
   },
 
