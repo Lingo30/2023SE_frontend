@@ -193,5 +193,9 @@ Page({
 
   jump2chat() {
     // todo
+    wx.navigateTo({
+      // TODO: 沟通页面url
+      url: '/TUI-openchat/pages/index' + '?tId=' + this.data.email
+    });
   }
 })

@@ -78,7 +78,7 @@ Page({
     const {
       key
     } = e.currentTarget.dataset;
-    this[`${key}`] = e.detail.value;
+    this.data[`${key}`] = e.detail.value;
   },
 
   init() {
