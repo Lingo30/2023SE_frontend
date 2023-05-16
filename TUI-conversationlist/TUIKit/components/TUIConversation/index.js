@@ -51,7 +51,8 @@ Component({
     // diy-systemNotification
     newIncome: true,
     time: "2023/12/31",
-    brief: "【阮利】老师已通过你对“元"
+    brief: "【阮利】老师已通过你对“元",
+    valid: false
   },
   lifetimes: {
     attached() {},
@@ -94,6 +95,7 @@ Component({
         success: (res) => {
           if (typeof res.data.newIncome !== 'undefined') {
             this.setData({
+              valid: true,
               newIncome: res.data.newIncome,
               time: res.data.time
             });
@@ -290,7 +292,7 @@ Component({
     learnMore() {},
     jump2system() {
       this.setData({
-        newIncome: false
+        valid: false
       });
       wx.navigateTo({
         url: '/pages/sysNotification/index',
