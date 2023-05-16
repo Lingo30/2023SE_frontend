@@ -176,6 +176,7 @@ Page({
   // 5. 申请项目页面
   apply() {
     // 5-1. request
+    console.log("text = ", "【" + this.data.sName + "】同学刚刚申请了您的【" + this.data.iTitle + "】项目，请及时审核该学生的申请");
     wx.request({
       url: getApp().globalData.baseUrl + '/apply',
       method: 'post',
