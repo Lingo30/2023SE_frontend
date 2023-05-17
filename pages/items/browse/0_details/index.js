@@ -65,7 +65,7 @@ Page({
         });
         console.log(this.data.internlist);
       }
-    })
+    });
     wx.request({
       url: getApp().globalData.baseUrl + '/getItemInfo',
       method: 'post',
@@ -96,7 +96,35 @@ Page({
         });
         console.log(this.data.internlist);
       }
-    })
+    });
+    // 获取学生姓名sName
+    wx.request({
+      url: getApp().globalData.baseUrl + '/user',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        useId: false,
+        id: ''
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          this.setData({
+            sName: res.data.username
+          });
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "加载失败！",
+            duration: 2500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      }
+    });
   },
 
   // 3. 收藏函数
@@ -148,6 +176,7 @@ Page({
   // 5. 申请项目页面
   apply() {
     // 5-1. request
+    console.log("text = ", "【" + this.data.sName + "】同学刚刚申请了您的【" + this.data.iTitle + "】项目，请及时审核该学生的申请");
     wx.request({
       url: getApp().globalData.baseUrl + '/apply',
       method: 'post',
@@ -155,7 +184,9 @@ Page({
         Authorization: wx.getStorageSync('token'),
       },
       data: {
-        iId: this.data.iId
+        iId: this.data.iId,
+        time: new Date(),
+        text: "【" + this.data.sName + "】同学刚刚申请了您的【" + this.data.iTitle + "】项目，请及时审核该学生的申请"
       },
       success: (res) => {
         if (res.data.success) {
@@ -174,7 +205,6 @@ Page({
               url: '/pages/usercenter/project/index'
             });
           }, 1000);
-          // 5-2. 跳转
 
         } else {
           Toast({

@@ -7,9 +7,9 @@
     </view>
     <view class="conversation-list-area">
       <scroll-view class="scoll-view" scroll-y="true">
-        <t-notice-bar visible="{{newIncome}}" prefixIcon="mobile-vibrate" content="有新的系统通知，请及时查看" theme="info" />
-        <t-notice-bar visible="{{!newIncome}}" prefixIcon="check-circle-filled" content="暂无新的系统通知" theme="success" />
-        <view class="system-notice-container" bind:tap="jump2system" style="background-color: {{newIncome ? 'rgb(0, 82, 217)' : 'rgb(43, 164, 113)'}};">
+        <t-notice-bar visible="{{valid & newIncome}}" prefixIcon="mobile-vibrate" content="有新的系统通知，请及时查看" theme="info" />
+        <t-notice-bar visible="{{valid & !newIncome}}" prefixIcon="check-circle-filled" content="暂无新的系统通知" theme="success" />
+        <view wx:if="{{valid}}" class="system-notice-container" bind:tap="jump2system" style="background-color: {{newIncome ? 'rgb(0, 82, 217)' : 'rgb(43, 164, 113)'}};">
           <view class="system-icon" style="margin: 28rpx;">
             <t-icon name="{{newIncome ? 'notification-filled' : 'notification'}}" size="27px" color="white" />
           </view>
@@ -17,7 +17,7 @@
             <view class="big-text" style="font-weight: bold; font-size: 38rpx; margin-bottom: 8rpx; color: white;">系统通知</view>
             <!-- <view class="small-text" style="color: white;">{{brief}}...</view> -->
           </view>
-          <view class="time" style="color: white; width: 63vw; text-align: right;">上一条通知时间：<text style="font-weight: bold;">{{time}}</text></view>
+          <view class="time" style="color: white; width: 63vw; text-align: right;">{{time}}</view>
         </view>
 
         <ConversationItem wx:for="{{conversationList}}" wx:key="index" id="{{item.conversationID}}" data-type="{{item.type}}" conversation="{{item}}" bindtap="handleRoute" statusList="{{statusList}}" bind:transCheckID="transCheckID" charge="{{transChenckID===item.conversationID}}">

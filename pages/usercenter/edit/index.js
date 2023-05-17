@@ -111,8 +111,22 @@ Page({
             grades: res.data.grades,
             labExperience: res.data.labExperience,
             awards: res.data.awards,
+            skillIds: res.data.skillIds.slice(),
+            skillNames: res.data.skillNames.slice(),
             numOfSkills: res.data.skillIds.length
-          })
+          });
+          // 初始化skillsToPass缓存
+          console.log("Before skillsToPass: this.data = ", this.data);
+          console.log("this.data[\"skillIds\"] = ", this.data["skillIds"]);
+          // 目前无bug
+          getApp().globalData.skillsToPass = {};
+          getApp().globalData.skillsToPass.skillIds = res.data["skillIds"];
+          getApp().globalData.skillsToPass.skillNames = res.data.skillNames.slice();
+          getApp().globalData.skillsToPass.id2selected = res.data.skillIds.reduce((acc, cur) => {
+            acc[cur] = true;
+            return acc;
+          }, {});
+          console.log("onLoad() over");
         } else {
           Toast({
             context: this,
@@ -128,17 +142,7 @@ Page({
         }
       }
     });
-    // 初始化skillsToPass缓存
-    console.log("Before skillsToPass: this.data = ", this.data);
-    const s2p = getApp().globalData.skillsToPass;
-    s2p.skillIds = this.data.skillIds.slice();
-    s2p.skillNames = this.data.skillNames.slice();
-    s2p.id2selected = this.data.skillIds.reduce((acc, cur) => {
-      acc[cur] = true;
-      return acc;
-    }, {});
-    console.log("edit onLoad(): getApp().globalData.skillsToPass = ", s2p);
-    console.log("onLoad() over");
+
   },
 
   onShow() {

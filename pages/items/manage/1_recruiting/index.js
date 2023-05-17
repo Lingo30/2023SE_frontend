@@ -25,6 +25,7 @@ Page({
     end: '2030-09-09 12:12:12',
     starttime: "2023-12-31",
     duration: '7个月',
+    tName: 'default',
     // 持续时间
     timeText: '',
     timeValue: [],
@@ -99,6 +100,7 @@ Page({
         content: '主要按钮',
         theme: 'primary'
       },
+      
     ],
   },
 
@@ -287,6 +289,32 @@ Page({
         }, 1500);
       }
     });
+    // 获取导师姓名
+    wx.request({
+      url: getApp().globalData.baseUrl + '/tuser',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        useId: false,
+        id: ""
+      },
+      success: (res) => {
+        if (res.data.result == 1) {
+          this.data.tName = res.data.username;
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "加载失败！",
+            duration: 2500,
+            theme: 'error',
+            direction: 'column',
+          });
+        }
+      }
+    })
   },
 
   submitItemMod() {
@@ -356,34 +384,8 @@ Page({
   reject() {
     // request + 刷新当前页
     const sIds = this.data.checkList.map(i => this.data.students[i].sId);
-    let tName = "default";
-    // 获取导师姓名
-    wx.request({
-      url: getApp().globalData.baseUrl + '/tuser',
-      method: 'post',
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
-      data: {
-        useId: false,
-        id: ""
-      },
-      success: (res) => {
-        if (res.data.result == 1) {
-          tName = res.data.username;
-        } else {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: "加载失败！",
-            duration: 2500,
-            theme: 'error',
-            direction: 'column',
-          });
-        }
-      }
-    })
     // 调用 '/reject' 接口
+    console.log(this.data.tName);
     wx.request({
       url: getApp().globalData.baseUrl + '/reject',
       method: 'post',
@@ -394,7 +396,7 @@ Page({
         iId: this.data.iId,
         sIds: sIds,
         time: new Date(),
-        text: "很遗憾地通知您，您没有通过【" + tName + "】老师【" + this.data.iTitle + "】项目的审核，请尝试报名其他项目，不要灰心，再接再厉！"
+        text: "很遗憾地通知您，您没有通过【" + this.data.tName + "】老师【" + this.data.iTitle + "】项目的审核，请尝试报名其他项目，不要灰心，再接再厉！"
       },
       success: (res) => {
         // TODO
@@ -447,32 +449,7 @@ Page({
     this.closeDialog();
     const sIds = this.data.checkList.map(i => this.data.students[i].sId);
     let tName = "default";
-    // 获取导师姓名
-    wx.request({
-      url: getApp().globalData.baseUrl + '/tuser',
-      method: 'post',
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
-      data: {
-        useId: false,
-        id: ""
-      },
-      success: (res) => {
-        if (res.data.result == 1) {
-          tName = res.data.username;
-        } else {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: "加载失败！",
-            duration: 2500,
-            theme: 'error',
-            direction: 'column',
-          });
-        }
-      }
-    })
+    
     // 调用 '/startTheMFIntern' 接口
     wx.request({
       url: getApp().globalData.baseUrl + '/startTheMFIntern',
@@ -484,7 +461,7 @@ Page({
         iId: this.data.iId,
         sIds: sIds,
         time: new Date(),
-        text: "恭喜您！您已经通过【" + tName + "】老师【" + this.data.iTitle + "】项目的审核，项目已经正式立项，请联系导师开始研究吧！"
+        text: "恭喜您！您已经通过【" + this.data.tName + "】老师【" + this.data.iTitle + "】项目的审核，项目已经正式立项，请联系导师开始研究吧！"
       },
       success: (res) => {
         if (res.data.success) {

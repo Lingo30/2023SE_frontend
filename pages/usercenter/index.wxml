@@ -24,7 +24,13 @@
         <t-collapse-panel header="学业成绩" value="{{1}}"> {{grades}} </t-collapse-panel>
         <t-collapse-panel header="科研经历" value="{{2}}"> {{labExperience}} </t-collapse-panel>
         <t-collapse-panel header="竞赛获奖" value="{{3}}"> {{awards}} </t-collapse-panel>
-        <t-collapse-panel header="擅长技能" value="{{4}}"> {{skill}} </t-collapse-panel>
+        <t-collapse-panel header="擅长技能" value="{{4}}">
+          <view class="skills-container">
+            <view wx:for="{{skillNames}}" wx:key="id" wx:for-item="skill"  class='skill'>
+              {{skill}}
+            </view>
+          </view>
+        </t-collapse-panel>
       </t-collapse>
       <t-cell title="查看PDF版简历" hover arrow leftIcon="file-pdf" bind:tap="previewPDF" />
     </view>

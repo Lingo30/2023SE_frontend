@@ -1,21 +1,21 @@
 <view style="text-align: center; color: #b9b9b9" wx:if="{{pageLoading}}">
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
-<view class="home-page-header">
+<view class="home-page-header" style='height: 64rpx;'>
   <view class="search" bind:tap="navToSearchPage">
     <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="北航校内实习" leftIcon="" disabled>
       <t-icon slot="left-icon" name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>
 </view>
-<view class="home-page-container">
-  <view class="home-page-tabs">
+<view class="home-page-container" style='height:calc(100vh - 224rpx);'>
+  <view class="home-page-tabs" style='height:96rpx;'>
     <t-tabs t-class="t-tabs" t-class-active="tabs-external__active" t-class-item="tabs-external__item" defaultValue="{{0}}" space-evenly="{{false}}" bind:change="tabChangeHandle">
       <t-tab-panel wx:for="{{tabList}}" wx:for-index="index" wx:key="index" label="{{item.text}}" value="{{item.key}}" />
     </t-tabs>
   </view>
 
-  <scroll-view scroll-y="true" style='height:calc(100vh - 180rpx)' bindscrolltolower="loadMore">
+  <scroll-view scroll-y="true" bindscrolltolower="loadMore" style='height:calc(100vh - 320rpx);'>
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
       <intern-card itemData="{{item}}" id="{{item.id}}" ctx="home" />
     </block>
