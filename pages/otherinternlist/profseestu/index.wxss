@@ -1,6 +1,5 @@
 page {
   box-sizing: border-box;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 96rpx);
 }
 
 .t-tabs.t-tabs--top .t-tabs__scroll {

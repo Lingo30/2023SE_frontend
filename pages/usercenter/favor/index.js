@@ -85,8 +85,8 @@ Page({
 
   loadMore() {
     if (this.data.current == "帖子") {
-      this.loadMoreMoments()
-      return
+      this.loadMoreMoments();
+      return;
     }
     // console.log(this.data.pageLoading);
     if (this.data.pageLoading) {
@@ -119,14 +119,7 @@ Page({
               page: page
             })
           } else {
-            Toast({
-              context: this,
-              selector: '#t-toast',
-              message: res.data.msg,
-              duration: 2500,
-              theme: 'warning',
-              direction: 'column',
-            });
+
           }
         },
         complete: () => {
@@ -137,6 +130,7 @@ Page({
         },
       });
     } else if (this.data.current == "导师") {
+      console.log("page = ", page);
       wx.request({
         url: `${getApp().globalData.baseUrl}/getLikeProf`,
         header: {
@@ -156,16 +150,7 @@ Page({
               page: page
             })
             // console.log(proflisttmp)
-          } else {
-            Toast({
-              context: this,
-              selector: '#t-toast',
-              message: res.data.msg,
-              duration: 2500,
-              theme: 'warning',
-              direction: 'column',
-            });
-          }
+          } else {}
         },
         complete: () => {
           this.setData({
@@ -265,14 +250,7 @@ Page({
           })
           // console.log(this.data.momentList)
         } else {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: res.data.msg,
-            duration: 2500,
-            theme: 'warning',
-            direction: 'column',
-          });
+
         }
       },
       complete: () => {
