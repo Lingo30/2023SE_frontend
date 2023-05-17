@@ -171,6 +171,7 @@ Page({
         current: this.data.current,
       },
       success: (res) => {
+        console.log(res.data, page)
         if (res.data.result == 1) {
           const internmore = res.data.internlist
           const internlisttmp = this.data.internlist.concat(internmore)

@@ -3,16 +3,16 @@
 </view>
 
 
-<view class="home-page-container">
+<view class="home-page-container" style='height:calc(100vh - 160rpx);'>
   <!-- 1. tabs -->
-  <view class="home-page-tabs">
+  <view class="home-page-tabs" style='height:96rpx;'>
     <t-tabs t-class="t-tabs" t-class-active="tabs-external__active" t-class-item="tabs-external__item" defaultValue="{{0}}" space-evenly="{{false}}" bind:change="tabChangeHandle">
       <t-tab-panel wx:for="{{tabList}}" wx:for-index="index" wx:key="index" label="{{item.text}}" value="{{item.key}}" />
     </t-tabs>
   </view>
 
   <!-- 2. 项目列表 -->
-  <scroll-view scroll-y="true" style='height:calc(100vh - 180rpx)' bindscrolltolower="loadMore">
+  <scroll-view scroll-y="true" style='height:calc(100vh - 256rpx)' bindscrolltolower="loadMore">
     <block wx:for="{{internlist}}" wx:for-item="item" wx:for-index="index">
       <intern-card itemData="{{item}}" id="{{item.id}}" ctx="{{'t_' + current}}" />
     </block>
