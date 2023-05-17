@@ -146,6 +146,7 @@ Page({
   },
 
   logout() {
+    wx.$TUIKit.logout();
     wx.clearStorage();
     wx.setStorage({
       key: 'login',
@@ -154,7 +155,12 @@ Page({
     wx.redirectTo({
       url: '/pages/login/index',
     });
+
   },
+  onSDKReady(event) {
+    // 监听到此事件后可调用 SDK 发送消息等 API，使用 SDK 的各项功能。
+  },
+
 
   /**
    * 生命周期函数--监听页面显示
