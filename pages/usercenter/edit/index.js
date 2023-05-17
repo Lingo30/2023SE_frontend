@@ -78,7 +78,7 @@ Page({
     const {
       key
     } = e.currentTarget.dataset;
-    this[`${key}`] = e.detail.value;
+    this.data[`${key}`] = e.detail.value;
   },
 
   onLoad() {
@@ -272,6 +272,7 @@ Page({
   },
 
   finishEdit() {
+    console.log("Before Update: this.data = ", this.data);
     wx.request({
       url: getApp().globalData.baseUrl + '/user/edit',
       method: 'post',
