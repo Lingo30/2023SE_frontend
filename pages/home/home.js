@@ -109,7 +109,6 @@ Page({
     if (this.data.pageLoading) {
       return;
     }
-    const page = this.data.page + 1;
     this.setData({
       pageLoading: true,
     });
@@ -123,7 +122,7 @@ Page({
       },
       method: 'POST',
       data: {
-        page: page,
+        page: this.data.page,
         current: this.data.current
       },
       success: (res) => {
@@ -131,6 +130,7 @@ Page({
           const internmore = res.data.internlist
           const internlisttmp = this.data.internlist.concat(internmore)
           // console.log(internlisttmp)
+          const page = this.data.page + 1;
           this.setData({
             internlist: internlisttmp,
             page: page

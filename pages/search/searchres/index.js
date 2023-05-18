@@ -89,7 +89,6 @@ Page({
     if (this.data.pageLoading) {
       return;
     }
-    const page = this.data.page + 1;
     this.setData({
       pageLoading: true,
     });
@@ -105,13 +104,14 @@ Page({
       data: {
         searchcontent: this.data.content,
         tags: this.data.searchtags,
-        page: page
+        page: this.data.page
       },
       success: (res) => {
         if (res.data.result == 1) {
           const internmore = res.data.internlist
           const internlisttmp = this.data.internlist.concat(internmore)
           console.log(internlisttmp)
+          const page = this.data.page + 1;
           this.setData({
             internlist: internlisttmp,
             page: page

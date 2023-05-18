@@ -12,44 +12,8 @@ Page({
     content: "",
     page: 1,
     onepagenum: 13,
-    showlist: [{
-        id: 1,
-        name: "刘偲",
-        school: "北航",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-      {
-        id: 2,
-        name: "朱军",
-        school: "清华",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-      {
-        id: 3,
-        name: "李崇轩",
-        school: "人大",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-    ],
-    proflist: [{
-        id: 1,
-        name: "刘偲",
-        school: "北航",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-      {
-        id: 2,
-        name: "朱军",
-        school: "清华",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-      {
-        id: 3,
-        name: "李崇轩",
-        school: "人大",
-        avatar: "https://intth1.2022martu1.cn/media/avatar/default.jpg"
-      },
-    ],
+    showlist: [],
+    proflist: [],
     goodsListLoadStatus: 0,
   },
 
