@@ -95,6 +95,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
+    console.log(this.data.searchcontent, this.data.searchtags, this.data.page)
     wx.request({
       url: getApp().globalData.baseUrl + '/searchIntern',
       header: {
@@ -102,7 +103,7 @@ Page({
       },
       method: 'POST',
       data: {
-        searchcontent: this.data.content,
+        searchcontent: this.data.searchcontent,
         tags: this.data.searchtags,
         page: this.data.page
       },
