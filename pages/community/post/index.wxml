@@ -5,9 +5,9 @@
   <t-textarea label="内容" placeholder="请输入帖子内容（上限1500字）" disableDefaultPadding="{{true}}" style="height: 600rpx;" data-key="content" bindchange="getInputValue" maxlength="1500" clearable />
   <view class="row" style="margin-top: 20rpx;">
     <text class="label">帖子类型</text>
-    <t-radio-group default-value="0" borderless bind:change="choose" disabled="{{!hasInterAuthority}}">
+    <t-radio-group default-value="0" borderless bind:change="choose">
       <t-radio block="{{false}}" label="普通帖" value="0" style="margin-right: 30rpx;" />
-      <t-radio block="{{false}}" label="内推帖" value="1" />
+      <t-radio block="{{false}}" label="内推帖" value="1" wx:if="{{hasInterAuthority}}"/>
     </t-radio-group>
   </view>
 </view>

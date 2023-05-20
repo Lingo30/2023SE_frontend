@@ -9,28 +9,9 @@ Page({
     title: "",
     content: "",
     isInter: 0,
-    hasInterAuthority: false,
+    hasInterAuthority: undefined,
   },
 
-  init() {
-    wx.setNavigationBarTitle({
-      title: '发表帖子',
-    })
-    wx.hideHomeButton();
-    wx.request({
-      url: getApp().globalData.baseUrl + '/community/checkInter',
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
-      method: 'POST',
-      success: (res) => {
-        console.log("hasInterAuthority = ", res.data.result);
-        this.setData({
-          hasInterAuthority: res.data.result,
-        })
-      },
-    });
-  },
 
   post() {
     if (this.data.title == "") {
@@ -96,8 +77,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    this.init()
+  onLoad() {
+    wx.setNavigationBarTitle({
+      title: '发表帖子',
+    })
+    wx.hideHomeButton();
+    wx.request({
+      url: getApp().globalData.baseUrl + '/community/checkInter',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      method: 'POST',
+      success: (res) => {
+        this.setData({
+          hasInterAuthority: res.data.result
+        });
+      },
+    });
   },
 
   /**
@@ -107,12 +103,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    this.init()
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
