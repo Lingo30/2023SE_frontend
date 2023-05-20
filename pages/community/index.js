@@ -22,21 +22,16 @@ Page({
       isInter: e.detail.value,
       momentList: []
     })
-    this.page = 1
-    this.isInter = e.detail.value
-    this.load(this.page)
+    this.load(this.data.page);
   },
 
   init() {
-    this.isInter = 0;
-    this.page = 1;
-    this.momentList = [];
     this.setData({
       isInter: 0,
       page: 1,
       momentList: []
     })
-    this.load(this.page);
+    this.load(this.data.page);
   },
 
   jump2Detail(e) {
@@ -52,8 +47,8 @@ Page({
   },
 
   loadMore() {
-    this.page = this.page + 1;
-    this.load(this.page);
+    this.data.page = this.data.page + 1;
+    this.load(this.data.page);
   },
 
   load(p) {
@@ -71,7 +66,7 @@ Page({
       method: 'POST',
       data: {
         page: p,
-        isInter: this.isInter
+        isInter: this.data.isInter
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -125,15 +120,17 @@ Page({
       isInter: 0,
       momentList: []
     })
-    this.page = 1
-    this.isInter = 0
-    this.momentList = []
   },
 
   onShow() {
     this.checkLogin();
-    this.init();
+    this.setData({
+      page: 1,
+      momentList: []
+    })
+    this.load(this.data.page);
   },
+
   onTabbarChange(e) {
     this.setData({
       tabbarValue: e.detail.value,

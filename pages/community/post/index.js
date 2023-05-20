@@ -13,8 +13,6 @@ Page({
   },
 
   init() {
-    this.isInter = 0;
-    this.title = "";
     wx.setNavigationBarTitle({
       title: '发表帖子',
     })
@@ -26,7 +24,7 @@ Page({
       },
       method: 'POST',
       success: (res) => {
-        this.hasInterAuthority = res.data.result;
+        console.log("hasInterAuthority = ", res.data.result);
         this.setData({
           hasInterAuthority: res.data.result,
         })
@@ -35,7 +33,7 @@ Page({
   },
 
   post() {
-    if (this.title == "") {
+    if (this.data.title == "") {
       Toast({
         context: this,
         selector: '#t-toast',
@@ -53,9 +51,9 @@ Page({
       },
       method: 'POST',
       data: {
-        title: this.title,
-        content: this.content,
-        isInter: this.isInter
+        title: this.data.title,
+        content: this.data.content,
+        isInter: this.data.isInter
       },
       success: (res) => {
         if (res.data.result == 1) {
@@ -85,14 +83,14 @@ Page({
   },
 
   choose(e) {
-    this.isInter = e.detail.value
+    this.data.isInter = e.detail.value
   },
 
   getInputValue(e) {
     const {
       key
     } = e.currentTarget.dataset;
-    this[`${key}`] = e.detail.value;
+    this.data[`${key}`] = e.detail.value;
   },
 
   /**
