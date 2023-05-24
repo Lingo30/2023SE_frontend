@@ -3,7 +3,7 @@
         <view class="TUI-commom-function-item" wx:for="{{commonFunction}}" wx:key="index" data-function="{{item}}" bindtap="handleCommonFunctions">{{item.name}}</view>
     </view> -->
   <view class="TUI-message-input">
-    <image class="TUI-icon" bindtap="switchAudio" src="{{isAudio ? '../../../../static/assets/keyboard.svg' : '../../../../static/assets/audio.svg'}}" />
+    <!-- <image class="TUI-icon" bindtap="switchAudio" src="{{isAudio ? '../../../../static/assets/keyboard.svg' : '../../../../static/assets/audio.svg'}}" /> -->
     <view wx:if="{{!isAudio || isEmoji}}" class="TUI-message-input-main {{ focus && 'TUI-message-input-main-focus'}}">
       <textarea class="TUI-message-input-area" adjust-position="{{false}}" cursor-spacing="20" value="{{message}}" bindinput="onInputValueChange" maxlength="-1" type="text" auto-height="{{true}}" placeholder="" placeholder-class="input-placeholder" confirm-type="send" show-confirm-bar="{{false}}" bindfocus="inputBindFocus" bindblur="inputBindBlur" bindconfirm="sendTextMessage" />
     </view>
