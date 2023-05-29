@@ -8,13 +8,15 @@ const inputStyle = `
   --padding: 25px
 `;
 
-let newInputStyle =  `
+let newInputStyle = `
 --padding: 0px
 `;
 
 const setNewInputStyle = (number) => {
   const height = number;
-  newInputStyle = `--padding: ${height}px`;
+  let deviceWidth = wx.getSystemInfoSync().windowWidth; //获取设备屏幕宽度
+  let px = (deviceWidth / 750) * 160
+  newInputStyle = `--padding: ${height+px}px`;
 };
 
 Component({
@@ -104,11 +106,15 @@ Component({
    */
   methods: {
     init() {
-      wx.$TUIKit.setMessageRead({ conversationID: this.data.conversationID }).then(() => {
+      wx.$TUIKit.setMessageRead({
+        conversationID: this.data.conversationID
+      }).then(() => {
         logger.log('| TUI-chat | setMessageRead | ok');
       });
       wx.$TUIKit.getConversationProfile(this.data.conversationID).then((res) => {
-        const { conversation } = res.data;
+        const {
+          conversation
+        } = res.data;
         this.setData({
           conversationName: this.getConversationName(conversation),
           conversation,
@@ -158,9 +164,17 @@ Component({
       }
     },
     groupCall(event) {
-      const { selectedUserIDList, type, groupID } = event.detail;
+      const {
+        selectedUserIDList,
+        type,
+        groupID
+      } = event.detail;
       const userIDList = selectedUserIDList;
-      this.triggerEvent('handleCall', { userIDList, type, groupID });
+      this.triggerEvent('handleCall', {
+        userIDList,
+        type,
+        groupID
+      });
     },
     goBack() {
       this.triggerEvent('showConversationList');
@@ -180,6 +194,7 @@ Component({
     // 监听键盘，获取焦点时将输入框推到键盘上方
     pullKeysBoards(event) {
       setNewInputStyle(event.detail.event.detail.height);
+      console.log("键盘：", newInputStyle)
       this.setData({
         'viewData.style': newInputStyle,
       });
@@ -191,7 +206,10 @@ Component({
       });
     },
     typing(event) {
-      const { STRING_TEXT, FEAT_NATIVE_CODE } = constant;
+      const {
+        STRING_TEXT,
+        FEAT_NATIVE_CODE
+      } = constant;
       if (this.data.conversation.type === wx.$TUIKitTIM.TYPES.CONV_C2C) {
         if (event.detail.typingMessage.typingStatus === FEAT_NATIVE_CODE.ISTYPING_STATUS && event.detail.typingMessage.actionParam === constant.TYPE_INPUT_STATUS_ING) {
           this.setData({
@@ -217,9 +235,9 @@ Component({
     },
     handleNewGroupProfile(event) {
       const newGroupProfile = event.detail;
-      for(let key in newGroupProfile) {
+      for (let key in newGroupProfile) {
         // 群名称变更
-        if(key === 'groupName') {
+        if (key === 'groupName') {
           const conversationName = newGroupProfile[key];
           this.setData({
             conversationName: conversationName

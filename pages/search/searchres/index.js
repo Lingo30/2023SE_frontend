@@ -54,7 +54,7 @@ Page({
     this.setData({
       pageLoading: true,
     });
-
+    console.log("搜索内容：", this.data.searchcontent)
     wx.request({
       url: getApp().globalData.baseUrl + '/searchIntern',
       header: {

@@ -6,7 +6,7 @@ Page({
    */
   data: {
     schoollist: ["北航", "清华", "北大", "人大", "上海交大", "复旦", "武大", "华科", "浙大", "中山大学"],
-    majorlist: ["CV", "NLP", "System", "HPC", "Medical", "Art", "AI", "EE", "CS"],
+    majorlist: ["java", "C#", "C++", "C", "FPGA", "CV", "NLP", "Vue", "Django", "python", "pyTorch"],
     timelist: ["长期", "短期"],
     typelist: ["线上", "线下"],
     content: '',
@@ -33,15 +33,17 @@ Page({
       "华科": false,
       "浙大": false,
       "中山大学": false,
-      "CV": false,
+      "java": false,
+      "C#": false,
+      "C++": false,
+      "C": false,
+      "FPGA": false,
       "NLP": false,
-      "System": false,
-      "HPC": false,
-      "Medical": false,
-      "Art": false,
-      "AI": false,
-      "EE": false,
-      "CS": false,
+      "Vue": false,
+      "Django": false,
+      "CV": false,
+      "python": false,
+      "pyTorch": false,
       "长期": false,
       "短期": false,
       "线上": false,
@@ -160,15 +162,25 @@ Page({
 
   },
 
+  actionHandle() {
+    console.log(1)
+    this.setData({
+      content: ''
+    });
+  },
+
   handleSubmit(e) {
-    const content = this.data.content
+    var content = this.data.content
     const searchtags = this.data.searchOp
-    console.log("输入内容", content)
-    console.log("选择内容", searchtags)
     const school = searchtags["school"].join(',')
     const skills = searchtags["skills"].join(',')
     const type = searchtags["type"]
     const time = searchtags["time"]
+    if (content == '' && school == [] && skills == [] && type == '' && time == '') {
+      content = '计算机'
+    }
+    console.log("输入内容", content)
+    console.log("选择内容", searchtags)
     wx.navigateTo({
       url: `/pages/search/searchres/index?searchcontent=${content}&time=${time}&type=${type}&school=` + school + `&skills=` + skills + ``,
     });

@@ -1,6 +1,6 @@
 <!--pages/search/search.wxml-->
 <view class="search-page">
-  <t-search t-class-input-container="t-class__input-container" t-class-input="t-search__input" value="{{content}}" leftIcon="" placeholder="北航校内实习" bind:submit="handleSubmit" bind:change="changeContent" focus>
+  <t-search t-class-input-container="t-class__input-container" t-class-input="t-search__input" value="{{content}}" leftIcon="" placeholder="北航校内实习" bind:submit="handleSubmit" bind:change="changeContent" bind:clear="actionHandle" focus>
     <t-icon slot="left-icon" name="search" size="40rpx" color="#bbb" />
   </t-search>
 
@@ -29,7 +29,7 @@
     </view>
     <view class="history-wrap">
       <view class="search-header">
-        <text class="search-title">专业</text>
+        <text class="search-title">技能</text>
       </view>
       <view class="search-content">
         <view class="{{isSelected[item] ? 'search-item-activate' : 'search-item'}}" hover-class="hover-history-item" bind:tap="addOp" wx:for="{{majorlist}}" data-index="{{index}}" wx:key="*this" data-item="{{item}}" data-type="skills">

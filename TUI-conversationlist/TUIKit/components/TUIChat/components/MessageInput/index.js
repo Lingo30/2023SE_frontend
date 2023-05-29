@@ -45,10 +45,18 @@ Component({
     title: ' ',
     notShow: false,
     isShow: true,
-    commonFunction: [
-      { name: '常用语', key: '0' },
-      { name: '发送订单', key: '1' },
-      { name: '服务评价', key: '2' },
+    commonFunction: [{
+        name: '常用语',
+        key: '0'
+      },
+      {
+        name: '发送订单',
+        key: '1'
+      },
+      {
+        name: '服务评价',
+        key: '2'
+      },
     ],
     displayServiceEvaluation: false,
     showErrorImageFlag: 0,
@@ -59,6 +67,8 @@ Component({
     isEmoji: false,
     fileList: [],
     hasCallKit: false,
+    inputBottom: '0', // 初始输入框的 top 值
+    scrollHeight: '0'
   },
 
   lifetimes: {
@@ -108,7 +118,9 @@ Component({
         nextReqMessageID: this.data.nextReqMessageID,
         count: 15,
       }).then((res) => {
-        const { messageList } = res.data;
+        const {
+          messageList
+        } = res.data;
         this.setData({
           messageList,
         });
@@ -237,7 +249,9 @@ Component({
     },
 
     sendMediaMessage(type, mediaType) {
-      const { fileList } = this.data;
+      const {
+        fileList
+      } = this.data;
       wx.chooseMedia({
         count: 9,
         sourceType: [type],
@@ -245,7 +259,12 @@ Component({
         success: (res) => {
           const mediaInfoList = res.tempFiles;
           mediaInfoList.forEach((mediaInfo) => {
-            fileList.push({ type: res.type, tempFiles: [{ tempFilePath: mediaInfo.tempFilePath }] });
+            fileList.push({
+              type: res.type,
+              tempFiles: [{
+                tempFilePath: mediaInfo.tempFilePath
+              }]
+            });
           });
           fileList.forEach((file) => {
             if (file.type === 'image') {
@@ -362,7 +381,9 @@ Component({
             const title = '麦克风权限授权';
             const content = '使用语音通话，需要在设置中对麦克风进行授权允许';
             try {
-              await wx.authorize({ scope: 'scope.record' });
+              await wx.authorize({
+                scope: 'scope.record'
+              });
               this.handleCalling(e);
             } catch (e) {
               this.handleShowModal(title, content);
@@ -373,8 +394,12 @@ Component({
             const title = '麦克风、摄像头权限授权';
             const content = '使用视频通话，需要在设置中对麦克风、摄像头进行授权允许';
             try {
-              await wx.authorize({ scope: 'scope.record' });
-              await wx.authorize({ scope: 'scope.camera' });
+              await wx.authorize({
+                scope: 'scope.record'
+              });
+              await wx.authorize({
+                scope: 'scope.camera'
+              });
               this.handleCalling(e);
             } catch (e) {
               this.handleShowModal(title, content);
@@ -430,7 +455,9 @@ Component({
         });
       }
       if (conversationType === wx.$TUIKitTIM.TYPES.CONV_C2C) {
-        const { userID } = this.data.conversation.userProfile;
+        const {
+          userID
+        } = this.data.conversation.userProfile;
         if (type === 1) {
           wx.aegis.reportEvent({
             name: 'audioCall',
@@ -466,18 +493,20 @@ Component({
       });
       const to = this.getToAccount();
       const text = flag ? msg : this.data.message;
-      const { FEAT_NATIVE_CODE } = constant;
+      const {
+        FEAT_NATIVE_CODE
+      } = constant;
       const message = wx.$TUIKit.createTextMessage({
         to,
         conversationType: this.data.conversation.type,
         payload: {
           text,
         },
-        cloudCustomData: JSON.stringify({ messageFeature:
-        {
-          needTyping: FEAT_NATIVE_CODE.FEAT_TYPING,
-          version: FEAT_NATIVE_CODE.NATIVE_VERSION,
-        },
+        cloudCustomData: JSON.stringify({
+          messageFeature: {
+            needTyping: FEAT_NATIVE_CODE.FEAT_TYPING,
+            version: FEAT_NATIVE_CODE.NATIVE_VERSION,
+          },
         }),
       });
       this.setData({
@@ -504,7 +533,10 @@ Component({
 
     // 发送正在输入状态消息
     sendTypingStatusMessage() {
-      const { BUSINESS_ID_TEXT, FEAT_NATIVE_CODE } = constant;
+      const {
+        BUSINESS_ID_TEXT,
+        FEAT_NATIVE_CODE
+      } = constant;
       // 创建正在输入状态消息, "typingStatus":1,正在输入中1,  输入结束0, "version": 1 兼容老版本,userAction:0, // 14表示正在输入,actionParam:"EIMAMSG_InputStatus_Ing" //"EIMAMSG_InputStatus_Ing" 表示正在输入, "EIMAMSG_InputStatus_End" 表示输入结束
       const typingMessage = wx.$TUIKit.createCustomMessage({
         to: this.getToAccount(),
@@ -527,8 +559,8 @@ Component({
           },
         }),
       });
-        // 在消息列表中过滤出对方的消息，并且获取最新消息的时间。
-      const inList =  this.data.messageList.filter(item => item.flow === 'in');
+      // 在消息列表中过滤出对方的消息，并且获取最新消息的时间。
+      const inList = this.data.messageList.filter(item => item.flow === 'in');
       if (inList.length === 0) return;
       const sortList = inList.sort((firstItem, secondItem) => secondItem.time - firstItem.time);
       const newMessageTime = sortList[0].time * 1000;
@@ -541,9 +573,9 @@ Component({
           return false;
         }
       });
-        // 获取当前编辑时间，与收到对方最新的一条消息时间相比，时间小于30s则发送正在输入状态消息/
+      // 获取当前编辑时间，与收到对方最新的一条消息时间相比，时间小于30s则发送正在输入状态消息/
       const now = new Date().getTime();
-      const timeDifference =  (now  - newMessageTime);
+      const timeDifference = (now - newMessageTime);
 
       if (isSendTypingMessage && timeDifference > (1000 * 30)) return;
       if (this.data.isFirstSendTyping) {
@@ -572,7 +604,13 @@ Component({
 
     // 监听是否失去焦点
     inputBindBlur(event) {
-      const { BUSINESS_ID_TEXT, FEAT_NATIVE_CODE } = constant;
+      this.setData({
+        inputBottom: '0',
+      });
+      const {
+        BUSINESS_ID_TEXT,
+        FEAT_NATIVE_CODE
+      } = constant;
       const typingMessage = wx.$TUIKit.createCustomMessage({
         to: this.getToAccount(),
         conversationType: this.data.conversation.type,
@@ -584,11 +622,11 @@ Component({
             userAction: FEAT_NATIVE_CODE.NOTTYPING_ACTION,
             actionParam: constant.TYPE_INPUT_STATUS_END,
           }),
-          cloudCustomData: JSON.stringify({ messageFeature:
-              {
-                needTyping: FEAT_NATIVE_CODE.FEAT_TYPING,
-                version: FEAT_NATIVE_CODE.NATIVE_VERSION,
-              },
+          cloudCustomData: JSON.stringify({
+            messageFeature: {
+              needTyping: FEAT_NATIVE_CODE.FEAT_TYPING,
+              version: FEAT_NATIVE_CODE.NATIVE_VERSION,
+            },
           }),
           description: '',
           extension: '',
@@ -663,20 +701,20 @@ Component({
         message,
       });
       wx.$TUIKit.sendMessage(message, {
-        offlinePushInfo: {
-          disablePush: true,
-        },
-      }).then(() => {
-        const firstSendMessage = wx.getStorageSync('isFirstSendMessage');
-        if (firstSendMessage) {
-          wx.aegis.reportEvent({
-            name: 'sendMessage',
-            ext1: 'sendMessage-success',
-            ext2: 'imTuikitExternal',
-            ext3: wx.$chat_SDKAppID,
-          });
-        }
-      })
+          offlinePushInfo: {
+            disablePush: true,
+          },
+        }).then(() => {
+          const firstSendMessage = wx.getStorageSync('isFirstSendMessage');
+          if (firstSendMessage) {
+            wx.aegis.reportEvent({
+              name: 'sendMessage',
+              ext1: 'sendMessage-success',
+              ext2: 'imTuikitExternal',
+              ext3: wx.$chat_SDKAppID,
+            });
+          }
+        })
         .catch((error) => {
           logger.log(`| TUI-chat | message-input | sendMessageError: ${error.code} `);
           wx.aegis.reportEvent({
