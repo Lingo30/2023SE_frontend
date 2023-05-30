@@ -5,7 +5,7 @@ import constant from '../../utils/constant';
 const app = getApp();
 
 const inputStyle = `
-  --padding: 25px
+  --padding: 60px
 `;
 
 let newInputStyle = `
