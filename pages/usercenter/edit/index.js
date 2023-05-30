@@ -9,6 +9,7 @@ Page({
     avatar: "https://i.postimg.cc/vTSPVvKZ/default-Avatar.png",
     username: "student",
     grades: "default",
+    scroll_ctrl: true,
     labExperience: "default",
     awards: "default",
     skillIds: [],
@@ -79,6 +80,17 @@ Page({
       key
     } = e.currentTarget.dataset;
     this.data[`${key}`] = e.detail.value;
+  },
+
+  onfocus() {
+    this.setData({
+      scroll_ctrl: false
+    })
+  },
+  onblur() {
+    this.setData({
+      scroll_ctrl: true
+    })
   },
 
   onLoad() {

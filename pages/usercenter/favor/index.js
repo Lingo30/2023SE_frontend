@@ -35,10 +35,6 @@ Page({
   },
 
   onShow() {
-    // this.getTabBar().init();
-  },
-
-  onLoad() {
     this.init();
   },
 
@@ -61,23 +57,28 @@ Page({
     this.setData({
       pageLoading: true,
     });
+    // this.setData({
+    //   current: "项目",
+    // })
+    // this.data.current = "项目";
+    this.tabChangeHandle(null);
 
-    wx.request({
-      url: `${getApp().globalData.baseUrl}/getLikeProj`,
-      header: {
-        Authorization: wx.getStorageSync('token'),
-      },
-      method: 'POST',
-      data: {
-        page: this.data.page,
-      },
-      success: (res) => {
-        // console.log(res)
-        this.setData({
-          internlist: res.data.internlist,
-        });
-      },
-    });
+    // wx.request({
+    //   url: `${getApp().globalData.baseUrl}/getLikeProj`,
+    //   header: {
+    //     Authorization: wx.getStorageSync('token'),
+    //   },
+    //   method: 'POST',
+    //   data: {
+    //     page: this.data.page,
+    //   },
+    //   success: (res) => {
+    //     // console.log(res)
+    //     this.setData({
+    //       internlist: res.data.internlist,
+    //     });
+    //   },
+    // });
     this.setData({
       pageLoading: false,
     });
@@ -168,9 +169,13 @@ Page({
     this.setData({
       page: 1,
     });
-    this.setData({
-      current: e.detail.label,
-    });
+    if (e != null) {
+      this.setData({
+        current: e.detail.label,
+      });
+      console.log(e);
+    }
+
     // console.log(this.data.page, this.data.current);
     if (this.data.current == "项目") {
       wx.request({

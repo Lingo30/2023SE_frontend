@@ -81,7 +81,7 @@ Page({
       },
       success: (res) => {
         if (res.data.result == 1) {
-          if (this.following == 1) {
+          if (this.data.following == 1) {
             this.setData({
               following: 0
             })

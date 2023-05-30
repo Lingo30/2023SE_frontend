@@ -36,3 +36,7 @@ page {
   font-size: small;
   color: gray;
 }
+
+.wordbreak {
+  word-break: break-all;
+}

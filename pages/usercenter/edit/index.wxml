@@ -1,12 +1,12 @@
 <!--pages/usercenter/edit/index.wxml-->
 <t-toast id="t-toast" />
-<scroll-view scroll-y="true" style='height:100vh'>
+<scroll-view scroll-y="{{scroll_ctrl}}" style='height:100vh'>
   <view class="column card">
     <view class="row" style="justify-content: center;">
       <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx;" bind:tap="uploadAvatar" hover />
       <t-icon name="edit" bind:tap="uploadAvatar" hover></t-icon>
     </view>
-    <t-input label="姓名" data-key="username" value="{{username}}" bindchange="getInputValue" clearable> </t-input>
+    <t-input label="姓名" data-key="username" value="{{username}}" bindchange="getInputValue" clearable bindfocus="onfocus" bindblur="onblur"> </t-input>
 
     <t-cell title="所在专业" arrow hover note="{{departmentText}}" bind:click="onDepartmentPicker" />
     <t-picker visible="{{departmentVisible}}" data-key="department" title="选择所在专业" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">

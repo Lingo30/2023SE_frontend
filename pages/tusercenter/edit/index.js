@@ -7,6 +7,7 @@ Page({
    */
   data: {
     avatar: "https://i.postimg.cc/vTSPVvKZ/default-Avatar.png",
+    scroll_ctrl: true,
     username: "teacher",
     title: "教授",
     university: "北京航空航天大学",
@@ -123,6 +124,17 @@ Page({
           });
         }
       }
+    })
+  },
+
+  onfocus() {
+    this.setData({
+      scroll_ctrl: false
+    })
+  },
+  onblur() {
+    this.setData({
+      scroll_ctrl: true
     })
   },
 

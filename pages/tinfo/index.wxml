@@ -21,10 +21,18 @@
     <t-cell title="个人简历" leftIcon="file" />
 
     <t-collapse theme="card" expandMutex expandIcon>
-      <t-collapse-panel header="教育经历" value="{{0}}"> {{education}} </t-collapse-panel>
-      <t-collapse-panel header="科研项目" value="{{1}}"> {{labExperience}} </t-collapse-panel>
-      <t-collapse-panel header="发表论文" value="{{2}}"> {{articles}} </t-collapse-panel>
-      <t-collapse-panel header="个人主页" value="{{3}}"> {{selfHome}} </t-collapse-panel>
+      <t-collapse-panel header="教育经历" value="{{0}}">
+        <text class="wordbreak">{{education}}</text>
+      </t-collapse-panel>
+      <t-collapse-panel header="科研项目" value="{{1}}">
+        <text class="wordbreak">{{labExperience}}</text>
+      </t-collapse-panel>
+      <t-collapse-panel header="发表论文" value="{{2}}">
+        <text class="wordbreak">{{articles}}</text>
+      </t-collapse-panel>
+      <t-collapse-panel header="个人主页" value="{{3}}">
+        <text class="wordbreak">{{selfHome}}</text>
+      </t-collapse-panel>
     </t-collapse>
 
     <t-cell title="查看PDF版简历" hover arrow leftIcon="file-pdf" bind:tap="previewPDF" />

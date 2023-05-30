@@ -18,6 +18,8 @@ Page({
       EXPIRETIME: 604800,
     },
     isRegister: 0,
+    btnText: 60,
+    btnDisable: false,
     userId: '',
     username: '',
     password: '',
@@ -381,6 +383,22 @@ Page({
             theme: 'success',
             direction: 'column',
           });
+          let leftTime = 60;
+          this.setData({
+            btnDisable: true
+          });
+          let timer = setInterval(() => {
+            this.setData({
+              btnText: leftTime + "s后重新发送",
+            })
+            if (leftTime === 0) {
+              this.setData({
+                btnDisable: false
+              })
+              clearInterval(timer);
+            }
+            leftTime--
+          }, 1000)
         } else {
           Toast({
             context: this,

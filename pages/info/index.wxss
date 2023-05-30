@@ -42,3 +42,7 @@ page {
   margin: 0 16rpx 16rpx;
   padding-bottom: 10px;
 }
+
+.wordbreak {
+  word-break: break-all;
+}

@@ -54,3 +54,7 @@ page {
   border-radius: 38rpx;
   padding: 12rpx 24rpx;
 }
+
+.wordbreak {
+  word-break: break-all;
+}
