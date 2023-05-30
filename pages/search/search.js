@@ -1,4 +1,5 @@
 // pages/search/search.js
+import Toast from 'tdesign-miniprogram/toast/index';
 Page({
 
   /**
@@ -177,13 +178,21 @@ Page({
     const type = searchtags["type"]
     const time = searchtags["time"]
     if (content == '' && school == [] && skills == [] && type == '' && time == '') {
-      content = '计算机'
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '请输入想要搜索的内容，或者选择部分标签',
+        duration: 2500,
+        theme: 'warning',
+        direction: 'column',
+      });
+    } else {
+      console.log("输入内容", content)
+      console.log("选择内容", searchtags)
+      wx.navigateTo({
+        url: `/pages/search/searchres/index?searchcontent=${content}&time=${time}&type=${type}&school=` + school + `&skills=` + skills + ``,
+      });
     }
-    console.log("输入内容", content)
-    console.log("选择内容", searchtags)
-    wx.navigateTo({
-      url: `/pages/search/searchres/index?searchcontent=${content}&time=${time}&type=${type}&school=` + school + `&skills=` + skills + ``,
-    });
   },
 
   changeContent(e) {
