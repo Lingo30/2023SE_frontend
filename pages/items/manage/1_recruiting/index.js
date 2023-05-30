@@ -100,7 +100,7 @@ Page({
         content: '主要按钮',
         theme: 'primary'
       },
-      
+
     ],
   },
 
@@ -317,6 +317,103 @@ Page({
     })
   },
 
+  reload() {
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getItemShortInfo',
+      method: 'post',
+      data: {
+        iId: this.data.iId
+      },
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      success: (res) => {
+        if (res.data.success) {
+          console.log("success!!!");
+          console.log(res);
+          this.setData({
+            iTitle: res.data.iTitle,
+            iNum: res.data.iNum,
+            iCapacity: res.data.iCapacity,
+            iDuration: res.data.iDuration,
+            iTime: res.data.iTime,
+            iType: res.data.iType,
+            capacity: res.data.iCapacity,
+            starttime: res.data.iTime,
+            duration: String(res.data.iDuration)
+          });
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "信息加载失败",
+            duration: 1500,
+            theme: 'error',
+            direction: 'column',
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        }
+      },
+      fail: () => {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "信息加载失败",
+          duration: 1500,
+          theme: 'error',
+          direction: 'column',
+        });
+        wx.navigateBack();
+      }
+    });
+    wx.request({
+      url: getApp().globalData.baseUrl + '/getItemApplicants',
+      method: 'post',
+      header: {
+        Authorization: wx.getStorageSync('token'),
+      },
+      data: {
+        iId: this.data.iId
+      },
+      success: (res) => {
+        if (res.data.success) {
+          console.log("success!!!");
+          console.log(res);
+          this.setData({
+            students: res.data.students
+          });
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: "信息加载失败",
+            duration: 1500,
+            theme: 'error',
+            direction: 'column',
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        }
+      },
+      fail: () => {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "信息加载失败",
+          duration: 1500,
+          theme: 'error',
+          direction: 'column',
+        });
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
+      }
+    });
+  },
+
   submitItemMod() {
     if (this.data.capacity == this.data.iCapacity && this.data.duration == this.data.iDuration && this.data.starttime == this.data.iTime) {
       Toast({
@@ -351,6 +448,7 @@ Page({
               theme: 'success',
               direction: 'column',
             });
+            this.reload();
           } else {
             Toast({
               context: this,
@@ -410,16 +508,7 @@ Page({
             theme: 'success',
             direction: 'column',
           });
-          const pages = getCurrentPages();
-          const currentPage = pages[pages.length - 1];
-          wx.navigateBack({
-            delta: pages.length - 1,
-            success: function () {
-              currentPage.setData({
-                iId: this.data.iId
-              });
-            }
-          });
+          this.reload();
         } else {
           Toast({
             context: this,
@@ -442,6 +531,7 @@ Page({
         });
       }
     });
+
   },
 
   accept() {
@@ -449,7 +539,7 @@ Page({
     this.closeDialog();
     const sIds = this.data.checkList.map(i => this.data.students[i].sId);
     let tName = "default";
-    
+
     // 调用 '/startTheMFIntern' 接口
     wx.request({
       url: getApp().globalData.baseUrl + '/startTheMFIntern',

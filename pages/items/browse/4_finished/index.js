@@ -44,7 +44,8 @@ Page({
       },
     ],
     stars: 10,
-    comment: "该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。"
+    comment: "该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。该学生积极参与项目，有合作意识，有钻研精神，总体超出预期。",
+    reviewValid: false
   },
 
   // 2. 生命周期函数---onLoad
@@ -131,17 +132,10 @@ Page({
         sId: this.data.sId
       },
       success: (res) => {
-        if (typeof res.data.stars === 'undefined') {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: "评论加载失败",
-            duration: 1000,
-            theme: 'error',
-            direction: 'column',
-          });
-        } else {
+        console.log("/getReviewStudent:res= ", res);
+        if (res.data.stars) {
           this.setData({
+            reviewValid: true,
             comment: res.data.comment,
             stars: res.data.stars
           });

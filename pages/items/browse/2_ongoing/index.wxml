@@ -15,8 +15,10 @@
       <view class="value">{{iDuration}}</view>
     </view>
     <view class="item">
-      <view class="label">科研单位：</view>
-      <view class="value">{{iPlace}}</view>
+      <view class="label">科研单位： </view>
+    </view>
+    <view class="item">
+      <view style="font-size: 24rpx;">{{iPlace}}</view>
     </view>
   </view>
 </view>

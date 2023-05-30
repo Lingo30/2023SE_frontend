@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 300rpx;
 }
 
 .item {
@@ -186,6 +187,20 @@
 }
 
 /* 5. 导师评价 */
+
+.no-review-alert {
+  font-weight: bold;
+  font-size: larger;
+  color: #0052d9;
+  margin: 24rpx 10% 24rpx 10%;
+  text-align: center;
+  border-radius: 20rpx;
+  /* 边 */
+  border: 3rpx solid #E0E3DA;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  background-color: #ffffff;
+  padding: 10rpx;
+}
 
 .review-container {
   border-radius: 20rpx;

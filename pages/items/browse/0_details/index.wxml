@@ -15,8 +15,10 @@
       <view class="value">{{iDuration}}</view>
     </view>
     <view class="item">
-      <view class="label">科研单位：</view>
-      <view class="value">{{iPlace}}</view>
+      <view class="label">科研单位： </view>
+    </view>
+    <view class="item">
+      <view style="font-size: 24rpx;">{{iPlace}}</view>
     </view>
   </view>
 </view>
@@ -88,7 +90,12 @@
     <text class="white-text">|</text>
     <text class="button-text">{{i_tLiked? "已收藏" : "收藏"}}</text>
   </t-button>
-  <t-button class="home-button-container" theme="primary" size="large" shape="round" bind:tap="apply">
+  <t-button wx:if="{{!notApplied}}" class="home-button-container" theme="primary" size="large" shape="round" disabled>
+    <t-icon class="i" name="user-talk" size="48rpx" color="rgb(256, 256, 256)" />
+    <text class="gray-text">|</text>
+    <text class="button-text">已申请</text>
+  </t-button>
+  <t-button wx:if="{{notApplied}}" class="home-button-container" theme="primary" size="large" shape="round" bind:tap="apply">
     <t-icon class="i" name="user-talk" size="48rpx" color="rgb(256, 256, 256)" />
     <text class="white-text">|</text>
     <text class="button-text">申请</text>

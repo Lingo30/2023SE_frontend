@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 300rpx;
 }
 
 .item {
@@ -274,4 +275,8 @@
 
 .white-text {
   color: #0052d9;
+}
+
+.gray-text {
+  color: #b5c7ff;
 }

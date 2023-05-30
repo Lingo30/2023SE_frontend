@@ -13,52 +13,8 @@ Page({
     iTime: "2023/12/31",
     iDuration: "7个月",
     iType: "线上",
-    students_yet: [{
-        sId: "1",
-        sName: "string1",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "北京航空航天大学"
-      },
-      {
-        sId: "2",
-        sName: "string2",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "string2"
-      }, {
-        sId: "3",
-        sName: "string1",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "北京航空航天大学"
-      }, {
-        sId: "4",
-        sName: "string1",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "北京航空航天大学"
-      }
-    ],
-    students_already: [{
-        sId: "5",
-        sName: "string1",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "北京航空航天大学"
-      },
-      {
-        sId: "6",
-        sName: "string2",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "string2"
-      }, {
-        sId: "7",
-        sName: "string1",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "北京航空航天大学"
-      }, {
-        sId: "8",
-        sName: "string1",
-        sAvatarUrl: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-        sSchool: "北京航空航天大学"
-      }
-    ]
+    students_yet: [],
+    students_already: []
   },
 
   /**
