@@ -130,6 +130,7 @@ Page({
   },
 
   logout() {
+    wx.$TUIKit.logout();
     wx.clearStorage();
     wx.setStorage({
       key: 'login',

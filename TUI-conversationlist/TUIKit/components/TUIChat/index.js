@@ -5,7 +5,7 @@ import constant from '../../utils/constant';
 const app = getApp();
 
 const inputStyle = `
-  --padding: 25px
+  --padding: 60px
 `;
 
 let newInputStyle = `
@@ -16,7 +16,7 @@ const setNewInputStyle = (number) => {
   const height = number;
   let deviceWidth = wx.getSystemInfoSync().windowWidth; //获取设备屏幕宽度
   let px = (deviceWidth / 750) * 160
-  newInputStyle = `--padding: ${height+px}px`;
+  newInputStyle = `--padding: ${height}px`;
 };
 
 Component({
