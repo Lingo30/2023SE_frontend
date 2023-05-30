@@ -15,8 +15,10 @@
       <view class="value">{{iDuration}}</view>
     </view>
     <view class="item">
-      <view class="label">科研单位：</view>
-      <view class="value">{{iPlace}}</view>
+      <view class="label">科研单位： </view>
+    </view>
+    <view class="item">
+      <view style="font-size: 24rpx;">{{iPlace}}</view>
     </view>
   </view>
 </view>
@@ -83,7 +85,8 @@
 <!-- 5. 导师评价 -->
 <view class="reviews-container">
   <Subtitle title="导师评价" icon="thumb-up" />
-  <view class="review-container">
+  <view class="no-review-alert" wx:if="{{!reviewValid}}">导师还没有评论哦~~~</view>
+  <view class="review-container" wx:if="{{reviewValid}}">
     <view class="inner-container star-container">
       <view class="review-title">等级评分：</view>
       <t-rate value="{{stars / 2}}" size="20" allowHalf />
