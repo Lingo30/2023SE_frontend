@@ -1,44 +1,87 @@
 <!--pages/usercenter/edit/index.wxml-->
 <t-toast id="t-toast" />
-<scroll-view scroll-y="{{scroll_ctrl}}" style='height:100vh'>
+<scroll-view scroll-y="{{scroll_ctrl}}" style="height: 100vh">
   <view class="column card">
-    <view class="row" style="justify-content: center;">
-      <t-avatar image="{{avatar}}" size="large" style="padding-top: 15rpx; padding-bottom: 15rpx;" bind:tap="uploadAvatar" hover />
+    <view class="row" style="justify-content: center">
+      <t-avatar
+        image="{{avatar}}"
+        size="large"
+        style="padding-top: 15rpx; padding-bottom: 15rpx"
+        bind:tap="uploadAvatar"
+        hover
+      />
       <t-icon name="edit" bind:tap="uploadAvatar" hover></t-icon>
     </view>
-    <t-input label="姓名" data-key="username" value="{{username}}" bindchange="getInputValue" clearable bindfocus="onfocus" bindblur="onblur"> </t-input>
+    <t-input
+      label="姓名"
+      data-key="username"
+      value="{{username}}"
+      bindchange="getInputValue"
+      clearable
+      bindfocus="onfocus"
+      bindblur="onblur"
+    >
+    </t-input>
 
     <t-cell title="所在专业" arrow hover note="{{departmentText}}" bind:click="onDepartmentPicker" />
-    <t-picker visible="{{departmentVisible}}" data-key="department" title="选择所在专业" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+    <t-picker
+      visible="{{departmentVisible}}"
+      data-key="department"
+      title="选择所在专业"
+      cancelBtn="取消"
+      confirmBtn="确认"
+      bindchange="onPickerChange"
+      bindpick="onColumnChange"
+      bindcancel="onPickerCancel"
+    >
       <t-picker-item options="{{departments}}" />
     </t-picker>
   </view>
 
-  <view class=" column card" style="padding: 10rpx;">
+  <view class="column card" style="padding: 10rpx">
+    <t-cell title="上传PDF版简历" leftIcon="file-pdf" arrow hover bind:tap="uploadPDF" />
+  </view>
+
+  <view class="column card" style="padding: 10rpx">
     <t-cell title="个人简历" leftIcon="file" />
 
-    <t-textarea label="学业成绩" disableDefaultPadding="{{true}}" autosize data-key="grades" value="{{grades}}" bindchange="getInputValue" />
+    <t-textarea
+      label="学业成绩"
+      disableDefaultPadding="{{true}}"
+      autosize
+      data-key="grades"
+      value="{{grades}}"
+      bindchange="getInputValue"
+    />
 
-    <t-textarea label="科研经历" disableDefaultPadding="{{true}}" autosize data-key="labExperience" value="{{labExperience}}" bindchange="getInputValue" />
+    <t-textarea
+      label="科研经历"
+      disableDefaultPadding="{{true}}"
+      autosize
+      data-key="labExperience"
+      value="{{labExperience}}"
+      bindchange="getInputValue"
+    />
 
-    <t-textarea label="竞赛获奖" disableDefaultPadding="{{true}}" autosize data-key="awards" value="{{awards}}" bindchange="getInputValue" />
+    <t-textarea
+      label="竞赛获奖"
+      disableDefaultPadding="{{true}}"
+      autosize
+      data-key="awards"
+      value="{{awards}}"
+      bindchange="getInputValue"
+    />
 
     <!-- <t-textarea label="擅长技能" disableDefaultPadding="{{true}}" autosize data-key="skill" value="{{skill}}" bindchange="getInputValue" /> -->
   </view>
 
-  <view class=" column card" style="padding: 10rpx;">
+  <view class="column card" style="padding: 10rpx">
     <t-cell title="技能" leftIcon="root-list" arrow hover bind:click="jump2skills">
       <t-badge count="{{numOfSkills}}" slot="note" />
     </t-cell>
   </view>
 
-  <view class=" column card" style="padding: 10rpx;">
-    <t-cell title="上传PDF版简历" leftIcon="file-pdf" arrow hover bind:tap="uploadPDF" />
+  <view class="column" style="padding: 30rpx; align-items: center">
+    <t-button size="large" content="完成编辑" theme="primary" style="width: 100%" bind:tap="finishEdit"> </t-button>
   </view>
-
-  <view class="column" style="padding: 30rpx; align-items: center;">
-    <t-button size="large" content="完成编辑" theme="primary" style="width: 100%;" bind:tap="finishEdit">
-    </t-button>
-  </view>
-
 </scroll-view>

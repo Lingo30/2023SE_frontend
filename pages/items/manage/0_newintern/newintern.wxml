@@ -1,15 +1,51 @@
 <t-toast id="t-toast" />
-<scroll-view scroll-y="true" style="height: calc(100vh - 180rpx);">
-  <t-input label="项目标题" placeholder="最大输入10个字符" maxlength="{{10}}" data-key="title" clearable bindchange="getInputValue"></t-input>
-  <t-input label="项目简介" placeholder="最大输入20个字符" maxlength="{{20}}" data-key="brief" clearable bindchange="getInputValue">
+<scroll-view scroll-y="true" style="height: calc(100vh - 180rpx)">
+  <t-input
+    label="项目标题"
+    placeholder="最大输入25个字符"
+    maxlength="{{25}}"
+    data-key="title"
+    clearable
+    bindchange="getInputValue"
+  ></t-input>
+  <t-input
+    label="项目简介"
+    placeholder="最大输入50个字符"
+    maxlength="{{50}}"
+    data-key="brief"
+    clearable
+    bindchange="getInputValue"
+  >
   </t-input>
+
+  <view class="textarea-example_3">
+    <text class="textarea-example__label">项目详情</text>
+    <t-textarea
+      t-class="external-class"
+      placeholder="本项目"
+      bordered
+      disableDefaultPadding="{{true}}"
+      indicator
+      style="height: 250rpx"
+      data-key="content"
+      bindchange="getInputValue"
+    />
+  </view>
+
   <t-cell title="所需技能" arrow hover bind:click="jump2skills" t-class-title="cell-title">
     <t-badge count="{{numOfSkills}}" slot="note" />
   </t-cell>
   <!-- 人数 -->
   <view class="textarea-example">
     <text class="textarea-example__label">招募人数</text>
-    <t-radio-group class="recruitNum-8radio-container" default-value="0" borderless t-class="box" bind:change="getInputValue" data-key="capacity">
+    <t-radio-group
+      class="recruitNum-8radio-container"
+      default-value="0"
+      borderless
+      t-class="box"
+      bind:change="getInputValue"
+      data-key="capacity"
+    >
       <view class="recruitNum-4radio-container">
         <t-radio block="{{false}}" label="1" value="1" />
         <t-radio block="{{false}}" label="2" value="2" />
@@ -36,27 +72,60 @@
   </view>
   <t-divider />
 
-  <t-cell class="mb-16" title="项目持续时间" arrow hover note="{{timeText}}" bind:click="onTitlePicker" t-class-title="cell-title" />
-  <t-picker visible="{{timeVisible}}" value="{{timeValue}}" data-key="time" title="{{timeTitle}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+  <t-cell
+    class="mb-16"
+    title="项目持续时间"
+    arrow
+    hover
+    note="{{timeText}}"
+    bind:click="onTitlePicker"
+    t-class-title="cell-title"
+  />
+  <t-picker
+    visible="{{timeVisible}}"
+    value="{{timeValue}}"
+    data-key="time"
+    title="{{timeTitle}}"
+    cancelBtn="取消"
+    confirmBtn="确认"
+    bindchange="onPickerChange"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
+  >
     <t-picker-item options="{{times}}"></t-picker-item>
   </t-picker>
 
-  <t-cell title="项目开始时间" hover note="{{dateText || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" t-class-title="cell-title" />
+  <t-cell
+    title="项目开始时间"
+    hover
+    note="{{dateText || ''}}"
+    arrow
+    data-mode="date"
+    bindtap="showPicker"
+    class="test"
+    t-class="pannel-item"
+    t-class-title="cell-title"
+  />
   <!-- 年月日 -->
-  <t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
-
-  <view class="textarea-example_3">
-    <text class="textarea-example__label">项目详情</text>
-    <t-textarea t-class="external-class" placeholder="本项目" bordered disableDefaultPadding="{{true}}" indicator style="height: 250rpx" data-key="content" bindchange="getInputValue" />
-  </view>
+  <t-date-time-picker
+    title="选择日期"
+    visible="{{dateVisible}}"
+    mode="date"
+    defaultValue="{{date}}"
+    format="YYYY-MM-DD"
+    bindchange="onConfirm"
+    bindpick="onColumnChange"
+    bindcancel="hidePicker"
+    start="{{start}}"
+    end="{{end}}"
+  />
 
   <view class="button-example">
     <t-button theme="primary" size="large" block bind:tap="submit">发布项目</t-button>
   </view>
 </scroll-view>
 
-
-<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx;">
+<t-tab-bar value="{{tabbarValue}}" bindchange="onTabbarChange" theme="tag" split="{{false}}" style="height: 160rpx">
   <t-tab-bar-item wx:for="{{tabbarList}}" wx:key="index" value="{{item.tabbarValue}}" icon="{{item.icon}}">
     {{item.label}}
   </t-tab-bar-item>
